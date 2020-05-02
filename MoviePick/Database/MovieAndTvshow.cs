@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace MoviePick.Database
+{
+    public partial class MovieAndTvshow
+    {
+        public MovieAndTvshow()
+        {
+            Comment = new HashSet<Comment>();
+            MovieAndTvshowGenre = new HashSet<MovieAndTvshowGenre>();
+            MovieAndTvshowNews = new HashSet<MovieAndTvshowNews>();
+            MovieAndTvshowPerson = new HashSet<MovieAndTvshowPerson>();
+            MovieAndTvshowRating = new HashSet<MovieAndTvshowRating>();
+            Quote = new HashSet<Quote>();
+            TvshowSeason = new HashSet<TvshowSeason>();
+        }
+
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Language { get; set; }
+        public string RunningTime { get; set; }
+        public string ReleaseDate { get; set; }
+        public double? Budget { get; set; }
+        public byte[] Poster { get; set; }
+        public int NumberOfRatings { get; set; }
+        public bool? Finished { get; set; }
+        public int ProductionCompanyId { get; set; }
+
+        public virtual ProductionCompany ProductionCompany { get; set; }
+        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual ICollection<MovieAndTvshowGenre> MovieAndTvshowGenre { get; set; }
+        public virtual ICollection<MovieAndTvshowNews> MovieAndTvshowNews { get; set; }
+        public virtual ICollection<MovieAndTvshowPerson> MovieAndTvshowPerson { get; set; }
+        public virtual ICollection<MovieAndTvshowRating> MovieAndTvshowRating { get; set; }
+        public virtual ICollection<Quote> Quote { get; set; }
+        public virtual ICollection<TvshowSeason> TvshowSeason { get; set; }
+    }
+}
