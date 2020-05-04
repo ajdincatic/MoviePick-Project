@@ -54,11 +54,14 @@ namespace MoviePick
 
             services.AddScoped<IService<Data.Model.Genre, object>, BaseService<Data.Model.Genre, object, Database.Genre>>();
             services.AddScoped<IService<Data.Model.Role, object>, BaseService<Data.Model.Role, object, Database.Role>>();
+            services.AddScoped<IService<Data.Model.UserType, object>, BaseService<Data.Model.UserType, object, Database.UserType>>();
             services.AddScoped<IService<Data.Model.ProductionCompany, object>, BaseService<Data.Model.ProductionCompany, object, ProductionCompany>>();
 
             services.AddScoped<ICRUDService<Data.Model.Quote, QuoteSearchRequest, QuoteUpsertRequest, QuoteUpsertRequest>, QuoteService>();
             services.AddScoped<ICRUDService<Data.Model.Person, PersonSearchRequest, PersonUpsertRequest, PersonUpsertRequest>, PersonService>();
             services.AddScoped<ICRUDService<Data.Model.MovieAndTvshow, MovieAndTvshowSearchRequest, MovieAndTvshowUpsertRequest, MovieAndTvshowUpsertRequest>, MovieAndTvShowService>();
+            services.AddScoped<ICRUDService<Data.Model.TvshowSeason, TvshowSeasonSearchRequest, TvshowSeasonUpsertRequest, TvshowSeasonUpsertRequest>, TvshowSeasonService>();
+            services.AddScoped<ICRUDService<Data.Model.TvshowSeasonEpisode, TvshowSeasonEpisodeSearchRequest, TvshowSeasonEpisodeUpsertRequest, TvshowSeasonEpisodeUpsertRequest>, TvshowSeasonEpisodeService>();
 
             #endregion
 

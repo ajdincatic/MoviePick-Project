@@ -23,6 +23,10 @@ namespace MoviePick.Mapper
             CreateMap<QuoteUpsertRequest, Quote>();
             CreateMap<MovieAndTvshow, Data.Model.MovieAndTvshow>();
             CreateMap<MovieAndTvshowUpsertRequest, MovieAndTvshow>();
+            CreateMap<TvshowSeason, Data.Model.TvshowSeason>();
+            CreateMap<TvshowSeasonUpsertRequest, TvshowSeason>();
+            CreateMap<TvshowSeasonEpisode, Data.Model.TvshowSeasonEpisode>();
+            CreateMap<TvshowSeasonEpisodeUpsertRequest, TvshowSeasonEpisode>();
 
         }
     }
