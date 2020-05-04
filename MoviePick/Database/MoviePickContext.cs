@@ -118,7 +118,7 @@ namespace MoviePick.Database
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Poster).IsRequired();
+                entity.Property(e => e.Poster).IsRequired(false);
 
                 entity.Property(e => e.ReleaseDate)
                     .IsRequired()
@@ -260,7 +260,7 @@ namespace MoviePick.Database
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.Photo).IsRequired();
+                entity.Property(e => e.Photo).IsRequired(false);
 
                 entity.Property(e => e.PlaceOfBirth)
                     .IsRequired()
