@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MoviePick.Data.Model
+{
+    public class MovieAndTvshowPerson
+    {
+        public int MovieAndTvshowId { get; set; }
+        public int PersonId { get; set; }
+        public Person Person { get; set; }
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
+        public string NameInMovie { get; set; }
+    }
+}

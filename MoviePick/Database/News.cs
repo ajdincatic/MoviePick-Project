@@ -15,8 +15,9 @@ namespace MoviePick.Database
         public DateTime DateTimeOfNews { get; set; }
         public byte[] CoverPhoto { get; set; }
         public string Content { get; set; }
+        public string Title { get; set; }
 
-        public virtual AppUser Author { get; set; }
+        public virtual User Author { get; set; }
         public virtual ICollection<MovieAndTvshowNews> MovieAndTvshowNews { get; set; }
     }
 }

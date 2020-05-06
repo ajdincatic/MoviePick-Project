@@ -1,24 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using eProdaja.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MoviePick.Data.Request;
 using MoviePick.Database;
+using MoviePick.Interfaces;
 using MoviePick.Properties;
 using MoviePick.Services;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace MoviePick
 {
@@ -62,6 +55,10 @@ namespace MoviePick
             services.AddScoped<ICRUDService<Data.Model.MovieAndTvshow, MovieAndTvshowSearchRequest, MovieAndTvshowUpsertRequest, MovieAndTvshowUpsertRequest>, MovieAndTvShowService>();
             services.AddScoped<ICRUDService<Data.Model.TvshowSeason, TvshowSeasonSearchRequest, TvshowSeasonUpsertRequest, TvshowSeasonUpsertRequest>, TvshowSeasonService>();
             services.AddScoped<ICRUDService<Data.Model.TvshowSeasonEpisode, TvshowSeasonEpisodeSearchRequest, TvshowSeasonEpisodeUpsertRequest, TvshowSeasonEpisodeUpsertRequest>, TvshowSeasonEpisodeService>();
+            services.AddScoped<ICRUDService<Data.Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
+
+            services.AddScoped<IGenreMovieTvShowService, GenreMovieTvShowService>();
+            services.AddScoped<IMovieTvShowPersonService, MovieTvShowPersonService>();
 
             #endregion
 

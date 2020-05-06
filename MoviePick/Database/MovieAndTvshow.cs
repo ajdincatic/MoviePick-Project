@@ -11,8 +11,8 @@ namespace MoviePick.Database
             MovieAndTvshowGenre = new HashSet<MovieAndTvshowGenre>();
             MovieAndTvshowNews = new HashSet<MovieAndTvshowNews>();
             MovieAndTvshowPerson = new HashSet<MovieAndTvshowPerson>();
-            MovieAndTvshowRating = new HashSet<MovieAndTvshowRating>();
             Quote = new HashSet<Quote>();
+            Rating = new HashSet<Rating>();
             TvshowSeason = new HashSet<TvshowSeason>();
         }
 
@@ -21,7 +21,7 @@ namespace MoviePick.Database
         public string Description { get; set; }
         public string Language { get; set; }
         public string RunningTime { get; set; }
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
         public double? Budget { get; set; }
         public byte[] Poster { get; set; }
         public int NumberOfRatings { get; set; }
@@ -33,8 +33,8 @@ namespace MoviePick.Database
         public virtual ICollection<MovieAndTvshowGenre> MovieAndTvshowGenre { get; set; }
         public virtual ICollection<MovieAndTvshowNews> MovieAndTvshowNews { get; set; }
         public virtual ICollection<MovieAndTvshowPerson> MovieAndTvshowPerson { get; set; }
-        public virtual ICollection<MovieAndTvshowRating> MovieAndTvshowRating { get; set; }
         public virtual ICollection<Quote> Quote { get; set; }
+        public virtual ICollection<Rating> Rating { get; set; }
         public virtual ICollection<TvshowSeason> TvshowSeason { get; set; }
     }
 }

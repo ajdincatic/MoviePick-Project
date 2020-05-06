@@ -7,12 +7,12 @@ namespace MoviePick.Database
     {
         public UserType()
         {
-            AppUser = new HashSet<AppUser>();
+            User = new HashSet<User>();
         }
 
         public int Id { get; set; }
         public string Type { get; set; }
 
-        public virtual ICollection<AppUser> AppUser { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

@@ -16,5 +16,7 @@ namespace MoviePick.Data.Request
         public int NumberOfRatings { get; set; }
         public bool? Finished { get; set; }
         public int ProductionCompanyId { get; set; }
+        public List<int> GenreIds { get; set; } = new List<int>();
+        public List<Tuple<int, int, string>> Roles { get; set; } = new List<Tuple<int, int, string>>();
     }
 }

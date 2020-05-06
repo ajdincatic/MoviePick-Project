@@ -11,7 +11,7 @@ namespace MoviePick.Database
         public DateTime DateTimeOfComment { get; set; }
         public string Content { get; set; }
 
-        public virtual AppUser AppUser { get; set; }
+        public virtual User AppUser { get; set; }
         public virtual MovieAndTvshow MovieAndTvshow { get; set; }
     }
 }

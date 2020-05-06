@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace MoviePick.Database
 {
-    public partial class AppUser
+    public partial class User
     {
-        public AppUser()
+        public User()
         {
             Comment = new HashSet<Comment>();
-            MovieAndTvshowRating = new HashSet<MovieAndTvshowRating>();
             News = new HashSet<News>();
+            Rating = new HashSet<Rating>();
         }
 
         public int Id { get; set; }
@@ -24,7 +24,7 @@ namespace MoviePick.Database
 
         public virtual UserType UserType { get; set; }
         public virtual ICollection<Comment> Comment { get; set; }
-        public virtual ICollection<MovieAndTvshowRating> MovieAndTvshowRating { get; set; }
         public virtual ICollection<News> News { get; set; }
+        public virtual ICollection<Rating> Rating { get; set; }
     }
 }

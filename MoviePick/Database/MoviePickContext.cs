@@ -15,21 +15,21 @@ namespace MoviePick.Database
         {
         }
 
-        public virtual DbSet<AppUser> AppUser { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<MovieAndTvshow> MovieAndTvshow { get; set; }
         public virtual DbSet<MovieAndTvshowGenre> MovieAndTvshowGenre { get; set; }
         public virtual DbSet<MovieAndTvshowNews> MovieAndTvshowNews { get; set; }
         public virtual DbSet<MovieAndTvshowPerson> MovieAndTvshowPerson { get; set; }
-        public virtual DbSet<MovieAndTvshowRating> MovieAndTvshowRating { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<ProductionCompany> ProductionCompany { get; set; }
         public virtual DbSet<Quote> Quote { get; set; }
+        public virtual DbSet<Rating> Rating { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<TvshowSeason> TvshowSeason { get; set; }
         public virtual DbSet<TvshowSeasonEpisode> TvshowSeasonEpisode { get; set; }
+        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -43,39 +43,6 @@ namespace MoviePick.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AppUser>(entity =>
-            {
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.FirstName).HasMaxLength(50);
-
-                entity.Property(e => e.LastName).HasMaxLength(50);
-
-                entity.Property(e => e.PasswordHash)
-                    .IsRequired()
-                    .HasMaxLength(500);
-
-                entity.Property(e => e.PasswordSalt)
-                    .IsRequired()
-                    .HasMaxLength(500);
-
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Username)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.HasOne(d => d.UserType)
-                    .WithMany(p => p.AppUser)
-                    .HasForeignKey(d => d.UserTypeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__AppUser__UserTyp__267ABA7A");
-            });
-
             modelBuilder.Entity<Comment>(entity =>
             {
                 entity.Property(e => e.Content)
@@ -118,11 +85,7 @@ namespace MoviePick.Database
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Poster).IsRequired(false);
-
-                entity.Property(e => e.ReleaseDate)
-                    .IsRequired()
-                    .HasMaxLength(10);
+                entity.Property(e => e.ReleaseDate).HasColumnType("date");
 
                 entity.Property(e => e.RunningTime)
                     .IsRequired()
@@ -202,34 +165,17 @@ namespace MoviePick.Database
                     .HasConstraintName("FK__MovieAndT__RoleI__5070F446");
             });
 
-            modelBuilder.Entity<MovieAndTvshowRating>(entity =>
-            {
-                entity.ToTable("MovieAndTVShowRating");
-
-                entity.Property(e => e.MovieAndTvshowId).HasColumnName("MovieAndTVShowId");
-
-                entity.HasOne(d => d.AppUser)
-                    .WithMany(p => p.MovieAndTvshowRating)
-                    .HasForeignKey(d => d.AppUserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__AppUs__4316F928");
-
-                entity.HasOne(d => d.MovieAndTvshow)
-                    .WithMany(p => p.MovieAndTvshowRating)
-                    .HasForeignKey(d => d.MovieAndTvshowId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__Movie__440B1D61");
-            });
-
             modelBuilder.Entity<News>(entity =>
             {
                 entity.Property(e => e.Content)
                     .IsRequired()
                     .HasMaxLength(1000);
 
-                entity.Property(e => e.CoverPhoto).IsRequired();
-
                 entity.Property(e => e.DateTimeOfNews).HasColumnType("datetime");
+
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(100);
 
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.News)
@@ -260,8 +206,6 @@ namespace MoviePick.Database
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.Photo).IsRequired(false);
-
                 entity.Property(e => e.PlaceOfBirth)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -287,6 +231,23 @@ namespace MoviePick.Database
                     .HasForeignKey(d => d.MovieAndTvshowId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Quote__MovieAndT__403A8C7D");
+            });
+
+            modelBuilder.Entity<Rating>(entity =>
+            {
+                entity.Property(e => e.MovieAndTvshowId).HasColumnName("MovieAndTVShowId");
+
+                entity.HasOne(d => d.AppUser)
+                    .WithMany(p => p.Rating)
+                    .HasForeignKey(d => d.AppUserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Rating__AppUserI__4316F928");
+
+                entity.HasOne(d => d.MovieAndTvshow)
+                    .WithMany(p => p.Rating)
+                    .HasForeignKey(d => d.MovieAndTvshowId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Rating__MovieAnd__440B1D61");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -326,6 +287,39 @@ namespace MoviePick.Database
                     .HasForeignKey(d => d.TvshowSeasonId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__TVShowSea__TVSho__36B12243");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.FirstName).HasMaxLength(50);
+
+                entity.Property(e => e.LastName).HasMaxLength(50);
+
+                entity.Property(e => e.PasswordHash)
+                    .IsRequired()
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.PasswordSalt)
+                    .IsRequired()
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.Phone)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.UserType)
+                    .WithMany(p => p.User)
+                    .HasForeignKey(d => d.UserTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__User__UserTypeId__267ABA7A");
             });
 
             modelBuilder.Entity<UserType>(entity =>

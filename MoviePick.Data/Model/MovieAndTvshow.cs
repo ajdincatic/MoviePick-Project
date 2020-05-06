@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,5 +19,6 @@ namespace MoviePick.Data.Model
         public bool? Finished { get; set; }
         public int ProductionCompanyId { get; set; }
         public ProductionCompany ProductionCompany { get; set; }
+        public ICollection<MovieTvShowGenre> MovieAndTvshowGenre { get; set; }
     }
 }

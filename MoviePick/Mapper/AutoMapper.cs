@@ -27,7 +27,11 @@ namespace MoviePick.Mapper
             CreateMap<TvshowSeasonUpsertRequest, TvshowSeason>();
             CreateMap<TvshowSeasonEpisode, Data.Model.TvshowSeasonEpisode>();
             CreateMap<TvshowSeasonEpisodeUpsertRequest, TvshowSeasonEpisode>();
-
+            CreateMap<MovieAndTvshowGenre, Data.Model.MovieTvShowGenre>();
+            CreateMap<MovieAndTvshowPerson, Data.Model.MovieAndTvshowPerson>();
+            CreateMap<UserUpsertRequest, User>();
+            CreateMap<Data.Model.User, User>();
+            CreateMap<MovieAndTvshowPersonUpsertRequest, MovieAndTvshowPerson>();
         }
     }
 }

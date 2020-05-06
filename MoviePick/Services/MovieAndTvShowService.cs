@@ -15,20 +15,55 @@ namespace MoviePick.Services
     {
         public MovieAndTvShowService(MoviePickContext context, IMapper mapper) : base(context, mapper)
         {
-
         }
 
         public override List<Data.Model.MovieAndTvshow> Get(MovieAndTvshowSearchRequest search)
         {
-            var query = _context.MovieAndTvshow.Include(x => x.ProductionCompany).AsQueryable();
+            var query = _context.MovieAndTvshow.Include(x => x.ProductionCompany).Include("MovieAndTvshowGenre.Genre")
+                .Include("MovieAndTvshowPerson.Role")
+                .Include("MovieAndTvshowPerson.Person").AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Title))
             {
                 query = query.Where(x => x.Title.StartsWith(search.Title));
             }
 
+            if (search?.ProductionCompanyId != null && search?.ProductionCompanyId != 0)
+            {
+                query = query.Where(x => x.ProductionCompanyId == search.ProductionCompanyId);
+            }
 
             return _mapper.Map<List<Data.Model.MovieAndTvshow>>(query.ToList());
+        }
+
+        public override Data.Model.MovieAndTvshow Insert(MovieAndTvshowUpsertRequest request)
+        {
+            var entity = _mapper.Map<Database.MovieAndTvshow>(request);
+
+            _context.MovieAndTvshow.Add(entity);
+            _context.SaveChanges();
+
+            foreach (var genre in request.GenreIds)
+            {
+                Database.MovieAndTvshowGenre MTVGenre = new Database.MovieAndTvshowGenre();
+                MTVGenre.MovieAndTvshowId = entity.Id;
+                MTVGenre.GenreId = genre;
+                _context.MovieAndTvshowGenre.Add(MTVGenre);
+            }
+
+            foreach (var role in request.Roles)
+            {
+                Database.MovieAndTvshowPerson MTVGenre = new Database.MovieAndTvshowPerson();
+                MTVGenre.MovieAndTvshowId = entity.Id;
+                MTVGenre.RoleId = role.Item1;
+                MTVGenre.PersonId = role.Item2;
+                MTVGenre.NameInMovie = role.Item3;
+                _context.MovieAndTvshowPerson.Add(MTVGenre);
+            }
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Data.Model.MovieAndTvshow>(entity);
         }
     }
 }
