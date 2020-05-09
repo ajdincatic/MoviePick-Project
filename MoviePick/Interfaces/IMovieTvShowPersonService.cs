@@ -11,5 +11,6 @@ namespace MoviePick.Interfaces
         List<Data.Model.MovieAndTvshow> GetMTVSsbyPerson(int PersonId);
         List<Data.Model.Person> GetPersonsByMTVS(int MTVSId, int RoleId);
         Data.Model.MovieAndTvshowPerson AddPersonToMTVS(int mTVSId, MovieAndTvshowPersonUpsertRequest request);
+        Data.Model.MovieAndTvshowPerson DeletePerson(int MTVSId, MovieAndTvshowDeleteRequest request);
     }
 }

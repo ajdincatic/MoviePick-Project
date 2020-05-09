@@ -96,12 +96,6 @@
     <Compile Include="Forms\frmTvShowSeasonEpisodesAdd.Designer.cs">
       <DependentUpon>frmTvShowSeasonEpisodesAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmTvShowSeasonsAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmTvShowSeasonsAdd.Designer.cs">
-      <DependentUpon>frmTvShowSeasonsAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmIndex.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,9 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTvShowSeasonEpisodesAdd.resx">
       <DependentUpon>frmTvShowSeasonEpisodesAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmTvShowSeasonsAdd.resx">
-      <DependentUpon>frmTvShowSeasonsAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>

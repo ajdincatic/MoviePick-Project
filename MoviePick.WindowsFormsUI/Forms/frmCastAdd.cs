@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using MoviePick.Data.Model;
+using MoviePick.Data.Request;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,19 +15,25 @@ namespace MoviePick.WindowsFormsUI.Forms
 {
     public partial class frmCastAdd : Form
     {
-        APIService _serviceRole = new APIService("Role");
+        private APIService _serviceRole = new APIService("Role");
+        private APIService _servicePerson;
 
         private bool isTvShow;
+        private int MTVSId;
 
-        public frmCastAdd(bool isTvShow = false)
+        public frmCastAdd(int MTVSId, bool isTvShow = false)
         {
             this.isTvShow = isTvShow;
+            this.MTVSId = MTVSId;
+            _servicePerson = new APIService("MovieTvShow", "Person", MTVSId);
             InitializeComponent();
+            dgvCast.AutoGenerateColumns = false;
         }
 
         protected async override void OnLoad(EventArgs e)
         {
             await LoadRoles();
+            await LoadPersons();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -34,7 +41,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             if (isTvShow == true)
             {
                 MessageBox.Show("Now add seasons and episodes for this TV Show !", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                frmTvShowSeasonEpisodesAdd frm = new frmTvShowSeasonEpisodesAdd();
+                frmTvShowSeasonEpisodesAdd frm = new frmTvShowSeasonEpisodesAdd(MTVSId);
                 frm.ShowDialog();
             }
         }
@@ -47,14 +54,74 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             var list = await _serviceRole.GetAll<List<Role>>();
             cmbRole.ValueMember = "Id";
+            cmbRoleSearch.ValueMember = "Id";
             cmbRole.DisplayMember = "RoleName";
+            cmbRoleSearch.DisplayMember = "RoleName";
             cmbRole.DataSource = list;
+            cmbRoleSearch.DataSource = list;
         }
 
-        private void btnAddCast_Click(object sender, EventArgs e)
+        private async Task LoadPersons()
         {
+            MovieAndTvshowPersonSearchRequest request = new MovieAndTvshowPersonSearchRequest();
+
+            var idRoleTemp = cmbRoleSearch.SelectedValue;
+
+            if (int.TryParse(idRoleTemp.ToString(), out int idRole))
+            {
+                request.RoleId = idRole;
+            }
+
+            var list = await _servicePerson.GetAll<List<Person>>(request);
+            dgvCast.DataSource = list;
+        }
+
+
+        private async void btnAddCast_Click(object sender, EventArgs e)
+        {
+            MovieAndTvshowPersonUpsertRequest request = new MovieAndTvshowPersonUpsertRequest()
+            {
+                NameInMovie=txtName.Text,
+                PersonId = 1
+            };
+
+            var idRole = cmbRole.SelectedValue;
+
+            if (int.TryParse(idRole.ToString(), out int id))
+            {
+                request.RoleId = id;
+            }
+
+            await _servicePerson.Insert<Data.Model.MovieAndTvshowPerson>(request);
 
             MessageBox.Show("Operation successfully completed");
+            txtName.Text = "";
+
+            await LoadPersons();
+        }
+
+        private async void cmbRoleSearch_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            await LoadPersons();
+        }
+
+        private async void dgvCast_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            //Person item = dgvCast.SelectedRows[0].DataBoundItem as Person;
+            //MovieAndTvshowDeleteRequest request = new MovieAndTvshowDeleteRequest
+            //{
+            //    PersonId = item.Id,
+            //};
+
+            //var idRole = cmbRole.SelectedValue;
+
+            //if (int.TryParse(idRole.ToString(), out int id))
+            //{
+            //    request.RoleId = id;
+            //}
+
+            //await _servicePerson.Delete<MovieAndTvshowPerson>(item.Id, request);
+            //await LoadPersons();
         }
     }
 }

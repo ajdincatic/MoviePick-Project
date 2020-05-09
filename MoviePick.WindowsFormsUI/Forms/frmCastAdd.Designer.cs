@@ -36,6 +36,11 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbRole = new System.Windows.Forms.ComboBox();
             this.dgvCast = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbRoleSearch = new System.Windows.Forms.ComboBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbCast.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCast)).BeginInit();
             this.SuspendLayout();
@@ -107,13 +112,63 @@
             // 
             this.dgvCast.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvCast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCast.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.FirstName,
+            this.LastName});
             this.dgvCast.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvCast.Location = new System.Drawing.Point(99, 310);
+            this.dgvCast.Location = new System.Drawing.Point(99, 370);
             this.dgvCast.Name = "dgvCast";
             this.dgvCast.RowHeadersWidth = 51;
             this.dgvCast.RowTemplate.Height = 24;
-            this.dgvCast.Size = new System.Drawing.Size(1150, 426);
+            this.dgvCast.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCast.Size = new System.Drawing.Size(1150, 366);
             this.dgvCast.TabIndex = 1;
+            this.dgvCast.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCast_CellDoubleClick_1);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(460, 317);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 25);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Role";
+            // 
+            // cmbRoleSearch
+            // 
+            this.cmbRoleSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRoleSearch.FormattingEnabled = true;
+            this.cmbRoleSearch.Location = new System.Drawing.Point(534, 314);
+            this.cmbRoleSearch.Name = "cmbRoleSearch";
+            this.cmbRoleSearch.Size = new System.Drawing.Size(348, 33);
+            this.cmbRoleSearch.TabIndex = 5;
+            this.cmbRoleSearch.SelectionChangeCommitted += new System.EventHandler(this.cmbRoleSearch_SelectionChangeCommitted);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Width = 125;
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.MinimumWidth = 6;
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Width = 125;
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "LastName";
+            this.LastName.MinimumWidth = 6;
+            this.LastName.Name = "LastName";
+            this.LastName.Width = 125;
             // 
             // frmCastAdd
             // 
@@ -122,7 +177,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1352, 748);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvCast);
+            this.Controls.Add(this.cmbRoleSearch);
             this.Controls.Add(this.gbCast);
             this.Name = "frmCastAdd";
             this.Text = "Cast add";
@@ -130,6 +187,7 @@
             this.gbCast.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCast)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -142,5 +200,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddCast;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbRoleSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
     }
 }

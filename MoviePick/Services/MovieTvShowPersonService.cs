@@ -32,6 +32,19 @@ namespace MoviePick.Services
             return _mapper.Map<Data.Model.MovieAndTvshowPerson>(entity);
         }
 
+        public Data.Model.MovieAndTvshowPerson DeletePerson(int mtvsId, MovieAndTvshowDeleteRequest request)
+        {
+            var entity = _context.MovieAndTvshowPerson.Where(x => x.MovieAndTvshowId == mtvsId && x.PersonId == request.PersonId 
+                && x.RoleId == request.RoleId).FirstOrDefault();
+            if(entity != null)
+            {
+                _context.MovieAndTvshowPerson.Remove(entity);
+                _context.SaveChanges();
+                return _mapper.Map<Data.Model.MovieAndTvshowPerson>(entity);
+            }
+            return null;
+        }
+
         public List<Data.Model.MovieAndTvshow> GetMTVSsbyPerson(int PersonId)
         {
             var query = _context.MovieAndTvshowPerson.AsQueryable();

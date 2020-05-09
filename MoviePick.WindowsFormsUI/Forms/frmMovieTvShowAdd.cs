@@ -71,17 +71,17 @@ namespace MoviePick.WindowsFormsUI.Forms
             //    request.ProductionCompanyId = idProductionCompany;
             //}
 
-            //var korisnik = await _serviceMovieAndTvShow.Insert<MovieAndTvshow>(request);
+            //var mtvs = await _serviceMovieAndTvShow.Insert<MovieAndTvshow>(request);
 
             MessageBox.Show("Operation successfully completed, now assign cast !", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (chkTvShow.Checked)
             {
-                frmCastAdd frm = new frmCastAdd(true);
+                frmCastAdd frm = new frmCastAdd(2,true);
                 frm.ShowDialog();
             }
             else
             {
-                frmCastAdd frm = new frmCastAdd();
+                frmCastAdd frm = new frmCastAdd(2);
                 frm.ShowDialog();
             }
         }

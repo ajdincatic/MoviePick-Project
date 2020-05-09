@@ -9,6 +9,8 @@ namespace MoviePick.Data.Model
         public int Id { get; set; }
         public bool? Finished { get; set; }
         public int MovieAndTvshowId { get; set; }
+        public string SeasonName { get; set; }
+
         public MovieAndTvshow MovieAndTvshow { get; set; }
     }
 }

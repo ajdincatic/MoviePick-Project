@@ -263,6 +263,10 @@ namespace MoviePick.Database
 
                 entity.Property(e => e.MovieAndTvshowId).HasColumnName("MovieAndTVShowId");
 
+                entity.Property(e => e.SeasonName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.HasOne(d => d.MovieAndTvshow)
                     .WithMany(p => p.TvshowSeason)
                     .HasForeignKey(d => d.MovieAndTvshowId)

@@ -8,5 +8,7 @@ namespace MoviePick.Data.Request
     {
         public int MovieAndTvshowId { get; set; }
         public bool? Finished { get; set; }
+        public string SeasonName { get; set; }
+
     }
 }

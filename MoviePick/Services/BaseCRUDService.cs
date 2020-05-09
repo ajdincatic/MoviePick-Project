@@ -39,5 +39,6 @@ namespace eProdaja.Services
 
             return _mapper.Map<TModel>(entity);
         }
+
     }
 }

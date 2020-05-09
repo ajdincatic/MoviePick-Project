@@ -13,6 +13,7 @@ namespace MoviePick.Database
         public int Id { get; set; }
         public int MovieAndTvshowId { get; set; }
         public bool? Finished { get; set; }
+        public string SeasonName { get; set; }
 
         public virtual MovieAndTvshow MovieAndTvshow { get; set; }
         public virtual ICollection<TvshowSeasonEpisode> TvshowSeasonEpisode { get; set; }

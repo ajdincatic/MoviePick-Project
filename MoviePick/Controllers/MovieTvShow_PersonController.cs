@@ -37,5 +37,11 @@ namespace MoviePick.Controllers
         {
             return _service.AddPersonToMTVS(MTVSId, request);
         }
+
+        [HttpDelete("MovieTvShow/{MTVSId}/Person")]
+        public Data.Model.MovieAndTvshowPerson AddPersonToMTVS(int MTVSId, MovieAndTvshowDeleteRequest request)
+        {
+            return _service.DeletePerson(MTVSId, request);
+        }
     }
 }

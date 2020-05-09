@@ -72,6 +72,15 @@ namespace eProdaja.WinUI
 
             try
             {
+                if (_extension != null)
+                {
+                    var list = await $"{endpoint}{_resource}/{_value}/{_extension}"
+                        .WithBasicAuth(username, password)
+                        .PostJsonAsync(request)
+                        .ReceiveJson<T>();
+                    return list;
+                }
+
                 return await url
                     .WithBasicAuth(username, password)
                     .PostJsonAsync(request).ReceiveJson<T>();
@@ -101,6 +110,40 @@ namespace eProdaja.WinUI
                 return await url
                     .WithBasicAuth(username, password)
                     .PutJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
+        }
+
+        public async Task<T> Delete<T>(int id, object request = null)
+        {
+            try
+            {
+                if (request != null)
+                {
+                    var query = await request?.ToQueryString();
+                    var list = await $"{endpoint}{_resource}/{_value}/{_extension}?{query}"
+                        .WithBasicAuth(username, password)
+                        .DeleteAsync()
+                        .ReceiveJson<T>();
+                    return list;
+                }
+
+                return await $"{endpoint}{_resource}/{id}"
+                    .WithBasicAuth(username, password)
+                    .DeleteAsync().ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {
