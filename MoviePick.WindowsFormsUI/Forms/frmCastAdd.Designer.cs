@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCastAdd));
             this.gbCast = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,17 +37,21 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbRole = new System.Windows.Forms.ComboBox();
             this.dgvCast = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbRoleSearch = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbRoleSearch = new System.Windows.Forms.ComboBox();
+            this.cmbPerson = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.gbCast.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCast)).BeginInit();
             this.SuspendLayout();
             // 
             // gbCast
             // 
+            this.gbCast.Controls.Add(this.label4);
+            this.gbCast.Controls.Add(this.cmbPerson);
             this.gbCast.Controls.Add(this.label2);
             this.gbCast.Controls.Add(this.btnAddCast);
             this.gbCast.Controls.Add(this.label1);
@@ -63,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(85, 129);
+            this.label2.Location = new System.Drawing.Point(85, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 25);
             this.label2.TabIndex = 4;
@@ -93,7 +98,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(90, 157);
+            this.txtName.Location = new System.Drawing.Point(263, 129);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(348, 30);
             this.txtName.TabIndex = 1;
@@ -102,7 +107,7 @@
             // 
             this.cmbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRole.FormattingEnabled = true;
-            this.cmbRole.Location = new System.Drawing.Point(90, 78);
+            this.cmbRole.Location = new System.Drawing.Point(263, 39);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(348, 33);
             this.cmbRole.TabIndex = 0;
@@ -116,6 +121,14 @@
             this.Id,
             this.FirstName,
             this.LastName});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCast.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCast.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvCast.Location = new System.Drawing.Point(99, 370);
             this.dgvCast.Name = "dgvCast";
@@ -125,26 +138,6 @@
             this.dgvCast.Size = new System.Drawing.Size(1150, 366);
             this.dgvCast.TabIndex = 1;
             this.dgvCast.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCast_CellDoubleClick_1);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(460, 317);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 25);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Role";
-            // 
-            // cmbRoleSearch
-            // 
-            this.cmbRoleSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRoleSearch.FormattingEnabled = true;
-            this.cmbRoleSearch.Location = new System.Drawing.Point(534, 314);
-            this.cmbRoleSearch.Name = "cmbRoleSearch";
-            this.cmbRoleSearch.Size = new System.Drawing.Size(348, 33);
-            this.cmbRoleSearch.TabIndex = 5;
-            this.cmbRoleSearch.SelectionChangeCommitted += new System.EventHandler(this.cmbRoleSearch_SelectionChangeCommitted);
             // 
             // Id
             // 
@@ -169,6 +162,45 @@
             this.LastName.MinimumWidth = 6;
             this.LastName.Name = "LastName";
             this.LastName.Width = 125;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(460, 317);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 25);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Role";
+            // 
+            // cmbRoleSearch
+            // 
+            this.cmbRoleSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRoleSearch.FormattingEnabled = true;
+            this.cmbRoleSearch.Location = new System.Drawing.Point(534, 314);
+            this.cmbRoleSearch.Name = "cmbRoleSearch";
+            this.cmbRoleSearch.Size = new System.Drawing.Size(348, 33);
+            this.cmbRoleSearch.TabIndex = 5;
+            this.cmbRoleSearch.SelectionChangeCommitted += new System.EventHandler(this.cmbRoleSearch_SelectionChangeCommitted);
+            // 
+            // cmbPerson
+            // 
+            this.cmbPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPerson.FormattingEnabled = true;
+            this.cmbPerson.Location = new System.Drawing.Point(263, 85);
+            this.cmbPerson.Name = "cmbPerson";
+            this.cmbPerson.Size = new System.Drawing.Size(348, 33);
+            this.cmbPerson.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(85, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 25);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Person";
             // 
             // frmCastAdd
             // 
@@ -205,5 +237,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbPerson;
     }
 }

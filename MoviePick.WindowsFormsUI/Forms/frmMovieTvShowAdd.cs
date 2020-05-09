@@ -54,34 +54,43 @@ namespace MoviePick.WindowsFormsUI.Forms
             var genreList = clbGenre.CheckedItems.Cast<Genre>();
             var genreIdList = genreList.Select(x => x.Id).ToList();
 
-            //request.Title = txtTitle.Text;
-            //request.Budget = double.Parse(txtBudget.Text);
-            //request.Description = rtxtDescription.Text;
-            //request.Finished = chkFinished.Checked;
-            //request.Language = txtLang.Text;
-            //request.NumberOfRatings = 0;
-            //request.ReleaseDate = dtRelaseDate.Value;
-            //request.RunningTime = txtRtime.Text;
-            //request.GenreIds = genreIdList;
+            request.Title = txtTitle.Text;
+            request.Budget = double.Parse(txtBudget.Text);
+            request.Description = rtxtDescription.Text;
+            request.Finished = chkFinished.Checked;
+            request.Language = txtLang.Text;
+            request.NumberOfRatings = 0;
+            request.ReleaseDate = dtRelaseDate.Value;
+            request.RunningTime = txtRtime.Text;
+            request.GenreIds = genreIdList;
 
-            //var idProductionComp = cmbProductionComp.SelectedValue;
+            var idProductionComp = cmbProductionComp.SelectedValue;
 
-            //if (int.TryParse(idProductionComp.ToString(), out int idProductionCompany))
-            //{
-            //    request.ProductionCompanyId = idProductionCompany;
-            //}
+            if (int.TryParse(idProductionComp.ToString(), out int idProductionCompany))
+            {
+                request.ProductionCompanyId = idProductionCompany;
+            }
 
-            //var mtvs = await _serviceMovieAndTvShow.Insert<MovieAndTvshow>(request);
+            var mtvs = await _serviceMovieAndTvShow.Insert<MovieAndTvshow>(request);
 
             MessageBox.Show("Operation successfully completed, now assign cast !", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtBudget.Text = "";
+            txtTitle.Text = "";
+            txtRtime.Text = "";
+            txtPoster.Text = "";
+            txtLang.Text = "";
+            rtxtDescription.Text = null;
+            dtRelaseDate.Value = DateTime.Now;
+            chkFinished.Checked = false;
+
             if (chkTvShow.Checked)
             {
-                frmCastAdd frm = new frmCastAdd(2,true);
+                frmCastAdd frm = new frmCastAdd(mtvs.Id, true);
                 frm.ShowDialog();
             }
             else
             {
-                frmCastAdd frm = new frmCastAdd(2);
+                frmCastAdd frm = new frmCastAdd(mtvs.Id);
                 frm.ShowDialog();
             }
         }

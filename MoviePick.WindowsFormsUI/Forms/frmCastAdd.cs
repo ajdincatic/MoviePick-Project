@@ -16,7 +16,8 @@ namespace MoviePick.WindowsFormsUI.Forms
     public partial class frmCastAdd : Form
     {
         private APIService _serviceRole = new APIService("Role");
-        private APIService _servicePerson;
+        private APIService _servicePersonMTVS;
+        private APIService _servicePerson = new APIService("Person");
 
         private bool isTvShow;
         private int MTVSId;
@@ -25,7 +26,7 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             this.isTvShow = isTvShow;
             this.MTVSId = MTVSId;
-            _servicePerson = new APIService("MovieTvShow", "Person", MTVSId);
+            _servicePersonMTVS = new APIService("MovieTvShow", "Person", MTVSId);
             InitializeComponent();
             dgvCast.AutoGenerateColumns = false;
         }
@@ -34,6 +35,7 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             await LoadRoles();
             await LoadPersons();
+            await LoadAllPersons();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -72,18 +74,32 @@ namespace MoviePick.WindowsFormsUI.Forms
                 request.RoleId = idRole;
             }
 
-            var list = await _servicePerson.GetAll<List<Person>>(request);
+            var list = await _servicePersonMTVS.GetAll<List<Person>>(request);
             dgvCast.DataSource = list;
         }
 
+        private async Task LoadAllPersons()
+        {
+            var list = await _servicePerson.GetAll<List<Person>>(null);
+            list.Insert(0, new Person());
+            cmbPerson.ValueMember = "Id";
+            cmbPerson.DisplayMember = "LastName";
+            cmbPerson.DataSource = list;
+        }
 
         private async void btnAddCast_Click(object sender, EventArgs e)
         {
             MovieAndTvshowPersonUpsertRequest request = new MovieAndTvshowPersonUpsertRequest()
             {
                 NameInMovie=txtName.Text,
-                PersonId = 1
             };
+
+            var idPerson = cmbPerson.SelectedValue;
+
+            if (int.TryParse(idPerson.ToString(), out int personId))
+            {
+                request.PersonId = personId;
+            }
 
             var idRole = cmbRole.SelectedValue;
 
@@ -92,7 +108,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 request.RoleId = id;
             }
 
-            await _servicePerson.Insert<Data.Model.MovieAndTvshowPerson>(request);
+            await _servicePersonMTVS.Insert<Data.Model.MovieAndTvshowPerson>(request);
 
             MessageBox.Show("Operation successfully completed");
             txtName.Text = "";
