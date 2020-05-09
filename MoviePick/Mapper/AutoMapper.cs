@@ -30,8 +30,15 @@ namespace MoviePick.Mapper
             CreateMap<MovieAndTvshowGenre, Data.Model.MovieTvShowGenre>();
             CreateMap<MovieAndTvshowPerson, Data.Model.MovieAndTvshowPerson>();
             CreateMap<UserUpsertRequest, User>();
-            CreateMap<Data.Model.User, User>();
+            CreateMap<User, Data.Model.User>();
             CreateMap<MovieAndTvshowPersonUpsertRequest, MovieAndTvshowPerson>();
+            CreateMap<UserType, Data.Model.UserType>();
+            CreateMap<News, Data.Model.News>();
+            CreateMap<NewsUpsertRequest, News>();
+            CreateMap<MovieAndTvshowNews, Data.Model.MovieAndTvShowNews>();
+            CreateMap<Rating, Data.Model.Rating>();
+            CreateMap<RatingUpsertRequest, Rating>();
+            CreateMap<CommentUpsertRequest, Comment>();
         }
     }
 }

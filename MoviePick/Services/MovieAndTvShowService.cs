@@ -51,16 +51,6 @@ namespace MoviePick.Services
                 _context.MovieAndTvshowGenre.Add(MTVGenre);
             }
 
-            foreach (var role in request.Roles)
-            {
-                Database.MovieAndTvshowPerson MTVGenre = new Database.MovieAndTvshowPerson();
-                MTVGenre.MovieAndTvshowId = entity.Id;
-                MTVGenre.RoleId = role.Item1;
-                MTVGenre.PersonId = role.Item2;
-                MTVGenre.NameInMovie = role.Item3;
-                _context.MovieAndTvshowPerson.Add(MTVGenre);
-            }
-
             _context.SaveChanges();
 
             return _mapper.Map<Data.Model.MovieAndTvshow>(entity);

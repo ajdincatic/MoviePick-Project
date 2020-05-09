@@ -8,5 +8,6 @@ namespace MoviePick.Data.Request
     {
         public int AuthorId { get; set; }
         public DateTime DateTimeOfNews { get; set; }
+        public string Title { get; set; }
     }
 }

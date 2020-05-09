@@ -9,9 +9,10 @@ namespace MoviePick.Data.Model
         public int Id { get; set; }
         public DateTime DateTimeOfNews { get; set; }
         public byte[] CoverPhoto { get; set; }
+        public string Title { get; set; }
         public string Content { get; set; }
         public int AuthorId { get; set; }
-
-        //public AppUser Author { get; set; }
+        public User Author { get; set; }
+        public ICollection<MovieAndTvShowNews> MovieAndTvshowNews { get; set; }
     }
 }

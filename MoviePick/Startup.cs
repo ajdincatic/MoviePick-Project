@@ -56,9 +56,12 @@ namespace MoviePick
             services.AddScoped<ICRUDService<Data.Model.TvshowSeason, TvshowSeasonSearchRequest, TvshowSeasonUpsertRequest, TvshowSeasonUpsertRequest>, TvshowSeasonService>();
             services.AddScoped<ICRUDService<Data.Model.TvshowSeasonEpisode, TvshowSeasonEpisodeSearchRequest, TvshowSeasonEpisodeUpsertRequest, TvshowSeasonEpisodeUpsertRequest>, TvshowSeasonEpisodeService>();
             services.AddScoped<ICRUDService<Data.Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
+            services.AddScoped<ICRUDService<Data.Model.News, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>, NewsService>();
 
             services.AddScoped<IGenreMovieTvShowService, GenreMovieTvShowService>();
             services.AddScoped<IMovieTvShowPersonService, MovieTvShowPersonService>();
+            services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<ICommentService, CommentService>();
 
             #endregion
 

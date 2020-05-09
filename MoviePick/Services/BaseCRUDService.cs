@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MoviePick.Data.Request;
 using MoviePick.Database;
 
 namespace eProdaja.Services
@@ -9,6 +10,11 @@ namespace eProdaja.Services
 
         public BaseCRUDService(MoviePickContext context, IMapper mapper) : base(context,mapper)
         {
+        }
+
+        public virtual MoviePick.Data.Model.User Authenticate(UserLoginRequest request)
+        {
+            return null;
         }
 
         public virtual TModel Insert(TInsert request)

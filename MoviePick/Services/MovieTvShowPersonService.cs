@@ -49,7 +49,8 @@ namespace MoviePick.Services
 
             query = query.Where(x => x.MovieAndTvshowId == MTVSId);
 
-            query = query.Where(x => x.RoleId == RoleId);
+            if (RoleId != 0)
+                query = query.Where(x => x.RoleId == RoleId);
 
             var list = query.Select(x => x.Person).ToList();
 

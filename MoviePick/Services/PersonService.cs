@@ -30,11 +30,6 @@ namespace MoviePick.Services
                 query = query.Where(x => x.FirstName.StartsWith(search.LastName));
             }
 
-            if (search?.YearOfBirth != null && search?.YearOfBirth != 0)
-            {
-                query = query.Where(x => x.DateOfBirth.Year == search.YearOfBirth);
-            }
-
             return _mapper.Map<List<Data.Model.Person>>(query.ToList());
         }
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eProdaja.Services;
+using Microsoft.EntityFrameworkCore;
 using MoviePick.Data.Request;
 using MoviePick.Database;
 using MoviePick.Helper;
@@ -12,15 +13,15 @@ using System.Threading.Tasks;
 namespace MoviePick.Services
 {
     public class UserService :
-        BaseCRUDService<Data.Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest, Database.User>, IUserService
+        BaseCRUDService<Data.Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest, Database.User>
     {
         public UserService(MoviePickContext _context, IMapper _mapper) : base(_context, _mapper)
         {
         }
 
-        public Data.Model.User Authenticiraj(UserLoginRequest request)
+        public override Data.Model.User Authenticate(UserLoginRequest request)
         {
-            User user = _context.User.FirstOrDefault(x => x.Username == request.Username);
+            Database.User user = _context.User.FirstOrDefault(x => x.Username == request.Username);
 
             if (user == null)
                 throw new Exception("Wrong username or password");
@@ -37,7 +38,7 @@ namespace MoviePick.Services
 
         public override List<Data.Model.User> Get(UserSearchRequest search)
         {
-            var query = _context.User.AsQueryable();
+            var query = _context.User.Include(x => x.UserType).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Username))
             {

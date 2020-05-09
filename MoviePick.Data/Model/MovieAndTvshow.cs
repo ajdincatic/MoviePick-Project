@@ -12,7 +12,7 @@ namespace MoviePick.Data.Model
         public string Description { get; set; }
         public string Language { get; set; }
         public string RunningTime { get; set; }
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
         public double? Budget { get; set; }
         public byte[] Poster { get; set; }
         public int NumberOfRatings { get; set; }
