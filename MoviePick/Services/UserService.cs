@@ -19,22 +19,22 @@ namespace MoviePick.Services
         {
         }
 
-        public override Data.Model.User Authenticate(UserLoginRequest request)
-        {
-            Database.User user = _context.User.FirstOrDefault(x => x.Username == request.Username);
+        //public override Data.Model.User Authenticate(UserLoginRequest request)
+        //{
+        //    Database.User user = _context.User.FirstOrDefault(x => x.Username == request.Username);
 
-            if (user == null)
-                throw new Exception("Wrong username or password");
+        //    if (user == null)
+        //        throw new Exception("Wrong username or password");
 
-            var newHash = HashGenerator.GenerateHash(user.PasswordSalt, request.Password);
+        //    var newHash = HashGenerator.GenerateHash(user.PasswordSalt, request.Password);
 
-            if (newHash != user.PasswordHash)
-                throw new Exception("Wrong username or password");
+        //    if (newHash != user.PasswordHash)
+        //        throw new Exception("Wrong username or password");
 
 
-            Data.Model.User atuhUser = _mapper.Map<Data.Model.User>(user);
-            return atuhUser;
-        }
+        //    Data.Model.User atuhUser = _mapper.Map<Data.Model.User>(user);
+        //    return atuhUser;
+        //}
 
         public override List<Data.Model.User> Get(UserSearchRequest search)
         {

@@ -17,7 +17,7 @@ namespace MoviePick.WindowsFormsUI.Forms
     {
         APIService _serviceMTVS = new APIService("MovieAndTvShow");
         APIService _serviceGenre = new APIService("Genre");
-        APIService _serviceMTVSGenre = new APIService("Genre", "MovieTvShow", -1);
+        APIService _serviceMTVSGenre = new APIService("GenreMovieTvShow");
 
         public frmMovieTvShowSearch()
         {
@@ -57,8 +57,16 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async void cmbGenre_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            _serviceMTVSGenre._value = cmbGenre.SelectedIndex;
-            var list = await _serviceMTVSGenre.GetAll<List<MovieAndTvshow>>();
+            GenreMovieTvShowSearchRequest searchRequest = new GenreMovieTvShowSearchRequest();
+
+            var idGenre = cmbGenre.SelectedValue;
+
+            if (int.TryParse(idGenre.ToString(), out int genreID))
+            {
+                searchRequest.GenreId = genreID;
+            }
+            
+            var list = await _serviceMTVSGenre.GetAll<List<MovieAndTvshow>>(searchRequest);
             dgvMTVS.DataSource = list;
         }
 

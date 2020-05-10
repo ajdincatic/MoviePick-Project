@@ -29,29 +29,23 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCastAdd));
             this.gbCast = new System.Windows.Forms.GroupBox();
+            this.lvPerson = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddCast = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbRole = new System.Windows.Forms.ComboBox();
             this.dgvCast = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbRoleSearch = new System.Windows.Forms.ComboBox();
-            this.cmbPerson = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.gbCast.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCast)).BeginInit();
             this.SuspendLayout();
             // 
             // gbCast
             // 
-            this.gbCast.Controls.Add(this.label4);
-            this.gbCast.Controls.Add(this.cmbPerson);
+            this.gbCast.Controls.Add(this.lvPerson);
             this.gbCast.Controls.Add(this.label2);
             this.gbCast.Controls.Add(this.btnAddCast);
             this.gbCast.Controls.Add(this.label1);
@@ -64,11 +58,20 @@
             this.gbCast.TabStop = false;
             this.gbCast.Text = "Add cast";
             // 
+            // lvPerson
+            // 
+            this.lvPerson.HideSelection = false;
+            this.lvPerson.Location = new System.Drawing.Point(452, 15);
+            this.lvPerson.Name = "lvPerson";
+            this.lvPerson.Size = new System.Drawing.Size(261, 231);
+            this.lvPerson.TabIndex = 7;
+            this.lvPerson.UseCompatibleStateImageBehavior = false;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(85, 134);
+            this.label2.Location = new System.Drawing.Point(26, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 25);
             this.label2.TabIndex = 4;
@@ -77,7 +80,7 @@
             // btnAddCast
             // 
             this.btnAddCast.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCast.Location = new System.Drawing.Point(562, 188);
+            this.btnAddCast.Location = new System.Drawing.Point(246, 167);
             this.btnAddCast.Name = "btnAddCast";
             this.btnAddCast.Size = new System.Drawing.Size(133, 46);
             this.btnAddCast.TabIndex = 3;
@@ -89,7 +92,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(85, 39);
+            this.label1.Location = new System.Drawing.Point(26, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 25);
             this.label1.TabIndex = 2;
@@ -98,16 +101,17 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(263, 129);
+            this.txtName.Location = new System.Drawing.Point(31, 131);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(348, 30);
             this.txtName.TabIndex = 1;
             // 
             // cmbRole
             // 
+            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRole.FormattingEnabled = true;
-            this.cmbRole.Location = new System.Drawing.Point(263, 39);
+            this.cmbRole.Location = new System.Drawing.Point(31, 67);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(348, 33);
             this.cmbRole.TabIndex = 0;
@@ -115,12 +119,10 @@
             // 
             // dgvCast
             // 
+            this.dgvCast.AllowUserToAddRows = false;
+            this.dgvCast.AllowUserToDeleteRows = false;
             this.dgvCast.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvCast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCast.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.FirstName,
-            this.LastName});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,36 +134,12 @@
             this.dgvCast.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvCast.Location = new System.Drawing.Point(99, 370);
             this.dgvCast.Name = "dgvCast";
+            this.dgvCast.ReadOnly = true;
             this.dgvCast.RowHeadersWidth = 51;
             this.dgvCast.RowTemplate.Height = 24;
             this.dgvCast.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCast.Size = new System.Drawing.Size(1150, 366);
             this.dgvCast.TabIndex = 1;
-            this.dgvCast.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCast_CellDoubleClick_1);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.Width = 125;
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "FirstName";
-            this.FirstName.MinimumWidth = 6;
-            this.FirstName.Name = "FirstName";
-            this.FirstName.Width = 125;
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "LastName";
-            this.LastName.MinimumWidth = 6;
-            this.LastName.Name = "LastName";
-            this.LastName.Width = 125;
             // 
             // label3
             // 
@@ -183,31 +161,10 @@
             this.cmbRoleSearch.TabIndex = 5;
             this.cmbRoleSearch.SelectionChangeCommitted += new System.EventHandler(this.cmbRoleSearch_SelectionChangeCommitted);
             // 
-            // cmbPerson
-            // 
-            this.cmbPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPerson.FormattingEnabled = true;
-            this.cmbPerson.Location = new System.Drawing.Point(263, 85);
-            this.cmbPerson.Name = "cmbPerson";
-            this.cmbPerson.Size = new System.Drawing.Size(348, 33);
-            this.cmbPerson.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(85, 88);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 25);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Person";
-            // 
             // frmCastAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1352, 748);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvCast);
@@ -234,10 +191,6 @@
         private System.Windows.Forms.Button btnAddCast;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbRoleSearch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbPerson;
+        private System.Windows.Forms.ListView lvPerson;
     }
 }

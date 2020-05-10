@@ -9,5 +9,6 @@ namespace eProdaja.Services
     {
         T Insert(TInsert request);
         T Update(int Id, TUpdate request);
+        T Delete(int Id);
     }
 }

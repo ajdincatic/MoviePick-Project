@@ -1,6 +1,7 @@
 ﻿using eProdaja.WinUI;
 using MoviePick.Data.Model;
 using MoviePick.Data.Request;
+using MoviePick.Data.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,19 +17,17 @@ namespace MoviePick.WindowsFormsUI.Forms
     public partial class frmCastAdd : Form
     {
         private APIService _serviceRole = new APIService("Role");
-        private APIService _servicePersonMTVS;
         private APIService _servicePerson = new APIService("Person");
+        private APIService _serviceCast = new APIService("Cast");
 
+        private MovieAndTvshow MTVS;
         private bool isTvShow;
-        private int MTVSId;
 
-        public frmCastAdd(int MTVSId, bool isTvShow = false)
+        public frmCastAdd(MovieAndTvshow MTVS, bool isTvShow = false)
         {
             this.isTvShow = isTvShow;
-            this.MTVSId = MTVSId;
-            _servicePersonMTVS = new APIService("MovieTvShow", "Person", MTVSId);
+            this.MTVS = MTVS;
             InitializeComponent();
-            dgvCast.AutoGenerateColumns = false;
         }
 
         protected async override void OnLoad(EventArgs e)
@@ -43,13 +42,21 @@ namespace MoviePick.WindowsFormsUI.Forms
             if (isTvShow == true)
             {
                 MessageBox.Show("Now add seasons and episodes for this TV Show !", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                frmTvShowSeasonEpisodesAdd frm = new frmTvShowSeasonEpisodesAdd(MTVSId);
+                frmTvShowSeasonEpisodesAdd frm = new frmTvShowSeasonEpisodesAdd(MTVS);
                 frm.ShowDialog();
             }
         }
 
         private void cmbRole_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if(cmbRole.SelectedIndex != 0)
+            {
+                txtName.Visible = false;
+            }
+            else
+            {
+                txtName.Visible = true;
+            }
         }
 
         private async Task LoadRoles()
@@ -73,33 +80,52 @@ namespace MoviePick.WindowsFormsUI.Forms
             {
                 request.RoleId = idRole;
             }
+            request.MovieAndTvshowId = MTVS.Id;
 
-            var list = await _servicePersonMTVS.GetAll<List<Person>>(request);
-            dgvCast.DataSource = list;
+            var list = await _serviceCast.GetAll<List<MovieAndTvshowPerson>>(request);
+
+            List<frmCastAddPersonListVM> vm = new List<frmCastAddPersonListVM>();
+            foreach (var x in list)
+            {
+                frmCastAddPersonListVM nl = new frmCastAddPersonListVM
+                {
+                    MTVSPId = x.Id,
+                    PersonId = x.PersonId,
+                    Name = x.Person.FirstName + " " + x.Person.LastName,
+                    Gender = x.Person.Gender,
+                    NameInMovie = x.NameInMovie,
+                    DateOfBirth = x.Person.DateOfBirth
+                };
+                vm.Add(nl);
+            }
+
+            dgvCast.DataSource = vm;
         }
 
         private async Task LoadAllPersons()
         {
             var list = await _servicePerson.GetAll<List<Person>>(null);
-            list.Insert(0, new Person());
-            cmbPerson.ValueMember = "Id";
-            cmbPerson.DisplayMember = "LastName";
-            cmbPerson.DataSource = list;
+            //foreach (var x in list)
+            //{
+            //    lvPerson.Items.Add(new ListViewItem(x));
+            //}
         }
 
         private async void btnAddCast_Click(object sender, EventArgs e)
         {
             MovieAndTvshowPersonUpsertRequest request = new MovieAndTvshowPersonUpsertRequest()
             {
-                NameInMovie=txtName.Text,
+                NameInMovie = txtName.Text,
+                MovieAndTvshowId = MTVS.Id
             };
 
-            var idPerson = cmbPerson.SelectedValue;
+            //var idPerson = cmbPerson.SelectedValue;
 
-            if (int.TryParse(idPerson.ToString(), out int personId))
-            {
-                request.PersonId = personId;
-            }
+            //if (int.TryParse(idPerson.ToString(), out int personId))
+            //{
+            //    request.PersonId = personId;
+            //}
+            request.PersonId = 1;
 
             var idRole = cmbRole.SelectedValue;
 
@@ -108,7 +134,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 request.RoleId = id;
             }
 
-            await _servicePersonMTVS.Insert<Data.Model.MovieAndTvshowPerson>(request);
+            await _serviceCast.Insert<Data.Model.MovieAndTvshowPerson>(request);
 
             MessageBox.Show("Operation successfully completed");
             txtName.Text = "";
@@ -121,23 +147,5 @@ namespace MoviePick.WindowsFormsUI.Forms
             await LoadPersons();
         }
 
-        private async void dgvCast_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            //Person item = dgvCast.SelectedRows[0].DataBoundItem as Person;
-            //MovieAndTvshowDeleteRequest request = new MovieAndTvshowDeleteRequest
-            //{
-            //    PersonId = item.Id,
-            //};
-
-            //var idRole = cmbRole.SelectedValue;
-
-            //if (int.TryParse(idRole.ToString(), out int id))
-            //{
-            //    request.RoleId = id;
-            //}
-
-            //await _servicePerson.Delete<MovieAndTvshowPerson>(item.Id, request);
-            //await LoadPersons();
-        }
     }
 }

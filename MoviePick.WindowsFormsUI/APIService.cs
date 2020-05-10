@@ -15,9 +15,7 @@ namespace eProdaja.WinUI
     {
         public static string username;
         public static string password;
-        private string _resource;
-        private string _extension;
-        public int _value;
+        public string _resource;
         public string endpoint = $"{Resources.ApiUrl}";
 
         public APIService(string resource)
@@ -25,36 +23,29 @@ namespace eProdaja.WinUI
             _resource = resource;
         }
 
-        public APIService(string resource, string extenstion, int val)
-        {
-            _resource = resource;
-            _extension = extenstion;
-            _value = val;
-        }
-
         public async Task<T> GetAll<T>(object searchRequest = null)
         {
-            var query = "";
-            if (searchRequest != null)
+            try
             {
-                query = await searchRequest?.ToQueryString();
-            }
+                var query = "";
+                if (searchRequest != null)
+                {
+                    query = await searchRequest?.ToQueryString();
+                }
 
-            if(_extension != null)
-            {
-                var list = await $"{endpoint}{_resource}/{_value}/{_extension}?{query}"
-                    .WithBasicAuth(username, password)
-                    .GetJsonAsync<T>();
-                return list;
-            }
-            else
-            {
                 var list = await $"{endpoint}{_resource}?{query}"
                     .WithBasicAuth(username, password)
                     .GetJsonAsync<T>();
                 return list;
             }
-
+            catch(FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    MessageBox.Show("Niste authentificirani");
+                }
+                throw;
+            }
         }
 
         public async Task<T> GetById<T>(object id)
@@ -72,15 +63,6 @@ namespace eProdaja.WinUI
 
             try
             {
-                if (_extension != null)
-                {
-                    var list = await $"{endpoint}{_resource}/{_value}/{_extension}"
-                        .WithBasicAuth(username, password)
-                        .PostJsonAsync(request)
-                        .ReceiveJson<T>();
-                    return list;
-                }
-
                 return await url
                     .WithBasicAuth(username, password)
                     .PostJsonAsync(request).ReceiveJson<T>();
@@ -127,20 +109,10 @@ namespace eProdaja.WinUI
 
         }
 
-        public async Task<T> Delete<T>(int id, object request = null)
+        public async Task<T> Delete<T>(int id)
         {
             try
             {
-                if (request != null)
-                {
-                    var query = await request?.ToQueryString();
-                    var list = await $"{endpoint}{_resource}/{_value}/{_extension}?{query}"
-                        .WithBasicAuth(username, password)
-                        .DeleteAsync()
-                        .ReceiveJson<T>();
-                    return list;
-                }
-
                 return await $"{endpoint}{_resource}/{id}"
                     .WithBasicAuth(username, password)
                     .DeleteAsync().ReceiveJson<T>();

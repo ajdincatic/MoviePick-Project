@@ -82,15 +82,16 @@ namespace MoviePick.WindowsFormsUI.Forms
             rtxtDescription.Text = null;
             dtRelaseDate.Value = DateTime.Now;
             chkFinished.Checked = false;
+            clbGenre.ClearSelected();
 
             if (chkTvShow.Checked)
             {
-                frmCastAdd frm = new frmCastAdd(mtvs.Id, true);
+                frmCastAdd frm = new frmCastAdd(mtvs, true);
                 frm.ShowDialog();
             }
             else
             {
-                frmCastAdd frm = new frmCastAdd(mtvs.Id);
+                frmCastAdd frm = new frmCastAdd(mtvs);
                 frm.ShowDialog();
             }
         }

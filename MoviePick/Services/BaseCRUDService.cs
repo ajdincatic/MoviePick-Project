@@ -12,11 +12,6 @@ namespace eProdaja.Services
         {
         }
 
-        public virtual MoviePick.Data.Model.User Authenticate(UserLoginRequest request)
-        {
-            return null;
-        }
-
         public virtual TModel Insert(TInsert request)
         {
             var entity = _mapper.Map<TDatabase>(request);
@@ -40,5 +35,14 @@ namespace eProdaja.Services
             return _mapper.Map<TModel>(entity);
         }
 
+        public TModel Delete(int Id)
+        {
+            var entity = _context.Set<TDatabase>().Find(Id);
+            if (entity == null)
+                return default(TModel);
+            var x = _context.Set<TDatabase>().Remove(entity);
+            _context.SaveChanges();
+            return _mapper.Map<TModel>(x);
+        }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using eProdaja.Services;
+using Microsoft.EntityFrameworkCore;
 using MoviePick.Data.Model;
+using MoviePick.Data.Request;
 using MoviePick.Database;
 using MoviePick.Interfaces;
 using System;
@@ -9,37 +12,32 @@ using System.Threading.Tasks;
 
 namespace MoviePick.Services
 {
-    public class GenreMovieTvShowService : IGenreMovieTvShowService
+    public class GenreMovieTvShowService : BaseService<Data.Model.MovieTvShowGenre, GenreMovieTvShowSearchRequest, Database.MovieAndTvshowGenre>
     {
-        protected MoviePickContext _context;
-        protected IMapper _mapper;
-
-        public GenreMovieTvShowService(MoviePickContext context, IMapper mapper)
+        public GenreMovieTvShowService(MoviePickContext context, IMapper mapper) : base(context, mapper)
         {
-            _context = context;
-            _mapper = mapper;
         }
 
-        public List<Data.Model.Genre> GetGenresByMTVS(int MTVSId)
+        public override List<MovieTvShowGenre> Get(GenreMovieTvShowSearchRequest search)
         {
-            var query = _context.MovieAndTvshowGenre.AsQueryable();
+            var query = _context.MovieAndTvshowGenre
+                .Include(x => x.Genre)
+                .Include(x => x.MovieAndTvshow)
+                .AsQueryable();
 
-            query = query.Where(x => x.MovieAndTvshowId == MTVSId);
+            if (search?.MovieAndTvshowId != null)
+            {
+                query = query.Where(x => x.MovieAndTvshowId == search.MovieAndTvshowId);
+            }
+            if (search?.GenreId != null)
+            {
+                query = query.Where(x => x.GenreId == search.GenreId);
+            }
 
-            var list = query.Select(x => x.Genre).ToList();
+            var list = query.ToList();
 
-            return _mapper.Map<List<Data.Model.Genre>>(list);
+            return _mapper.Map<List<Data.Model.MovieTvShowGenre>>(list);
         }
 
-        public List<Data.Model.MovieAndTvshow> GetMTVSByGenre(int GenreId)
-        {
-            var query = _context.MovieAndTvshowGenre.AsQueryable();
-
-            query = query.Where(x => x.GenreId == GenreId);
-
-            var list = query.Select(x => x.MovieAndTvshow).ToList();
-
-            return _mapper.Map<List<Data.Model.MovieAndTvshow>>(list);
-        }
     }
 }

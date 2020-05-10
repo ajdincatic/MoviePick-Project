@@ -1,5 +1,7 @@
 ﻿using eProdaja.WinUI;
+using MoviePick.Data.Model;
 using MoviePick.Data.Request;
+using MoviePick.Data.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +19,11 @@ namespace MoviePick.WindowsFormsUI.Forms
         private APIService _serviceTvshowSeason = new APIService("TvshowSeason");
         private APIService _serviceTvshowSeasonEpisode = new APIService("TvshowSeasonEpisode");
 
-        private int MTVSId;
+        private MovieAndTvshow MTVS;
 
-        public frmTvShowSeasonEpisodesAdd(int MTVSId)
+        public frmTvShowSeasonEpisodesAdd(MovieAndTvshow MTVS)
         {
-            this.MTVSId = MTVSId;
+            this.MTVS = MTVS;
             InitializeComponent();
         }
 
@@ -37,7 +39,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             TvshowSeasonUpsertRequest request = new TvshowSeasonUpsertRequest
             {
                 Finished = chkFinished.Checked,
-                MovieAndTvshowId = MTVSId,
+                MovieAndTvshowId = MTVS.Id,
                 SeasonName = txtSeasonName.Text
             };
             await _serviceTvshowSeason.Insert<Data.Model.TvshowSeason>(request);
@@ -49,7 +51,10 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async Task LoadSeasons()
         {
-            var list = await _serviceTvshowSeason.GetAll<List<Data.Model.TvshowSeason>>();
+            var list = await _serviceTvshowSeason.GetAll<List<Data.Model.TvshowSeason>>(new TvshowSeasonSearchRequest
+            {
+                MovieAndTvshowId = MTVS.Id
+            });
             cmbSeasons.ValueMember = "Id";
             cmbSeasons.DisplayMember = "SeasonName";
             cmbSeasons.DataSource = list; 
@@ -57,7 +62,10 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async Task LoadSeasonsAdd()
         {
-            var list = await _serviceTvshowSeason.GetAll<List<Data.Model.TvshowSeason>>();
+            var list = await _serviceTvshowSeason.GetAll<List<Data.Model.TvshowSeason>>(new TvshowSeasonSearchRequest
+            {
+                MovieAndTvshowId = MTVS.Id
+            });
             cmbSeasonAdd.ValueMember = "Id";
             cmbSeasonAdd.DisplayMember = "SeasonName";
             cmbSeasonAdd.DataSource = list;
@@ -67,14 +75,32 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             TvshowSeasonEpisodeSearchRequest request = new TvshowSeasonEpisodeSearchRequest();
             var idSeason = cmbSeasons.SelectedValue;
-
-            if (int.TryParse(idSeason.ToString(), out int SeasonId))
+            if (idSeason != null)
             {
-                request.TvshowSeasonId = SeasonId;
-            }
 
-            var list = await _serviceTvshowSeasonEpisode.GetAll<List<Data.Model.TvshowSeasonEpisode>>(request);
-            dgvEpisodes.DataSource = list;
+                if (int.TryParse(idSeason.ToString(), out int SeasonId))
+                {
+                    request.TvshowSeasonId = SeasonId;
+                }
+
+                var list = await _serviceTvshowSeasonEpisode.GetAll<List<Data.Model.TvshowSeasonEpisode>>(request);
+
+                List<frmTvShowSeasonEpisodeVM> vm = new List<frmTvShowSeasonEpisodeVM>();
+                var ctr = 0;
+                foreach (var x in list)
+                {
+                    frmTvShowSeasonEpisodeVM nl = new frmTvShowSeasonEpisodeVM
+                    {
+                        Id = x.Id,
+                        EpisodeName = x.EpisodeName,
+                        AirDate = x.AirDate,
+                        EpisodeNumber = ++ctr
+                    };
+                    vm.Add(nl);
+                }
+
+                dgvEpisodes.DataSource = vm;
+            }
         }
 
         private async void btnAddEpisode_Click(object sender, EventArgs e)

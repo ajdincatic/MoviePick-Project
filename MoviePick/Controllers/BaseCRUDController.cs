@@ -26,5 +26,11 @@ namespace eProdaja.Controllers
         {
             return _service.Update(Id, request);
         }
+
+        [HttpDelete("{Id}")]
+        public TModel Delete(int Id)
+        {
+            return _service.Delete(Id);
+        }
     }
 }
