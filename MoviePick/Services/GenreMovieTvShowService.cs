@@ -21,15 +21,16 @@ namespace MoviePick.Services
         public override List<MovieTvShowGenre> Get(GenreMovieTvShowSearchRequest search)
         {
             var query = _context.MovieAndTvshowGenre
-                .Include(x => x.Genre)
-                .Include(x => x.MovieAndTvshow)
+                .Include("Genre")
+                .Include("MovieAndTvshow")
+                .Include(x => x.MovieAndTvshow.ProductionCompany)
                 .AsQueryable();
 
-            if (search?.MovieAndTvshowId != null)
+            if (search?.MovieAndTvshowId != 0)
             {
                 query = query.Where(x => x.MovieAndTvshowId == search.MovieAndTvshowId);
             }
-            if (search?.GenreId != null)
+            if (search?.GenreId != 0)
             {
                 query = query.Where(x => x.GenreId == search.GenreId);
             }

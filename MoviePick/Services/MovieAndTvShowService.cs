@@ -19,9 +19,11 @@ namespace MoviePick.Services
 
         public override List<Data.Model.MovieAndTvshow> Get(MovieAndTvshowSearchRequest search)
         {
-            var query = _context.MovieAndTvshow.Include(x => x.ProductionCompany).Include("MovieAndTvshowGenre.Genre")
+            var query = _context.MovieAndTvshow.Include(x => x.ProductionCompany)
+                .Include("MovieAndTvshowGenre.Genre")
                 .Include("MovieAndTvshowPerson.Role")
-                .Include("MovieAndTvshowPerson.Person").AsQueryable();
+                .Include("MovieAndTvshowPerson.Person")
+                .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Title))
             {
@@ -33,7 +35,26 @@ namespace MoviePick.Services
                 query = query.Where(x => x.ProductionCompanyId == search.ProductionCompanyId);
             }
 
+            if (search?.isTvShow != null && search?.isTvShow == true)
+            {
+                query = query.Where(x => x.TvshowSeason.Count() != 0);
+            }
+
+            if (search?.isTvShow != null && search?.isTvShow != true)
+            {
+                query = query.Where(x => x.TvshowSeason.Count() == 0);
+            }
+
+
             return _mapper.Map<List<Data.Model.MovieAndTvshow>>(query.ToList());
+        }
+
+        public override Data.Model.MovieAndTvshow GetById(int Id)
+        {
+            var x = _context.MovieAndTvshow
+                .Include(x => x.TvshowSeason)
+                .Where(x => x.Id == Id).SingleOrDefault();
+            return _mapper.Map<Data.Model.MovieAndTvshow>(x);
         }
 
         public override Data.Model.MovieAndTvshow Insert(MovieAndTvshowUpsertRequest request)

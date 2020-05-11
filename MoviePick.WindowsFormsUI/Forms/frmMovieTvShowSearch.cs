@@ -1,6 +1,7 @@
 ﻿using eProdaja.WinUI;
 using MoviePick.Data.Model;
 using MoviePick.Data.Request;
+using MoviePick.Data.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,12 +23,11 @@ namespace MoviePick.WindowsFormsUI.Forms
         public frmMovieTvShowSearch()
         {
             InitializeComponent();
-            dgvMTVS.AutoGenerateColumns = false;
-            dgvMTVS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         protected async override void OnLoad(EventArgs e)
         {
+            rbMovie.Checked = true;
             await LoadMTVS();
             await LoadGenres();
         }
@@ -42,8 +42,28 @@ namespace MoviePick.WindowsFormsUI.Forms
             var list = await _serviceMTVS.GetAll<List<MovieAndTvshow>>(new MovieAndTvshowSearchRequest()
             {
                 Title = txtTitle.Text,
+                isTvShow = rbTvShow.Checked
             });
-            dgvMTVS.DataSource = list;
+
+            List<frmMovieTvShowSearchVM> vm = new List<frmMovieTvShowSearchVM>();
+            foreach (var item in list)
+            {
+                frmMovieTvShowSearchVM ni = new frmMovieTvShowSearchVM
+                {
+                    Finished = item.Finished,
+                    Id = item.Id,
+                    ProductionCompany = item.ProductionCompany.ProductionCompanyName,
+                    ReleaseDate = item.ReleaseDate,
+                    RunningTime = item.RunningTime,
+                    Title = item.Title,
+                };
+
+                foreach (var genre in item.MovieAndTvshowGenre)
+                    ni.Genres += genre.Genre.GenreName.ToString() + ", ";
+
+                vm.Add(ni);
+            }
+            dgvMTVS.DataSource = vm;
         }
         
         private async Task LoadGenres()
@@ -65,15 +85,33 @@ namespace MoviePick.WindowsFormsUI.Forms
             {
                 searchRequest.GenreId = genreID;
             }
-            
-            var list = await _serviceMTVSGenre.GetAll<List<MovieAndTvshow>>(searchRequest);
-            dgvMTVS.DataSource = list;
+
+            var list = await _serviceMTVSGenre.GetAll<List<MovieTvShowGenre>>(searchRequest);
+
+            List<frmMovieTvShowSearchVM> vm = new List<frmMovieTvShowSearchVM>();
+            foreach (var item in list)
+            {
+                frmMovieTvShowSearchVM ni = new frmMovieTvShowSearchVM
+                {
+                    Finished = item.MovieAndTvshow.Finished,
+                    Id = item.MovieAndTvshow.Id,
+                    ProductionCompany = item.MovieAndTvshow.ProductionCompany.ProductionCompanyName,
+                    ReleaseDate = item.MovieAndTvshow.ReleaseDate,
+                    RunningTime = item.MovieAndTvshow.RunningTime,
+                    Title = item.MovieAndTvshow.Title,
+                };
+                vm.Add(ni);
+            }
+
+            dgvMTVS.DataSource = vm;
         }
 
-        private void dgvMTVS_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvMTVS_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var item = dgvMTVS.SelectedRows[0].DataBoundItem;
-            frmMovieTvShowDetails frm = new frmMovieTvShowDetails(item as MovieAndTvshow);
+            var MTVS = await _serviceMTVS.GetById<MovieAndTvshow>((item as frmMovieTvShowSearchVM).Id);
+            frmMovieTvShowAdd frm = new frmMovieTvShowAdd(MTVS);
+            frm.WindowState = FormWindowState.Normal;
             frm.Show();
         }
     }

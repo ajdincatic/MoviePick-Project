@@ -66,17 +66,17 @@
     <Compile Include="Forms\frmCastAdd.Designer.cs">
       <DependentUpon>frmCastAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmMovieTvShowAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmMovieTvShowAdd.Designer.cs">
       <DependentUpon>frmMovieTvShowAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmMovieTvShowDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmMovieTvShowDetails.Designer.cs">
-      <DependentUpon>frmMovieTvShowDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMovieTvShowSearch.cs">
       <SubType>Form</SubType>
@@ -89,6 +89,12 @@
     </Compile>
     <Compile Include="Forms\frmPersonAdd.Designer.cs">
       <DependentUpon>frmPersonAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPersonSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersonSearch.Designer.cs">
+      <DependentUpon>frmPersonSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmTvShowSeasonEpisodesAdd.cs">
       <SubType>Form</SubType>
@@ -107,17 +113,20 @@
     <EmbeddedResource Include="Forms\frmCastAdd.resx">
       <DependentUpon>frmCastAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMovieTvShowAdd.resx">
       <DependentUpon>frmMovieTvShowAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMovieTvShowDetails.resx">
-      <DependentUpon>frmMovieTvShowDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMovieTvShowSearch.resx">
       <DependentUpon>frmMovieTvShowSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonAdd.resx">
       <DependentUpon>frmPersonAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPersonSearch.resx">
+      <DependentUpon>frmPersonSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTvShowSeasonEpisodesAdd.resx">
       <DependentUpon>frmTvShowSeasonEpisodesAdd.cs</DependentUpon>

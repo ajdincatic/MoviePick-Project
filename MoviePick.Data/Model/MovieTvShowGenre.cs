@@ -9,6 +9,6 @@ namespace MoviePick.Data.Model
         public int MovieAndTvshowId { get; set; }
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
-
+        public MovieAndTvshow MovieAndTvshow { get; set; }
     }
 }

@@ -30,6 +30,11 @@ namespace MoviePick.Services
                 query = query.Where(x => x.FirstName.StartsWith(search.LastName));
             }
 
+            if (!string.IsNullOrWhiteSpace(search?.Gender))
+            {
+                query = query.Where(x => x.Gender.StartsWith(search.Gender));
+            }
+
             return _mapper.Map<List<Data.Model.Person>>(query.ToList());
         }
 

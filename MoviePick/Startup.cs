@@ -12,6 +12,7 @@ using MoviePick.Database;
 using MoviePick.Interfaces;
 using MoviePick.Properties;
 using MoviePick.Services;
+using Newtonsoft.Json;
 
 namespace MoviePick
 {
@@ -29,6 +30,8 @@ namespace MoviePick
         {
             services.AddControllers();
 
+            services.AddMvc(x => x.EnableEndpointRouting = false)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             // swagger configuration
             services.AddSwaggerGen(c =>

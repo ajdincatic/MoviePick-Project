@@ -54,7 +54,7 @@
             this.newsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1283, 30);
+            this.menuStrip.Size = new System.Drawing.Size(1283, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -63,6 +63,7 @@
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.homeToolStripMenuItem.Text = "Home";
+            this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // movieAndTvShowToolStripMenuItem
             // 
@@ -99,15 +100,16 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(136, 26);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // searchToolStripMenuItem1
             // 
             this.searchToolStripMenuItem1.Name = "searchToolStripMenuItem1";
-            this.searchToolStripMenuItem1.Size = new System.Drawing.Size(136, 26);
+            this.searchToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.searchToolStripMenuItem1.Text = "Search";
+            this.searchToolStripMenuItem1.Click += new System.EventHandler(this.searchToolStripMenuItem1_Click);
             // 
             // userToolStripMenuItem
             // 
@@ -133,7 +135,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmIndex";
             this.Text = "MoviePick";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

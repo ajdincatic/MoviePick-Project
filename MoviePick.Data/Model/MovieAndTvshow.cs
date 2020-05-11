@@ -20,5 +20,6 @@ namespace MoviePick.Data.Model
         public int ProductionCompanyId { get; set; }
         public ProductionCompany ProductionCompany { get; set; }
         public ICollection<MovieTvShowGenre> MovieAndTvshowGenre { get; set; }
+        public ICollection<TvshowSeason> TvshowSeason { get; set; }
     }
 }

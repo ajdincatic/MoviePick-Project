@@ -51,11 +51,14 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.chkTvShow = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnEditCast = new System.Windows.Forms.Button();
+            this.btnEditSeasons = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(125, 109);
@@ -66,6 +69,7 @@
             // 
             // txtTitle
             // 
+            this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(385, 104);
             this.txtTitle.Name = "txtTitle";
@@ -74,6 +78,7 @@
             // 
             // chkFinished
             // 
+            this.chkFinished.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkFinished.AutoSize = true;
             this.chkFinished.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFinished.Location = new System.Drawing.Point(671, 604);
@@ -85,6 +90,7 @@
             // 
             // cmbProductionComp
             // 
+            this.cmbProductionComp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbProductionComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProductionComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductionComp.FormattingEnabled = true;
@@ -95,6 +101,7 @@
             // 
             // clbGenre
             // 
+            this.clbGenre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clbGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbGenre.FormattingEnabled = true;
             this.clbGenre.Location = new System.Drawing.Point(909, 482);
@@ -104,6 +111,7 @@
             // 
             // dtRelaseDate
             // 
+            this.dtRelaseDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtRelaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtRelaseDate.Location = new System.Drawing.Point(385, 433);
             this.dtRelaseDate.Name = "dtRelaseDate";
@@ -112,6 +120,7 @@
             // 
             // rtxtDescription
             // 
+            this.rtxtDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rtxtDescription.Location = new System.Drawing.Point(385, 156);
             this.rtxtDescription.Name = "rtxtDescription";
             this.rtxtDescription.Size = new System.Drawing.Size(414, 156);
@@ -120,6 +129,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(125, 156);
@@ -130,6 +140,7 @@
             // 
             // txtLang
             // 
+            this.txtLang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLang.Location = new System.Drawing.Point(385, 333);
             this.txtLang.Name = "txtLang";
@@ -138,6 +149,7 @@
             // 
             // Language
             // 
+            this.Language.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Language.AutoSize = true;
             this.Language.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Language.Location = new System.Drawing.Point(125, 338);
@@ -148,6 +160,7 @@
             // 
             // txtRtime
             // 
+            this.txtRtime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtRtime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRtime.Location = new System.Drawing.Point(385, 381);
             this.txtRtime.Name = "txtRtime";
@@ -156,6 +169,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(125, 386);
@@ -166,6 +180,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(125, 438);
@@ -176,6 +191,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(125, 490);
@@ -186,16 +202,18 @@
             // 
             // txtPoster
             // 
+            this.txtPoster.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPoster.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPoster.Location = new System.Drawing.Point(865, 347);
+            this.txtPoster.Location = new System.Drawing.Point(866, 373);
             this.txtPoster.Name = "txtPoster";
             this.txtPoster.Size = new System.Drawing.Size(414, 34);
             this.txtPoster.TabIndex = 18;
             // 
             // btnImage
             // 
+            this.btnImage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImage.Location = new System.Drawing.Point(1010, 386);
+            this.btnImage.Location = new System.Drawing.Point(1011, 412);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(130, 34);
             this.btnImage.TabIndex = 19;
@@ -205,6 +223,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(663, 662);
             this.btnSave.Name = "btnSave";
@@ -216,6 +235,7 @@
             // 
             // txtBudget
             // 
+            this.txtBudget.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBudget.Location = new System.Drawing.Point(385, 534);
             this.txtBudget.Name = "txtBudget";
@@ -224,6 +244,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(125, 539);
@@ -238,6 +259,7 @@
             // 
             // chkTvShow
             // 
+            this.chkTvShow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkTvShow.AutoSize = true;
             this.chkTvShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTvShow.Location = new System.Drawing.Point(527, 604);
@@ -246,23 +268,53 @@
             this.chkTvShow.TabIndex = 23;
             this.chkTvShow.Text = "Tv show";
             this.chkTvShow.UseVisualStyleBackColor = true;
+            this.chkTvShow.CheckedChanged += new System.EventHandler(this.chkTvShow_CheckedChanged);
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(953, 8);
+            this.pictureBox2.Location = new System.Drawing.Point(954, 34);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(233, 333);
             this.pictureBox2.TabIndex = 39;
             this.pictureBox2.TabStop = false;
+            // 
+            // btnEditCast
+            // 
+            this.btnEditCast.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditCast.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditCast.Location = new System.Drawing.Point(521, 662);
+            this.btnEditCast.Name = "btnEditCast";
+            this.btnEditCast.Size = new System.Drawing.Size(136, 44);
+            this.btnEditCast.TabIndex = 40;
+            this.btnEditCast.Text = "Edit cast";
+            this.btnEditCast.UseVisualStyleBackColor = true;
+            this.btnEditCast.Visible = false;
+            this.btnEditCast.Click += new System.EventHandler(this.btnEditCast_Click);
+            // 
+            // btnEditSeasons
+            // 
+            this.btnEditSeasons.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditSeasons.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditSeasons.Location = new System.Drawing.Point(313, 662);
+            this.btnEditSeasons.Name = "btnEditSeasons";
+            this.btnEditSeasons.Size = new System.Drawing.Size(202, 44);
+            this.btnEditSeasons.TabIndex = 41;
+            this.btnEditSeasons.Text = "Edit Seasons";
+            this.btnEditSeasons.UseVisualStyleBackColor = true;
+            this.btnEditSeasons.Visible = false;
+            this.btnEditSeasons.Click += new System.EventHandler(this.btnEditSeasons_Click);
             // 
             // frmMovieTvShowAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 760);
+            this.Controls.Add(this.btnEditSeasons);
+            this.Controls.Add(this.btnEditCast);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.chkTvShow);
             this.Controls.Add(this.txtBudget);
@@ -285,7 +337,8 @@
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label1);
             this.Name = "frmMovieTvShowAdd";
-            this.Text = "Add";
+            this.Text = "Add Movie and TV Show";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -316,5 +369,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.CheckBox chkTvShow;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnEditCast;
+        private System.Windows.Forms.Button btnEditSeasons;
     }
 }

@@ -19,6 +19,14 @@ namespace MoviePick.WindowsFormsUI.Forms
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            frmHome childForm = new frmHome();
+            childForm.MdiParent = this;
+            childForm.Text = "Home";
+            childForm.Show();
+        }
+
         private void ShowNewForm(object sender, EventArgs e)
         {
             Form childForm = new Form();
@@ -112,6 +120,20 @@ namespace MoviePick.WindowsFormsUI.Forms
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmPersonAdd frm = new frmPersonAdd();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHome frm = new frmHome();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void searchToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmPersonSearch frm = new frmPersonSearch();
             frm.MdiParent = this;
             frm.Show();
         }

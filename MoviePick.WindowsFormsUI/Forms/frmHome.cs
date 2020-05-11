@@ -1,5 +1,4 @@
-﻿using MoviePick.Data.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +10,11 @@ using System.Windows.Forms;
 
 namespace MoviePick.WindowsFormsUI.Forms
 {
-    public partial class frmMovieTvShowDetails : Form
+    public partial class frmHome : Form
     {
-        private MovieAndTvshow _movieAndTvshow;
-
-        public frmMovieTvShowDetails(MovieAndTvshow movieAndTvshow = null)
+        public frmHome()
         {
             InitializeComponent();
-            _movieAndTvshow = movieAndTvshow;
         }
     }
 }

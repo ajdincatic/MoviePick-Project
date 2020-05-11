@@ -30,19 +30,16 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMovieTvShowSearch));
             this.dgvMTVS = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbGenre = new System.Windows.Forms.ComboBox();
             this.Genre = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReleaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RunningTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Language = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbMovie = new System.Windows.Forms.RadioButton();
+            this.rbTvShow = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMTVS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +47,7 @@
             // 
             this.dgvMTVS.AllowUserToAddRows = false;
             this.dgvMTVS.AllowUserToDeleteRows = false;
+            this.dgvMTVS.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvMTVS.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -60,35 +58,30 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMTVS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMTVS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMTVS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Title,
-            this.ReleaseDate,
-            this.RunningTime,
-            this.Language,
-            this.Finished});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMTVS.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMTVS.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvMTVS.Location = new System.Drawing.Point(12, 258);
+            this.dgvMTVS.Location = new System.Drawing.Point(12, 279);
             this.dgvMTVS.Name = "dgvMTVS";
             this.dgvMTVS.ReadOnly = true;
             this.dgvMTVS.RowHeadersWidth = 51;
             this.dgvMTVS.RowTemplate.Height = 30;
-            this.dgvMTVS.Size = new System.Drawing.Size(1340, 470);
+            this.dgvMTVS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMTVS.Size = new System.Drawing.Size(1340, 459);
             this.dgvMTVS.TabIndex = 0;
             this.dgvMTVS.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMTVS_CellDoubleClick);
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(877, 79);
+            this.btnSearch.Location = new System.Drawing.Point(821, 111);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(111, 36);
             this.btnSearch.TabIndex = 1;
@@ -98,17 +91,19 @@
             // 
             // txtTitle
             // 
+            this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(546, 79);
+            this.txtTitle.Location = new System.Drawing.Point(510, 39);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(305, 34);
             this.txtTitle.TabIndex = 2;
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(374, 84);
+            this.label1.Location = new System.Drawing.Point(505, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 29);
             this.label1.TabIndex = 3;
@@ -116,9 +111,11 @@
             // 
             // cmbGenre
             // 
+            this.cmbGenre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGenre.FormattingEnabled = true;
-            this.cmbGenre.Location = new System.Drawing.Point(546, 128);
+            this.cmbGenre.Location = new System.Drawing.Point(511, 197);
             this.cmbGenre.Name = "cmbGenre";
             this.cmbGenre.Size = new System.Drawing.Size(305, 37);
             this.cmbGenre.TabIndex = 6;
@@ -126,76 +123,73 @@
             // 
             // Genre
             // 
+            this.Genre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Genre.AutoSize = true;
             this.Genre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Genre.Location = new System.Drawing.Point(374, 136);
+            this.Genre.Location = new System.Drawing.Point(505, 165);
             this.Genre.Name = "Genre";
             this.Genre.Size = new System.Drawing.Size(80, 29);
             this.Genre.TabIndex = 7;
             this.Genre.Text = "Genre";
             // 
-            // Id
+            // label2
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.Frozen = true;
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 125;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(506, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 29);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Type";
             // 
-            // Title
+            // rbMovie
             // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 6;
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            this.Title.Width = 125;
+            this.rbMovie.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbMovie.AutoSize = true;
+            this.rbMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMovie.Location = new System.Drawing.Point(513, 114);
+            this.rbMovie.Name = "rbMovie";
+            this.rbMovie.Size = new System.Drawing.Size(99, 33);
+            this.rbMovie.TabIndex = 10;
+            this.rbMovie.TabStop = true;
+            this.rbMovie.Text = "Movie";
+            this.rbMovie.UseVisualStyleBackColor = true;
             // 
-            // ReleaseDate
+            // rbTvShow
             // 
-            this.ReleaseDate.DataPropertyName = "ReleaseDate";
-            this.ReleaseDate.HeaderText = "ReleaseDate";
-            this.ReleaseDate.MinimumWidth = 6;
-            this.ReleaseDate.Name = "ReleaseDate";
-            this.ReleaseDate.ReadOnly = true;
-            this.ReleaseDate.Width = 125;
+            this.rbTvShow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbTvShow.AutoSize = true;
+            this.rbTvShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTvShow.Location = new System.Drawing.Point(618, 114);
+            this.rbTvShow.Name = "rbTvShow";
+            this.rbTvShow.Size = new System.Drawing.Size(128, 33);
+            this.rbTvShow.TabIndex = 11;
+            this.rbTvShow.TabStop = true;
+            this.rbTvShow.Text = "Tv Show";
+            this.rbTvShow.UseVisualStyleBackColor = true;
             // 
-            // RunningTime
+            // label3
             // 
-            this.RunningTime.DataPropertyName = "RunningTime";
-            this.RunningTime.HeaderText = "RunningTime";
-            this.RunningTime.MinimumWidth = 6;
-            this.RunningTime.Name = "RunningTime";
-            this.RunningTime.ReadOnly = true;
-            this.RunningTime.Width = 125;
-            // 
-            // Language
-            // 
-            this.Language.DataPropertyName = "Language";
-            this.Language.HeaderText = "Language";
-            this.Language.MinimumWidth = 6;
-            this.Language.Name = "Language";
-            this.Language.ReadOnly = true;
-            this.Language.Width = 125;
-            // 
-            // Finished
-            // 
-            this.Finished.DataPropertyName = "Finished";
-            this.Finished.HeaderText = "Finished";
-            this.Finished.MinimumWidth = 6;
-            this.Finished.Name = "Finished";
-            this.Finished.ReadOnly = true;
-            this.Finished.Width = 125;
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(1130, 259);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(222, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "* double click on record for details";
             // 
             // frmMovieTvShowSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1364, 740);
+            this.ClientSize = new System.Drawing.Size(1364, 760);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.rbTvShow);
+            this.Controls.Add(this.rbMovie);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Genre);
             this.Controls.Add(this.cmbGenre);
             this.Controls.Add(this.label1);
@@ -204,7 +198,8 @@
             this.Controls.Add(this.dgvMTVS);
             this.Name = "frmMovieTvShowSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Search";
+            this.Text = "Search Movie and TV Show";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvMTVS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -219,11 +214,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbGenre;
         private System.Windows.Forms.Label Genre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReleaseDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RunningTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Language;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Finished;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rbMovie;
+        private System.Windows.Forms.RadioButton rbTvShow;
+        private System.Windows.Forms.Label label3;
     }
 }

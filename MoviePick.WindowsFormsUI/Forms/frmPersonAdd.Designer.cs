@@ -43,7 +43,7 @@
             this.dtDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPlaceBirth = new System.Windows.Forms.TextBox();
             this.txtPlaceOfBirth = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,6 +51,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(629, 613);
             this.btnSave.Name = "btnSave";
@@ -62,6 +63,7 @@
             // 
             // btnImage
             // 
+            this.btnImage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImage.Location = new System.Drawing.Point(1021, 467);
             this.btnImage.Name = "btnImage";
@@ -73,6 +75,7 @@
             // 
             // txtPhoto
             // 
+            this.txtPhoto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoto.Location = new System.Drawing.Point(876, 428);
             this.txtPhoto.Name = "txtPhoto";
@@ -81,17 +84,19 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(962, 76);
+            this.pictureBox1.Location = new System.Drawing.Point(959, 76);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(233, 333);
+            this.pictureBox1.Size = new System.Drawing.Size(250, 333);
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(91, 283);
@@ -102,6 +107,7 @@
             // 
             // txtGender
             // 
+            this.txtGender.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGender.Location = new System.Drawing.Point(351, 224);
             this.txtGender.Name = "txtGender";
@@ -110,6 +116,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(91, 229);
@@ -120,6 +127,7 @@
             // 
             // txtLastName
             // 
+            this.txtLastName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(351, 166);
             this.txtLastName.Name = "txtLastName";
@@ -128,6 +136,7 @@
             // 
             // Language
             // 
+            this.Language.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Language.AutoSize = true;
             this.Language.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Language.Location = new System.Drawing.Point(91, 171);
@@ -138,6 +147,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(91, 400);
@@ -148,6 +158,7 @@
             // 
             // rtxtBio
             // 
+            this.rtxtBio.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rtxtBio.Location = new System.Drawing.Point(351, 400);
             this.rtxtBio.Name = "rtxtBio";
             this.rtxtBio.Size = new System.Drawing.Size(414, 156);
@@ -156,6 +167,7 @@
             // 
             // dtDateOfBirth
             // 
+            this.dtDateOfBirth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtDateOfBirth.Location = new System.Drawing.Point(351, 278);
             this.dtDateOfBirth.Name = "dtDateOfBirth";
@@ -164,6 +176,7 @@
             // 
             // txtFirstName
             // 
+            this.txtFirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(351, 110);
             this.txtFirstName.Name = "txtFirstName";
@@ -172,6 +185,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(91, 115);
@@ -180,16 +194,18 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "First name";
             // 
-            // textBox1
+            // txtPlaceBirth
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(351, 336);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(414, 34);
-            this.textBox1.TabIndex = 43;
+            this.txtPlaceBirth.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPlaceBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlaceBirth.Location = new System.Drawing.Point(351, 336);
+            this.txtPlaceBirth.Name = "txtPlaceBirth";
+            this.txtPlaceBirth.Size = new System.Drawing.Size(414, 34);
+            this.txtPlaceBirth.TabIndex = 43;
             // 
             // txtPlaceOfBirth
             // 
+            this.txtPlaceOfBirth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPlaceOfBirth.AutoSize = true;
             this.txtPlaceOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPlaceOfBirth.Location = new System.Drawing.Point(91, 341);
@@ -208,7 +224,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1337, 763);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPlaceBirth);
             this.Controls.Add(this.txtPlaceOfBirth);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnImage);
@@ -225,7 +241,8 @@
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label1);
             this.Name = "frmPersonAdd";
-            this.Text = "frmPersonAdd";
+            this.Text = "Add person";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -247,7 +264,7 @@
         private System.Windows.Forms.DateTimePicker dtDateOfBirth;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPlaceBirth;
         private System.Windows.Forms.Label txtPlaceOfBirth;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
