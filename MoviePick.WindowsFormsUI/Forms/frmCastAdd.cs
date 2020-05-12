@@ -33,7 +33,9 @@ namespace MoviePick.WindowsFormsUI.Forms
         protected async override void OnLoad(EventArgs e)
         {
             dgvPersons.AutoGenerateColumns = false;
+            txtPerson.ReadOnly = true;
             await LoadRoles();
+            await LoadRolesSearch();
             await LoadPersons();
             await LoadAllPersons();
         }
@@ -66,10 +68,15 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             var list = await _serviceRole.GetAll<List<Role>>();
             cmbRole.ValueMember = "Id";
-            cmbRoleSearch.ValueMember = "Id";
             cmbRole.DisplayMember = "RoleName";
-            cmbRoleSearch.DisplayMember = "RoleName";
             cmbRole.DataSource = list;
+        }
+
+        private async Task LoadRolesSearch()
+        {
+            var list = await _serviceRole.GetAll<List<Role>>();
+            cmbRoleSearch.ValueMember = "Id";
+            cmbRoleSearch.DisplayMember = "RoleName";
             cmbRoleSearch.DataSource = list;
         }
 
@@ -94,7 +101,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 {
                     MTVSPId = x.Id,
                     PersonId = x.PersonId,
-                    Name = x.Person.FirstName + " " + x.Person.LastName,
+                    Person = x.Person.FirstName + " " + x.Person.LastName,
                     Gender = x.Person.Gender,
                     NameInMovie = x.NameInMovie,
                     DateOfBirth = x.Person.DateOfBirth
@@ -125,11 +132,11 @@ namespace MoviePick.WindowsFormsUI.Forms
             if (int.TryParse(idRole.ToString(), out int id))
             {
                 request.RoleId = id;
+                cmbRoleSearch.SelectedValue = cmbRole.SelectedValue;
             }
 
             await _serviceCast.Insert<Data.Model.MovieAndTvshowPerson>(request);
 
-            MessageBox.Show("Operation successfully completed");
             MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             txtName.Text = "";
             txtPerson.Text = "";
@@ -148,6 +155,17 @@ namespace MoviePick.WindowsFormsUI.Forms
             Person selected = dgvPersons.SelectedRows[0].DataBoundItem as Person;
             txtPerson.Text = $"{selected.FirstName} {selected.LastName}";
             txtPersonId.Text = selected.Id.ToString();
+        }
+
+        private async void dgvCast_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmCastAddPersonListVM item = dgvCast.SelectedRows[0].DataBoundItem as frmCastAddPersonListVM;
+            DialogResult result = MessageBox.Show("Do you want do delete this record?", "Warining", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                var MTVS = await _serviceCast.Delete<MovieAndTvshowPerson>(item.MTVSPId);
+            }
+            await LoadPersons();
         }
     }
 }

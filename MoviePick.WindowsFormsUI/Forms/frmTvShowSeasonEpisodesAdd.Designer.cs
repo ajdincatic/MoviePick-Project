@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvEpisodes = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EpisodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EpisodeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AirDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnNewSeason = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,6 +43,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtpAirDate = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEpisodeName = new System.Windows.Forms.TextBox();
             this.cmbSeasonAdd = new System.Windows.Forms.ComboBox();
@@ -56,49 +62,92 @@
             this.dgvEpisodes.AllowUserToDeleteRows = false;
             this.dgvEpisodes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvEpisodes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEpisodes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEpisodes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvEpisodes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEpisodes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvEpisodes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.EpisodeNumber,
+            this.EpisodeName,
+            this.AirDate});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEpisodes.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvEpisodes.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvEpisodes.Location = new System.Drawing.Point(114, 306);
             this.dgvEpisodes.Name = "dgvEpisodes";
             this.dgvEpisodes.ReadOnly = true;
             this.dgvEpisodes.RowHeadersWidth = 51;
             this.dgvEpisodes.RowTemplate.Height = 24;
+            this.dgvEpisodes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEpisodes.Size = new System.Drawing.Size(1138, 419);
             this.dgvEpisodes.TabIndex = 3;
+            this.dgvEpisodes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEpisodes_CellDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 125;
+            // 
+            // EpisodeNumber
+            // 
+            this.EpisodeNumber.DataPropertyName = "EpisodeNumber";
+            this.EpisodeNumber.HeaderText = "EpisodeNumber";
+            this.EpisodeNumber.MinimumWidth = 6;
+            this.EpisodeNumber.Name = "EpisodeNumber";
+            this.EpisodeNumber.ReadOnly = true;
+            this.EpisodeNumber.Width = 155;
+            // 
+            // EpisodeName
+            // 
+            this.EpisodeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EpisodeName.DataPropertyName = "EpisodeName";
+            this.EpisodeName.HeaderText = "EpisodeName";
+            this.EpisodeName.MinimumWidth = 6;
+            this.EpisodeName.Name = "EpisodeName";
+            this.EpisodeName.ReadOnly = true;
+            // 
+            // AirDate
+            // 
+            this.AirDate.DataPropertyName = "AirDate";
+            this.AirDate.HeaderText = "AirDate";
+            this.AirDate.MinimumWidth = 6;
+            this.AirDate.Name = "AirDate";
+            this.AirDate.ReadOnly = true;
+            this.AirDate.Width = 125;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(418, 251);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(436, 253);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 29);
+            this.label2.Size = new System.Drawing.Size(74, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "Season";
             // 
             // btnNewSeason
             // 
-            this.btnNewSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewSeason.Location = new System.Drawing.Point(315, 119);
+            this.btnNewSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewSeason.Location = new System.Drawing.Point(384, 132);
             this.btnNewSeason.Name = "btnNewSeason";
-            this.btnNewSeason.Size = new System.Drawing.Size(221, 42);
+            this.btnNewSeason.Size = new System.Drawing.Size(152, 38);
             this.btnNewSeason.TabIndex = 6;
             this.btnNewSeason.Text = "Add new season";
             this.btnNewSeason.UseVisualStyleBackColor = true;
@@ -108,29 +157,30 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(118, 274);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(110, 279);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 29);
+            this.label1.Size = new System.Drawing.Size(89, 24);
             this.label1.TabIndex = 8;
             this.label1.Text = "Episodes";
             // 
             // txtSeasonName
             // 
-            this.txtSeasonName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeasonName.Location = new System.Drawing.Point(206, 40);
+            this.txtSeasonName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeasonName.Location = new System.Drawing.Point(206, 52);
             this.txtSeasonName.Name = "txtSeasonName";
-            this.txtSeasonName.Size = new System.Drawing.Size(330, 34);
+            this.txtSeasonName.Size = new System.Drawing.Size(330, 27);
             this.txtSeasonName.TabIndex = 9;
             // 
             // chkFinished
             // 
+            this.chkFinished.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkFinished.AutoSize = true;
             this.chkFinished.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkFinished.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkFinished.Location = new System.Drawing.Point(408, 80);
+            this.chkFinished.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFinished.Location = new System.Drawing.Point(442, 87);
             this.chkFinished.Name = "chkFinished";
-            this.chkFinished.Size = new System.Drawing.Size(128, 33);
+            this.chkFinished.Size = new System.Drawing.Size(94, 24);
             this.chkFinished.TabIndex = 10;
             this.chkFinished.Text = "Finished";
             this.chkFinished.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -139,10 +189,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 43);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 29);
+            this.label3.Size = new System.Drawing.Size(111, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Season name";
             // 
@@ -155,7 +205,7 @@
             this.groupBox1.Controls.Add(this.chkFinished);
             this.groupBox1.Location = new System.Drawing.Point(123, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(564, 183);
+            this.groupBox1.Size = new System.Drawing.Size(564, 187);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add season";
@@ -163,6 +213,8 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.dtpAirDate);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtEpisodeName);
             this.groupBox2.Controls.Add(this.cmbSeasonAdd);
@@ -170,55 +222,73 @@
             this.groupBox2.Controls.Add(this.btnAddEpisode);
             this.groupBox2.Location = new System.Drawing.Point(693, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(564, 183);
+            this.groupBox2.Size = new System.Drawing.Size(564, 187);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add episode";
             // 
+            // dtpAirDate
+            // 
+            this.dtpAirDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAirDate.Location = new System.Drawing.Point(212, 99);
+            this.dtpAirDate.Name = "dtpAirDate";
+            this.dtpAirDate.Size = new System.Drawing.Size(330, 27);
+            this.dtpAirDate.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(32, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 20);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Air date";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(32, 40);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 29);
+            this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 15;
             this.label5.Text = "Season";
             // 
             // txtEpisodeName
             // 
-            this.txtEpisodeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEpisodeName.Location = new System.Drawing.Point(212, 75);
+            this.txtEpisodeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEpisodeName.Location = new System.Drawing.Point(212, 66);
             this.txtEpisodeName.Name = "txtEpisodeName";
-            this.txtEpisodeName.Size = new System.Drawing.Size(330, 34);
+            this.txtEpisodeName.Size = new System.Drawing.Size(330, 27);
             this.txtEpisodeName.TabIndex = 9;
             // 
             // cmbSeasonAdd
             // 
             this.cmbSeasonAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSeasonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSeasonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSeasonAdd.FormattingEnabled = true;
             this.cmbSeasonAdd.Location = new System.Drawing.Point(212, 32);
             this.cmbSeasonAdd.Name = "cmbSeasonAdd";
-            this.cmbSeasonAdd.Size = new System.Drawing.Size(330, 37);
+            this.cmbSeasonAdd.Size = new System.Drawing.Size(330, 28);
             this.cmbSeasonAdd.TabIndex = 14;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 78);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(32, 69);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(169, 29);
+            this.label4.Size = new System.Drawing.Size(115, 20);
             this.label4.TabIndex = 11;
             this.label4.Text = "Episode name";
             // 
             // btnAddEpisode
             // 
-            this.btnAddEpisode.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddEpisode.Location = new System.Drawing.Point(321, 115);
+            this.btnAddEpisode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEpisode.Location = new System.Drawing.Point(390, 132);
             this.btnAddEpisode.Name = "btnAddEpisode";
-            this.btnAddEpisode.Size = new System.Drawing.Size(221, 42);
+            this.btnAddEpisode.Size = new System.Drawing.Size(152, 38);
             this.btnAddEpisode.TabIndex = 6;
             this.btnAddEpisode.Text = "Add new episode";
             this.btnAddEpisode.UseVisualStyleBackColor = true;
@@ -228,11 +298,11 @@
             // 
             this.cmbSeasons.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbSeasons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSeasons.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSeasons.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSeasons.FormattingEnabled = true;
-            this.cmbSeasons.Location = new System.Drawing.Point(531, 248);
+            this.cmbSeasons.Location = new System.Drawing.Point(549, 250);
             this.cmbSeasons.Name = "cmbSeasons";
-            this.cmbSeasons.Size = new System.Drawing.Size(330, 37);
+            this.cmbSeasons.Size = new System.Drawing.Size(330, 30);
             this.cmbSeasons.TabIndex = 15;
             this.cmbSeasons.SelectionChangeCommitted += new System.EventHandler(this.cmbSeasons_SelectionChangeCommitted_1);
             // 
@@ -276,5 +346,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAddEpisode;
         private System.Windows.Forms.ComboBox cmbSeasons;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EpisodeNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EpisodeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AirDate;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dtpAirDate;
     }
 }

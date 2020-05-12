@@ -13,5 +13,6 @@ namespace MoviePick.Data.Model
         public string NameInMovie { get; set; }
         public MovieAndTvshow MovieAndTvshow { get; set; }
         public Person Person { get; set; }
+        public Role Role { get; set; }
     }
 }

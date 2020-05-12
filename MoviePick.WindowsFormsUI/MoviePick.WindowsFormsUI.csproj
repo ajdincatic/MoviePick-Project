@@ -90,6 +90,12 @@
     <Compile Include="Forms\frmPersonAdd.Designer.cs">
       <DependentUpon>frmPersonAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmPersonDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersonDetails.Designer.cs">
+      <DependentUpon>frmPersonDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmPersonSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonAdd.resx">
       <DependentUpon>frmPersonAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPersonDetails.resx">
+      <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonSearch.resx">
       <DependentUpon>frmPersonSearch.cs</DependentUpon>

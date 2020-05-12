@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using eProdaja.Services;
+using Microsoft.EntityFrameworkCore;
 using MoviePick.Data.Request;
 using MoviePick.Database;
 
@@ -18,7 +19,10 @@ namespace MoviePick.Services
 
         public override List<Data.Model.Person> Get(PersonSearchRequest search)
         {
-            var query = _context.Person.AsQueryable();
+            var query = _context.Person
+                .Include("MovieAndTvshowPerson.MovieAndTvshow")
+                .Include("MovieAndTvshowPerson.Role")
+                .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.FirstName))
             {

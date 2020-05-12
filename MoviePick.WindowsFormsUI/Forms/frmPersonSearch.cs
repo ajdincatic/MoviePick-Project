@@ -24,6 +24,7 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         protected async override void OnLoad(EventArgs e)
         {
+            dgvPersons.AutoGenerateColumns = false;
             await LoadPerson();
         }
 
@@ -55,7 +56,7 @@ namespace MoviePick.WindowsFormsUI.Forms
         private void dgvPersons_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
             var item = dgvPersons.SelectedRows[0].DataBoundItem;
-            frmPersonAdd frm = new frmPersonAdd(item as Person);
+            frmPersonDetails frm = new frmPersonDetails(item as Person);
             frm.WindowState = FormWindowState.Normal;
             frm.Show();
         }

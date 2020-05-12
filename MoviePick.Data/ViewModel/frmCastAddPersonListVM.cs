@@ -8,7 +8,7 @@ namespace MoviePick.Data.ViewModel
     {
         public int MTVSPId { get; set; }
         public int PersonId { get; set; }
-        public string Name { get; set; }
+        public string Person { get; set; }
         public string NameInMovie { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }

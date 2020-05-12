@@ -18,31 +18,13 @@ namespace MoviePick.WindowsFormsUI.Forms
     {
         APIService _servicePerson = new APIService("Person");
 
-        private Person _person;
-
-        public frmPersonAdd(Person person = null)
+        public frmPersonAdd()
         {
-            _person = person;
             InitializeComponent();
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            if(_person != null)
-            {
-                rtxtBio.Text = _person.Biography;
-                dtDateOfBirth.Value = _person.DateOfBirth;
-                txtPlaceBirth.Text = _person.PlaceOfBirth;
-                txtFirstName.Text = _person.FirstName;
-                txtLastName.Text = _person.LastName;
-                txtGender.Text = _person.Gender;
-                if (_person.Photo != null && _person.Photo.Length > 0)
-                {
-                    pictureBox1.Image = GetImage(_person.Photo);
-                    request.Photo = _person.Photo;
-                }
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
         }
 
         PersonUpsertRequest request = new PersonUpsertRequest();
@@ -56,10 +38,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             request.LastName = txtLastName.Text;
             request.Gender = txtGender.Text;
 
-            if (_person == null)
-                await _servicePerson.Insert<Data.Model.Person>(request);
-            else
-                await _servicePerson.Update<Data.Model.Person>(_person.Id, request);
+            await _servicePerson.Insert<Data.Model.Person>(request);
 
             MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
@@ -79,14 +58,6 @@ namespace MoviePick.WindowsFormsUI.Forms
                 Image img = Image.FromFile(fileName);
                 pictureBox1.Image = img;
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-        }
-
-        private static Image GetImage(byte[] data)
-        {
-            using (MemoryStream ms = new MemoryStream(data))
-            {
-                return (Image.FromStream(ms));
             }
         }
     }

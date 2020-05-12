@@ -40,7 +40,8 @@ namespace eProdaja.Services
             var entity = _context.Set<TDatabase>().Find(Id);
             if (entity == null)
                 return default(TModel);
-            var x = _context.Set<TDatabase>().Remove(entity);
+            var x = entity;
+            _context.Set<TDatabase>().Remove(entity);
             _context.SaveChanges();
             return _mapper.Map<TModel>(x);
         }

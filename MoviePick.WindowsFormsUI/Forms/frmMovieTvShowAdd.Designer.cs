@@ -61,7 +61,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(125, 109);
+            this.label1.Location = new System.Drawing.Point(124, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 29);
             this.label1.TabIndex = 0;
@@ -71,7 +71,7 @@
             // 
             this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(385, 104);
+            this.txtTitle.Location = new System.Drawing.Point(384, 82);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(414, 34);
             this.txtTitle.TabIndex = 1;
@@ -81,7 +81,7 @@
             this.chkFinished.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkFinished.AutoSize = true;
             this.chkFinished.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkFinished.Location = new System.Drawing.Point(671, 604);
+            this.chkFinished.Location = new System.Drawing.Point(670, 582);
             this.chkFinished.Name = "chkFinished";
             this.chkFinished.Size = new System.Drawing.Size(128, 33);
             this.chkFinished.TabIndex = 2;
@@ -94,7 +94,7 @@
             this.cmbProductionComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProductionComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductionComp.FormattingEnabled = true;
-            this.cmbProductionComp.Location = new System.Drawing.Point(385, 482);
+            this.cmbProductionComp.Location = new System.Drawing.Point(384, 460);
             this.cmbProductionComp.Name = "cmbProductionComp";
             this.cmbProductionComp.Size = new System.Drawing.Size(414, 37);
             this.cmbProductionComp.TabIndex = 3;
@@ -104,7 +104,7 @@
             this.clbGenre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.clbGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbGenre.FormattingEnabled = true;
-            this.clbGenre.Location = new System.Drawing.Point(909, 482);
+            this.clbGenre.Location = new System.Drawing.Point(908, 460);
             this.clbGenre.Name = "clbGenre";
             this.clbGenre.Size = new System.Drawing.Size(327, 234);
             this.clbGenre.TabIndex = 4;
@@ -113,7 +113,7 @@
             // 
             this.dtRelaseDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtRelaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtRelaseDate.Location = new System.Drawing.Point(385, 433);
+            this.dtRelaseDate.Location = new System.Drawing.Point(384, 411);
             this.dtRelaseDate.Name = "dtRelaseDate";
             this.dtRelaseDate.Size = new System.Drawing.Size(414, 34);
             this.dtRelaseDate.TabIndex = 5;
@@ -121,7 +121,7 @@
             // rtxtDescription
             // 
             this.rtxtDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rtxtDescription.Location = new System.Drawing.Point(385, 156);
+            this.rtxtDescription.Location = new System.Drawing.Point(384, 134);
             this.rtxtDescription.Name = "rtxtDescription";
             this.rtxtDescription.Size = new System.Drawing.Size(414, 156);
             this.rtxtDescription.TabIndex = 6;
@@ -132,7 +132,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(125, 156);
+            this.label2.Location = new System.Drawing.Point(124, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 29);
             this.label2.TabIndex = 9;
@@ -142,7 +142,7 @@
             // 
             this.txtLang.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLang.Location = new System.Drawing.Point(385, 333);
+            this.txtLang.Location = new System.Drawing.Point(384, 311);
             this.txtLang.Name = "txtLang";
             this.txtLang.Size = new System.Drawing.Size(414, 34);
             this.txtLang.TabIndex = 11;
@@ -152,7 +152,7 @@
             this.Language.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Language.AutoSize = true;
             this.Language.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Language.Location = new System.Drawing.Point(125, 338);
+            this.Language.Location = new System.Drawing.Point(124, 316);
             this.Language.Name = "Language";
             this.Language.Size = new System.Drawing.Size(120, 29);
             this.Language.TabIndex = 10;
@@ -162,7 +162,7 @@
             // 
             this.txtRtime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtRtime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRtime.Location = new System.Drawing.Point(385, 381);
+            this.txtRtime.Location = new System.Drawing.Point(384, 359);
             this.txtRtime.Name = "txtRtime";
             this.txtRtime.Size = new System.Drawing.Size(414, 34);
             this.txtRtime.TabIndex = 13;
@@ -172,7 +172,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(125, 386);
+            this.label4.Location = new System.Drawing.Point(124, 364);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(154, 29);
             this.label4.TabIndex = 12;
@@ -183,7 +183,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(125, 438);
+            this.label5.Location = new System.Drawing.Point(124, 416);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(156, 29);
             this.label5.TabIndex = 14;
@@ -194,7 +194,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(125, 490);
+            this.label6.Location = new System.Drawing.Point(124, 468);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(232, 29);
             this.label6.TabIndex = 15;
@@ -204,7 +204,7 @@
             // 
             this.txtPoster.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPoster.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPoster.Location = new System.Drawing.Point(866, 373);
+            this.txtPoster.Location = new System.Drawing.Point(865, 351);
             this.txtPoster.Name = "txtPoster";
             this.txtPoster.Size = new System.Drawing.Size(414, 34);
             this.txtPoster.TabIndex = 18;
@@ -213,7 +213,7 @@
             // 
             this.btnImage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImage.Location = new System.Drawing.Point(1011, 412);
+            this.btnImage.Location = new System.Drawing.Point(1010, 390);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(130, 34);
             this.btnImage.TabIndex = 19;
@@ -225,7 +225,7 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(663, 662);
+            this.btnSave.Location = new System.Drawing.Point(662, 640);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(136, 44);
             this.btnSave.TabIndex = 20;
@@ -237,7 +237,7 @@
             // 
             this.txtBudget.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBudget.Location = new System.Drawing.Point(385, 534);
+            this.txtBudget.Location = new System.Drawing.Point(384, 512);
             this.txtBudget.Name = "txtBudget";
             this.txtBudget.Size = new System.Drawing.Size(414, 34);
             this.txtBudget.TabIndex = 22;
@@ -247,7 +247,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(125, 539);
+            this.label3.Location = new System.Drawing.Point(124, 517);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 29);
             this.label3.TabIndex = 21;
@@ -262,7 +262,7 @@
             this.chkTvShow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkTvShow.AutoSize = true;
             this.chkTvShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkTvShow.Location = new System.Drawing.Point(527, 604);
+            this.chkTvShow.Location = new System.Drawing.Point(526, 582);
             this.chkTvShow.Name = "chkTvShow";
             this.chkTvShow.Size = new System.Drawing.Size(125, 33);
             this.chkTvShow.TabIndex = 23;
@@ -276,7 +276,7 @@
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(954, 34);
+            this.pictureBox2.Location = new System.Drawing.Point(953, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(233, 333);
             this.pictureBox2.TabIndex = 39;
@@ -286,7 +286,7 @@
             // 
             this.btnEditCast.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditCast.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditCast.Location = new System.Drawing.Point(521, 662);
+            this.btnEditCast.Location = new System.Drawing.Point(520, 640);
             this.btnEditCast.Name = "btnEditCast";
             this.btnEditCast.Size = new System.Drawing.Size(136, 44);
             this.btnEditCast.TabIndex = 40;
@@ -299,7 +299,7 @@
             // 
             this.btnEditSeasons.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditSeasons.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditSeasons.Location = new System.Drawing.Point(313, 662);
+            this.btnEditSeasons.Location = new System.Drawing.Point(312, 640);
             this.btnEditSeasons.Name = "btnEditSeasons";
             this.btnEditSeasons.Size = new System.Drawing.Size(202, 44);
             this.btnEditSeasons.TabIndex = 41;

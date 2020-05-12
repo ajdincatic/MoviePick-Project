@@ -14,5 +14,6 @@ namespace MoviePick.Data.Model
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string PlaceOfBirth { get; set; }
+        public ICollection<MovieAndTvshowPerson> MovieAndTvshowPerson { get; set; }
     }
 }

@@ -59,7 +59,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 };
 
                 foreach (var genre in item.MovieAndTvshowGenre)
-                    ni.Genres += genre.Genre.GenreName.ToString() + ", ";
+                    ni.Genres += genre.Genre.GenreName.ToString() + " | ";
 
                 vm.Add(ni);
             }

@@ -84,6 +84,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 }
 
                 var list = await _serviceTvshowSeasonEpisode.GetAll<List<Data.Model.TvshowSeasonEpisode>>(request);
+                list = list.OrderBy(x => x.AirDate).ToList();
 
                 List<frmTvShowSeasonEpisodeVM> vm = new List<frmTvShowSeasonEpisodeVM>();
                 var ctr = 0;
@@ -108,7 +109,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             TvshowSeasonEpisodeUpsertRequest request = new TvshowSeasonEpisodeUpsertRequest
             {
                 EpisodeName = txtEpisodeName.Text,
-                AirDate = DateTime.Now
+                AirDate = dtpAirDate.Value
             };
 
             var idSeason = cmbSeasonAdd.SelectedValue;
@@ -116,16 +117,29 @@ namespace MoviePick.WindowsFormsUI.Forms
             if(int.TryParse(idSeason.ToString(),out int SeasonId))
             {
                 request.TvshowSeasonId = SeasonId;
+                cmbSeasons.SelectedValue = cmbSeasonAdd.SelectedValue;
             }
 
             await _serviceTvshowSeasonEpisode.Insert<Data.Model.TvshowSeasonEpisode>(request);
             await LoadSeasons();
             await LoadEpisodes();
+
             txtEpisodeName.Text = "";
         }
 
         private async void cmbSeasons_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
+            await LoadEpisodes();
+        }
+
+        private async void dgvEpisodes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmTvShowSeasonEpisodeVM item = dgvEpisodes.SelectedRows[0].DataBoundItem as frmTvShowSeasonEpisodeVM;
+            DialogResult result = MessageBox.Show("Do you want do delete this record?", "Warining", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                var MTVS = await _serviceTvshowSeasonEpisode.Delete<TvshowSeasonEpisode>(item.Id);
+            }
             await LoadEpisodes();
         }
     }
