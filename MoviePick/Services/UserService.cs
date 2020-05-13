@@ -23,11 +23,6 @@ namespace MoviePick.Services
             this._mapper = _mapper;
         }
 
-        public Data.Model.User Authenticiraj(UserLoginRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Data.Model.User> Get(UserSearchRequest search)
         {
             var query = _context.User.Include(x => x.UserType).AsQueryable();
@@ -96,6 +91,23 @@ namespace MoviePick.Services
             _context.User.Remove(entity);
             _context.SaveChanges();
             return _mapper.Map<Data.Model.User>(x);
+        }
+
+        public Data.Model.User Authenticate(UserLoginRequest request)
+        {
+            var user = _context.User.Include("UserType").FirstOrDefault(x => x.Username == request.Username);
+
+            if (user != null)
+            {
+                var newHash = HashGenerator.GenerateHash(user.PasswordSalt, request.Password);
+
+                if (newHash == user.PasswordHash)
+                {
+                    Data.Model.User tUser = _mapper.Map<Data.Model.User>(user);
+                    return tUser;
+                }
+            }
+            return null;
         }
     }
 }

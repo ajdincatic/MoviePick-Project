@@ -1,7 +1,9 @@
 using AutoMapper;
 using eProdaja.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,8 @@ using MoviePick.Database;
 using MoviePick.Interfaces;
 using MoviePick.Properties;
 using MoviePick.Services;
+using MoviePick.WebAPI.Filters;
+using MoviePick.WebAPI.Security;
 using Newtonsoft.Json;
 
 namespace MoviePick
@@ -30,6 +34,8 @@ namespace MoviePick
         {
             services.AddControllers();
 
+            services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Latest);
+
             services.AddMvc(x => x.EnableEndpointRouting = false)
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
@@ -37,14 +43,40 @@ namespace MoviePick
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviePick API", Version = "v1" });
-            });
 
+                // basic auth swagger
+                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    In = ParameterLocation.Header,
+                    Description = "Basic Authorization header using the Bearer scheme."
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "basic"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+            });
 
             // connection to database
             // Scaffold-DbContext -Connection "Server=(local);Database=MoviePick;Integrated Security=True;Trusted_Connection=True;" 
             //-Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database -context MoviePickContext -force
-
             services.AddDbContext<MoviePickContext>(opt => opt.UseSqlServer(Resources.Local_ConString));
+
+            services.AddAuthentication("BasicAuthentication")
+               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
             // auto mapper configuration
             services.AddAutoMapper(typeof(Startup));
@@ -87,6 +119,8 @@ namespace MoviePick
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 

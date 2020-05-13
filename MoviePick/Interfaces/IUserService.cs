@@ -8,7 +8,7 @@ namespace MoviePick.Interfaces
 {
     public interface IUserService
     {
-        Data.Model.User Authenticiraj(UserLoginRequest request);
+        Data.Model.User Authenticate(UserLoginRequest request);
         List<Data.Model.User> Get(UserSearchRequest search);
         Data.Model.User GetById(int Id);
         Data.Model.User Insert(UserUpsertRequest request);

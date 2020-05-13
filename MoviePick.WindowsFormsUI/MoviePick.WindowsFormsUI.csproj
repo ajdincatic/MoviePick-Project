@@ -161,6 +161,9 @@
     <EmbeddedResource Include="Forms\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMovieAndTvShowDetails.resx">
       <DependentUpon>frmMovieAndTvShowDetails.cs</DependentUpon>
     </EmbeddedResource>

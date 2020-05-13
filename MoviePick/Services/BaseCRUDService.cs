@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MoviePick.Data.Request;
 using MoviePick.Database;
+using System;
 
 namespace eProdaja.Services
 {
@@ -39,7 +40,7 @@ namespace eProdaja.Services
         {
             var entity = _context.Set<TDatabase>().Find(Id);
             if (entity == null)
-                return default(TModel);
+                throw new ArgumentNullException();
             var x = entity;
             _context.Set<TDatabase>().Remove(entity);
             _context.SaveChanges();
