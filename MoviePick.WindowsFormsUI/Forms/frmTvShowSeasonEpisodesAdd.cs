@@ -84,10 +84,9 @@ namespace MoviePick.WindowsFormsUI.Forms
                 }
 
                 var list = await _serviceTvshowSeasonEpisode.GetAll<List<Data.Model.TvshowSeasonEpisode>>(request);
-                list = list.OrderBy(x => x.AirDate).ToList();
+                list = list.OrderBy(x => x.EpisodeNumber).ToList();
 
                 List<frmTvShowSeasonEpisodeVM> vm = new List<frmTvShowSeasonEpisodeVM>();
-                var ctr = 0;
                 foreach (var x in list)
                 {
                     frmTvShowSeasonEpisodeVM nl = new frmTvShowSeasonEpisodeVM
@@ -95,7 +94,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                         Id = x.Id,
                         EpisodeName = x.EpisodeName,
                         AirDate = x.AirDate,
-                        EpisodeNumber = ++ctr
+                        EpisodeNumber = (int)x.EpisodeNumber
                     };
                     vm.Add(nl);
                 }
@@ -109,7 +108,8 @@ namespace MoviePick.WindowsFormsUI.Forms
             TvshowSeasonEpisodeUpsertRequest request = new TvshowSeasonEpisodeUpsertRequest
             {
                 EpisodeName = txtEpisodeName.Text,
-                AirDate = dtpAirDate.Value
+                AirDate = dtpAirDate.Value,
+                EpisodeNumber = int.Parse(txtEpNumber.Text)
             };
 
             var idSeason = cmbSeasonAdd.SelectedValue;
@@ -139,8 +139,8 @@ namespace MoviePick.WindowsFormsUI.Forms
             if (result == DialogResult.Yes)
             {
                 var MTVS = await _serviceTvshowSeasonEpisode.Delete<TvshowSeasonEpisode>(item.Id);
+                await LoadEpisodes();
             }
-            await LoadEpisodes();
         }
     }
 }

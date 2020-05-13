@@ -164,8 +164,8 @@ namespace MoviePick.WindowsFormsUI.Forms
             if(result == DialogResult.Yes)
             {
                 var MTVS = await _serviceCast.Delete<MovieAndTvshowPerson>(item.MTVSPId);
+                await LoadPersons();
             }
-            await LoadPersons();
         }
     }
 }

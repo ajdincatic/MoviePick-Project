@@ -33,18 +33,14 @@ namespace MoviePick.WindowsFormsUI.Forms
             await LoadGenres();
         }
 
-        private async void btnSearch_Click(object sender, EventArgs e)
-        {
-            await LoadMTVS();
-        }
-
         private async Task LoadMTVS()
         {
-            var list = await _serviceMTVS.GetAll<List<MovieAndTvshow>>(new MovieAndTvshowSearchRequest()
+            MovieAndTvshowSearchRequest request = new MovieAndTvshowSearchRequest()
             {
                 Title = txtTitle.Text,
                 isTvShow = rbTvShow.Checked
-            });
+            };
+            var list = await _serviceMTVS.GetAll<List<MovieAndTvshow>>(request);
 
             List<frmMovieTvShowSearchVM> vm = new List<frmMovieTvShowSearchVM>();
             foreach (var item in list)
@@ -76,7 +72,21 @@ namespace MoviePick.WindowsFormsUI.Forms
             cmbGenre.DisplayMember = "GenreName";
         }
 
-        private async void cmbGenre_SelectionChangeCommitted(object sender, EventArgs e)
+        private async void dgvMTVS_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var item = dgvMTVS.SelectedRows[0].DataBoundItem;
+            var MTVS = await _serviceMTVS.GetById<MovieAndTvshow>((item as frmMovieTvShowSearchVM).Id);
+            frmMovieAndTvShowDetails frm = new frmMovieAndTvShowDetails(MTVS);
+            frm.WindowState = FormWindowState.Normal;
+            frm.Show();
+        }
+
+        private async void btnSearch_Click_1(object sender, EventArgs e)
+        {
+            await LoadMTVS();
+        }
+
+        private async void cmbGenre_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
             GenreMovieTvShowSearchRequest searchRequest = new GenreMovieTvShowSearchRequest();
 
@@ -105,20 +115,6 @@ namespace MoviePick.WindowsFormsUI.Forms
             }
 
             dgvMTVS.DataSource = vm;
-        }
-
-        private async void dgvMTVS_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var item = dgvMTVS.SelectedRows[0].DataBoundItem;
-            var MTVS = await _serviceMTVS.GetById<MovieAndTvshow>((item as frmMovieTvShowSearchVM).Id);
-            frmMovieTvShowAdd frm = new frmMovieTvShowAdd(MTVS);
-            frm.WindowState = FormWindowState.Normal;
-            frm.Show();
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
         }
     }
 }

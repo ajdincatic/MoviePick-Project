@@ -12,31 +12,23 @@ using System.Threading.Tasks;
 
 namespace MoviePick.Services
 {
-    public class UserService :
-        BaseCRUDService<Data.Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest, Database.User>
+    public class UserService : IUserService
     {
-        public UserService(MoviePickContext _context, IMapper _mapper) : base(_context, _mapper)
+        public MoviePickContext _context { get; }
+        public IMapper _mapper { get; }
+
+        public UserService(MoviePickContext _context, IMapper _mapper)
         {
+            this._context = _context;
+            this._mapper = _mapper;
         }
 
-        //public override Data.Model.User Authenticate(UserLoginRequest request)
-        //{
-        //    Database.User user = _context.User.FirstOrDefault(x => x.Username == request.Username);
+        public Data.Model.User Authenticiraj(UserLoginRequest request)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    if (user == null)
-        //        throw new Exception("Wrong username or password");
-
-        //    var newHash = HashGenerator.GenerateHash(user.PasswordSalt, request.Password);
-
-        //    if (newHash != user.PasswordHash)
-        //        throw new Exception("Wrong username or password");
-
-
-        //    Data.Model.User atuhUser = _mapper.Map<Data.Model.User>(user);
-        //    return atuhUser;
-        //}
-
-        public override List<Data.Model.User> Get(UserSearchRequest search)
+        public List<Data.Model.User> Get(UserSearchRequest search)
         {
             var query = _context.User.Include(x => x.UserType).AsQueryable();
 
@@ -48,7 +40,7 @@ namespace MoviePick.Services
             return _mapper.Map<List<Data.Model.User>>(query.ToList());
         }
 
-        public override Data.Model.User Insert(UserUpsertRequest request)
+        public Data.Model.User Insert(UserUpsertRequest request)
         {
             var entity = _mapper.Map<Database.User>(request);
 
@@ -64,6 +56,46 @@ namespace MoviePick.Services
             _context.SaveChanges();
 
             return _mapper.Map<Data.Model.User>(entity);
+        }
+
+        public Data.Model.User GetById(int Id)
+        {
+            var entity = _context.User.Find(Id);
+
+            return _mapper.Map<Data.Model.User>(entity);
+        }
+
+        public Data.Model.User Update(int Id, UserUpsertRequest request)
+        {
+            var entity = _context.User.Find(Id);
+
+            if (request.Password != request.PasswordConfirm)
+            {
+                throw new Exception("Password and password confirm not matched");
+            }
+
+            entity.PasswordSalt = HashGenerator.GenerateSalt();
+            entity.PasswordHash = HashGenerator.GenerateHash(entity.PasswordSalt, request.Password);
+
+            _context.User.Attach(entity);
+            _context.User.Update(entity);
+
+            _mapper.Map(request, entity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Data.Model.User>(entity);
+        }
+
+        public Data.Model.User Delete(int Id)
+        {
+            var entity = _context.User.Find(Id);
+            if (entity == null)
+                throw new ArgumentNullException();
+            var x = entity;
+            _context.User.Remove(entity);
+            _context.SaveChanges();
+            return _mapper.Map<Data.Model.User>(x);
         }
     }
 }

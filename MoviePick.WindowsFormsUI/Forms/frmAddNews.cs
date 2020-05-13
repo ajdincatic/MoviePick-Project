@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace MoviePick.WindowsFormsUI.Forms
 {
-    public partial class frmHome : Form
+    public partial class frmAddNews : Form
     {
-        public frmHome()
+        public frmAddNews()
         {
             InitializeComponent();
-        }
-
-        private void frmHome_Load(object sender, EventArgs e)
-        {
         }
     }
 }

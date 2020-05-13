@@ -10,6 +10,7 @@ namespace MoviePick.Data.Request
         public string LastName { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfDeath { get; set; }
         public string PlaceOfBirth { get; set; }
         public string Biography { get; set; }
         public byte[] Photo { get; set; }

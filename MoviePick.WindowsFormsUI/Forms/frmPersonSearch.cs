@@ -28,11 +28,6 @@ namespace MoviePick.WindowsFormsUI.Forms
             await LoadPerson();
         }
 
-        private async void btnSearch_Click_1(object sender, EventArgs e)
-        {
-            await LoadPerson();
-        }
-
         private async Task LoadPerson()
         {
             PersonSearchRequest request = new PersonSearchRequest()
@@ -59,6 +54,11 @@ namespace MoviePick.WindowsFormsUI.Forms
             frmPersonDetails frm = new frmPersonDetails(item as Person);
             frm.WindowState = FormWindowState.Normal;
             frm.Show();
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            await LoadPerson();
         }
     }
 }

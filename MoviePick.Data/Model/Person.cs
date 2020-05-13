@@ -13,6 +13,7 @@ namespace MoviePick.Data.Model
         public string LastName { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfDeath { get; set; }
         public string PlaceOfBirth { get; set; }
         public ICollection<MovieAndTvshowPerson> MovieAndTvshowPerson { get; set; }
     }

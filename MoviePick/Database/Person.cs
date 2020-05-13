@@ -18,6 +18,7 @@ namespace MoviePick.Database
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string PlaceOfBirth { get; set; }
+        public DateTime? DateOfDeath { get; set; }
 
         public virtual ICollection<MovieAndTvshowPerson> MovieAndTvshowPerson { get; set; }
     }

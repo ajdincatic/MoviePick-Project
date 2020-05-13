@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtQuote = new System.Windows.Forms.RichTextBox();
@@ -89,17 +91,33 @@
             this.dgvQuotes.AllowUserToDeleteRows = false;
             this.dgvQuotes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvQuotes.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvQuotes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvQuotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvQuotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.QuoteText});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvQuotes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvQuotes.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvQuotes.Location = new System.Drawing.Point(241, 330);
+            this.dgvQuotes.Location = new System.Drawing.Point(107, 330);
             this.dgvQuotes.Name = "dgvQuotes";
             this.dgvQuotes.ReadOnly = true;
             this.dgvQuotes.RowHeadersWidth = 51;
             this.dgvQuotes.RowTemplate.Height = 24;
             this.dgvQuotes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvQuotes.Size = new System.Drawing.Size(819, 303);
+            this.dgvQuotes.Size = new System.Drawing.Size(1054, 303);
             this.dgvQuotes.TabIndex = 0;
             this.dgvQuotes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQuotes_CellDoubleClick);
             // 

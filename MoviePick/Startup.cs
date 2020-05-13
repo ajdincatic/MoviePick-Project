@@ -41,6 +41,9 @@ namespace MoviePick
 
 
             // connection to database
+            // Scaffold-DbContext -Connection "Server=(local);Database=MoviePick;Integrated Security=True;Trusted_Connection=True;" 
+            //-Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database -context MoviePickContext -force
+
             services.AddDbContext<MoviePickContext>(opt => opt.UseSqlServer(Resources.Local_ConString));
 
             // auto mapper configuration
@@ -59,10 +62,10 @@ namespace MoviePick
             services.AddScoped<ICRUDService<Data.Model.MovieAndTvshow, MovieAndTvshowSearchRequest, MovieAndTvshowUpsertRequest, MovieAndTvshowUpsertRequest>, MovieAndTvShowService>();
             services.AddScoped<ICRUDService<Data.Model.TvshowSeason, TvshowSeasonSearchRequest, TvshowSeasonUpsertRequest, TvshowSeasonUpsertRequest>, TvshowSeasonService>();
             services.AddScoped<ICRUDService<Data.Model.TvshowSeasonEpisode, TvshowSeasonEpisodeSearchRequest, TvshowSeasonEpisodeUpsertRequest, TvshowSeasonEpisodeUpsertRequest>, TvshowSeasonEpisodeService>();
-            services.AddScoped<ICRUDService<Data.Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
             services.AddScoped<ICRUDService<Data.Model.News, NewsSearchRequest, NewsUpsertRequest, NewsUpsertRequest>, NewsService>();
             services.AddScoped<ICRUDService<Data.Model.MovieAndTvshowPerson, MovieAndTvshowPersonSearchRequest, MovieAndTvshowPersonUpsertRequest, MovieAndTvshowPersonUpsertRequest>, CastService>();
 
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRatingService, RatingService>();
             services.AddScoped<ICommentService, CommentService>();
 

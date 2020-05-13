@@ -1,4 +1,6 @@
-﻿namespace MoviePick.WindowsFormsUI.Forms
+﻿using System;
+
+namespace MoviePick.WindowsFormsUI.Forms
 {
     partial class frmMovieTvShowAdd
     {
@@ -51,9 +53,6 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.chkTvShow = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnEditCast = new System.Windows.Forms.Button();
-            this.btnEditSeasons = new System.Windows.Forms.Button();
-            this.btnQuotes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,6 +121,7 @@
             // rtxtDescription
             // 
             this.rtxtDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rtxtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtDescription.Location = new System.Drawing.Point(384, 134);
             this.rtxtDescription.Name = "rtxtDescription";
             this.rtxtDescription.Size = new System.Drawing.Size(414, 156);
@@ -269,7 +269,6 @@
             this.chkTvShow.TabIndex = 23;
             this.chkTvShow.Text = "Tv show";
             this.chkTvShow.UseVisualStyleBackColor = true;
-            this.chkTvShow.CheckedChanged += new System.EventHandler(this.chkTvShow_CheckedChanged);
             // 
             // pictureBox2
             // 
@@ -283,54 +282,12 @@
             this.pictureBox2.TabIndex = 39;
             this.pictureBox2.TabStop = false;
             // 
-            // btnEditCast
-            // 
-            this.btnEditCast.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditCast.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditCast.Location = new System.Drawing.Point(520, 640);
-            this.btnEditCast.Name = "btnEditCast";
-            this.btnEditCast.Size = new System.Drawing.Size(136, 44);
-            this.btnEditCast.TabIndex = 40;
-            this.btnEditCast.Text = "Edit cast";
-            this.btnEditCast.UseVisualStyleBackColor = true;
-            this.btnEditCast.Visible = false;
-            this.btnEditCast.Click += new System.EventHandler(this.btnEditCast_Click);
-            // 
-            // btnEditSeasons
-            // 
-            this.btnEditSeasons.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditSeasons.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditSeasons.Location = new System.Drawing.Point(312, 640);
-            this.btnEditSeasons.Name = "btnEditSeasons";
-            this.btnEditSeasons.Size = new System.Drawing.Size(202, 44);
-            this.btnEditSeasons.TabIndex = 41;
-            this.btnEditSeasons.Text = "Edit Seasons";
-            this.btnEditSeasons.UseVisualStyleBackColor = true;
-            this.btnEditSeasons.Visible = false;
-            this.btnEditSeasons.Click += new System.EventHandler(this.btnEditSeasons_Click);
-            // 
-            // btnQuotes
-            // 
-            this.btnQuotes.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnQuotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuotes.Location = new System.Drawing.Point(662, 690);
-            this.btnQuotes.Name = "btnQuotes";
-            this.btnQuotes.Size = new System.Drawing.Size(136, 44);
-            this.btnQuotes.TabIndex = 42;
-            this.btnQuotes.Text = "Quotes";
-            this.btnQuotes.UseVisualStyleBackColor = true;
-            this.btnQuotes.Visible = false;
-            this.btnQuotes.Click += new System.EventHandler(this.btnQuotes_Click);
-            // 
             // frmMovieTvShowAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 760);
-            this.Controls.Add(this.btnQuotes);
-            this.Controls.Add(this.btnEditSeasons);
-            this.Controls.Add(this.btnEditCast);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.chkTvShow);
             this.Controls.Add(this.txtBudget);
@@ -385,8 +342,5 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.CheckBox chkTvShow;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button btnEditCast;
-        private System.Windows.Forms.Button btnEditSeasons;
-        private System.Windows.Forms.Button btnQuotes;
     }
 }

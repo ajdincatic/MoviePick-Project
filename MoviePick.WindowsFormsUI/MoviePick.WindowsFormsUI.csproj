@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="Forms\frmAddNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddNews.Designer.cs">
+      <DependentUpon>frmAddNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCastAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,18 @@
     </Compile>
     <Compile Include="Forms\frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMovieAndTvShowDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMovieAndTvShowDetails.Designer.cs">
+      <DependentUpon>frmMovieAndTvShowDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMovieTvShowAdd.cs">
       <SubType>Form</SubType>
@@ -120,13 +138,31 @@
     <Compile Include="Forms\frmIndex.Designer.cs">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmUserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserAdd.Designer.cs">
+      <DependentUpon>frmUserAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUserSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserSearch.Designer.cs">
+      <DependentUpon>frmUserSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmAddNews.resx">
+      <DependentUpon>frmAddNews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCastAdd.resx">
       <DependentUpon>frmCastAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMovieAndTvShowDetails.resx">
+      <DependentUpon>frmMovieAndTvShowDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMovieTvShowAdd.resx">
       <DependentUpon>frmMovieTvShowAdd.cs</DependentUpon>
@@ -151,6 +187,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserAdd.resx">
+      <DependentUpon>frmUserAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserSearch.resx">
+      <DependentUpon>frmUserSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

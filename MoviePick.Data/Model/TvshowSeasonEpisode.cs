@@ -10,7 +10,7 @@ namespace MoviePick.Data.Model
         public string EpisodeName { get; set; }
         public DateTime AirDate { get; set; }
         public int TvshowSeasonId { get; set; }
-
+        public int? EpisodeNumber { get; set; }
         public TvshowSeason TvshowSeason { get; set; }
     }
 }

@@ -32,36 +32,6 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             await LoadGenres();
             await LoadProductionCompany();
-            if (_MTVS != null)
-            {
-                txtTitle.Text = _MTVS.Title;
-                txtBudget.Text = _MTVS.Budget.ToString();
-                rtxtDescription.Text = _MTVS.Description;
-                chkFinished.Checked = (bool)_MTVS.Finished;
-                txtLang.Text = _MTVS.Language;
-                dtRelaseDate.Value = _MTVS.ReleaseDate;
-                txtRtime.Text = _MTVS.RunningTime;
-                if (_MTVS.Poster != null && _MTVS.Poster.Length > 0)
-                {
-                    pictureBox2.Image = GetImage(_MTVS.Poster);
-                    request.Poster = _MTVS.Poster;
-                }
-                if (_MTVS.TvshowSeason.Count() == 0)
-                {
-                    chkTvShow.Checked = false;
-                    btnEditSeasons.Visible = false;
-                }
-                else
-                {
-                    chkTvShow.Checked = true;
-                    btnEditSeasons.Visible = true;
-                }
-                cmbProductionComp.SelectedIndex = _MTVS.ProductionCompanyId;
-                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-                btnEditCast.Visible = true;
-                clbGenre.Visible = false;
-                btnQuotes.Visible = true;
-            }
         }
 
         private async Task LoadGenres()
@@ -104,38 +74,29 @@ namespace MoviePick.WindowsFormsUI.Forms
                 request.ProductionCompanyId = idProductionCompany;
             }
 
-            if (_MTVS == null)
+            var mtvs = await _serviceMovieAndTvShow.Insert<MovieAndTvshow>(request);
+
+            MessageBox.Show("Operation successfully completed, now assign cast !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtBudget.Text = "";
+            txtTitle.Text = "";
+            txtRtime.Text = "";
+            txtPoster.Text = "";
+            txtLang.Text = "";
+            rtxtDescription.Text = null;
+            dtRelaseDate.Value = DateTime.Now;
+            chkFinished.Checked = false;
+            clbGenre.ClearSelected();
+
+            if (chkTvShow.Checked)
             {
-                var mtvs = await _serviceMovieAndTvShow.Insert<MovieAndTvshow>(request);
-
-                MessageBox.Show("Operation successfully completed, now assign cast !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtBudget.Text = "";
-                txtTitle.Text = "";
-                txtRtime.Text = "";
-                txtPoster.Text = "";
-                txtLang.Text = "";
-                rtxtDescription.Text = null;
-                dtRelaseDate.Value = DateTime.Now;
-                chkFinished.Checked = false;
-                clbGenre.ClearSelected();
-
-                if (chkTvShow.Checked)
-                {
-                    frmCastAdd frm = new frmCastAdd(mtvs, true);
-                    frm.ShowDialog();
-                }
-                else
-                {
-                    frmCastAdd frm = new frmCastAdd(mtvs);
-                    frm.ShowDialog();
-                }
+                frmCastAdd frm = new frmCastAdd(mtvs, true);
+                frm.ShowDialog();
             }
             else
             {
-                var mtvs = await _serviceMovieAndTvShow.Update<MovieAndTvshow>(_MTVS.Id, request);
-                MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmCastAdd frm = new frmCastAdd(mtvs);
+                frm.ShowDialog();
             }
-
         }
 
         private void btnImage_Click(object sender, EventArgs e)
@@ -155,41 +116,5 @@ namespace MoviePick.WindowsFormsUI.Forms
             }
         }
 
-        private static Image GetImage(byte[] data)
-        {
-            using (MemoryStream ms = new MemoryStream(data))
-            {
-                return (Image.FromStream(ms));
-            }
-        }
-
-        private void chkTvShow_CheckedChanged(object sender, EventArgs e)
-        {
-            if(_MTVS != null)
-            {
-                if (chkTvShow.Checked)
-                    btnEditSeasons.Visible = true;
-                else
-                    btnEditSeasons.Visible = false;
-            }
-        }
-
-        private void btnEditCast_Click(object sender, EventArgs e)
-        {
-            frmCastAdd frm = new frmCastAdd(_MTVS);
-            frm.ShowDialog();
-        }
-
-        private void btnEditSeasons_Click(object sender, EventArgs e)
-        {
-            frmTvShowSeasonEpisodesAdd frm = new frmTvShowSeasonEpisodesAdd(_MTVS);
-            frm.ShowDialog();
-        }
-
-        private void btnQuotes_Click(object sender, EventArgs e)
-        {
-            frmQuoteDetails frm = new frmQuoteDetails(_MTVS);
-            frm.ShowDialog();
-        }
     }
 }

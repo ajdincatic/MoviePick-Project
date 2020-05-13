@@ -37,7 +37,7 @@ namespace MoviePick.Database
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MoviePick; Integrated Security = true;");
+                optionsBuilder.UseSqlServer("Server=(local);Database=MoviePick;Integrated Security=True;Trusted_Connection=True;");
             }
         }
 
@@ -57,13 +57,13 @@ namespace MoviePick.Database
                     .WithMany(p => p.Comment)
                     .HasForeignKey(d => d.AppUserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Comment__AppUser__398D8EEE");
+                    .HasConstraintName("FK__Comment__AppUser__412EB0B6");
 
                 entity.HasOne(d => d.MovieAndTvshow)
                     .WithMany(p => p.Comment)
                     .HasForeignKey(d => d.MovieAndTvshowId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Comment__MovieAn__3A81B327");
+                    .HasConstraintName("FK__Comment__MovieAn__4222D4EF");
             });
 
             modelBuilder.Entity<Genre>(entity =>
@@ -99,7 +99,7 @@ namespace MoviePick.Database
                     .WithMany(p => p.MovieAndTvshow)
                     .HasForeignKey(d => d.ProductionCompanyId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__Produ__30F848ED");
+                    .HasConstraintName("FK__MovieAndT__Produ__4316F928");
             });
 
             modelBuilder.Entity<MovieAndTvshowGenre>(entity =>
@@ -112,13 +112,13 @@ namespace MoviePick.Database
                     .WithMany(p => p.MovieAndTvshowGenre)
                     .HasForeignKey(d => d.GenreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__Genre__47DBAE45");
+                    .HasConstraintName("FK__MovieAndT__Genre__440B1D61");
 
                 entity.HasOne(d => d.MovieAndTvshow)
                     .WithMany(p => p.MovieAndTvshowGenre)
                     .HasForeignKey(d => d.MovieAndTvshowId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__Movie__46E78A0C");
+                    .HasConstraintName("FK__MovieAndT__Movie__44FF419A");
             });
 
             modelBuilder.Entity<MovieAndTvshowNews>(entity =>
@@ -130,12 +130,12 @@ namespace MoviePick.Database
                 entity.HasOne(d => d.MovieAndTvshow)
                     .WithMany(p => p.MovieAndTvshowNews)
                     .HasForeignKey(d => d.MovieAndTvshowId)
-                    .HasConstraintName("FK__MovieAndT__Movie__4AB81AF0");
+                    .HasConstraintName("FK__MovieAndT__Movie__45F365D3");
 
                 entity.HasOne(d => d.News)
                     .WithMany(p => p.MovieAndTvshowNews)
                     .HasForeignKey(d => d.NewsId)
-                    .HasConstraintName("FK__MovieAndT__NewsI__4BAC3F29");
+                    .HasConstraintName("FK__MovieAndT__NewsI__46E78A0C");
             });
 
             modelBuilder.Entity<MovieAndTvshowPerson>(entity =>
@@ -150,19 +150,19 @@ namespace MoviePick.Database
                     .WithMany(p => p.MovieAndTvshowPerson)
                     .HasForeignKey(d => d.MovieAndTvshowId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__Movie__4E88ABD4");
+                    .HasConstraintName("FK__MovieAndT__Movie__47DBAE45");
 
                 entity.HasOne(d => d.Person)
                     .WithMany(p => p.MovieAndTvshowPerson)
                     .HasForeignKey(d => d.PersonId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__Perso__4F7CD00D");
+                    .HasConstraintName("FK__MovieAndT__Perso__48CFD27E");
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.MovieAndTvshowPerson)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MovieAndT__RoleI__5070F446");
+                    .HasConstraintName("FK__MovieAndT__RoleI__49C3F6B7");
             });
 
             modelBuilder.Entity<News>(entity =>
@@ -181,7 +181,7 @@ namespace MoviePick.Database
                     .WithMany(p => p.News)
                     .HasForeignKey(d => d.AuthorId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__News__AuthorId__3D5E1FD2");
+                    .HasConstraintName("FK__News__AuthorId__4AB81AF0");
             });
 
             modelBuilder.Entity<Person>(entity =>
@@ -191,6 +191,8 @@ namespace MoviePick.Database
                     .HasMaxLength(500);
 
                 entity.Property(e => e.DateOfBirth).HasColumnType("date");
+
+                entity.Property(e => e.DateOfDeath).HasColumnType("date");
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
@@ -230,7 +232,7 @@ namespace MoviePick.Database
                     .WithMany(p => p.Quote)
                     .HasForeignKey(d => d.MovieAndTvshowId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Quote__MovieAndT__403A8C7D");
+                    .HasConstraintName("FK__Quote__MovieAndT__4BAC3F29");
             });
 
             modelBuilder.Entity<Rating>(entity =>
@@ -241,13 +243,13 @@ namespace MoviePick.Database
                     .WithMany(p => p.Rating)
                     .HasForeignKey(d => d.AppUserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__AppUserI__4316F928");
+                    .HasConstraintName("FK__Rating__AppUserI__4CA06362");
 
                 entity.HasOne(d => d.MovieAndTvshow)
                     .WithMany(p => p.Rating)
                     .HasForeignKey(d => d.MovieAndTvshowId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__MovieAnd__440B1D61");
+                    .HasConstraintName("FK__Rating__MovieAnd__4D94879B");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -271,7 +273,7 @@ namespace MoviePick.Database
                     .WithMany(p => p.TvshowSeason)
                     .HasForeignKey(d => d.MovieAndTvshowId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TVShowSea__Movie__33D4B598");
+                    .HasConstraintName("FK__TVShowSea__Movie__4E88ABD4");
             });
 
             modelBuilder.Entity<TvshowSeasonEpisode>(entity =>
@@ -290,7 +292,7 @@ namespace MoviePick.Database
                     .WithMany(p => p.TvshowSeasonEpisode)
                     .HasForeignKey(d => d.TvshowSeasonId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TVShowSea__TVSho__36B12243");
+                    .HasConstraintName("FK__TVShowSea__TVSho__4F7CD00D");
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -323,7 +325,7 @@ namespace MoviePick.Database
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.UserTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__User__UserTypeId__267ABA7A");
+                    .HasConstraintName("FK__User__UserTypeId__5070F446");
             });
 
             modelBuilder.Entity<UserType>(entity =>

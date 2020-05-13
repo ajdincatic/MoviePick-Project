@@ -46,6 +46,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPlaceBirth = new System.Windows.Forms.TextBox();
             this.rtxtBio = new System.Windows.Forms.RichTextBox();
+            this.dtpDateOfDeath = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkDead = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,7 +133,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(81, 355);
+            this.label2.Location = new System.Drawing.Point(81, 403);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 29);
             this.label2.TabIndex = 31;
@@ -152,16 +155,17 @@
             // 
             this.dtDateOfBirth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtDateOfBirth.Location = new System.Drawing.Point(341, 233);
             this.dtDateOfBirth.Name = "dtDateOfBirth";
-            this.dtDateOfBirth.Size = new System.Drawing.Size(414, 34);
+            this.dtDateOfBirth.Size = new System.Drawing.Size(207, 34);
             this.dtDateOfBirth.TabIndex = 29;
             // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(619, 568);
+            this.btnSave.Location = new System.Drawing.Point(619, 607);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(136, 44);
             this.btnSave.TabIndex = 41;
@@ -183,7 +187,7 @@
             this.txtPlaceOfBirth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPlaceOfBirth.AutoSize = true;
             this.txtPlaceOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlaceOfBirth.Location = new System.Drawing.Point(81, 296);
+            this.txtPlaceOfBirth.Location = new System.Drawing.Point(81, 344);
             this.txtPlaceOfBirth.Name = "txtPlaceOfBirth";
             this.txtPlaceOfBirth.Size = new System.Drawing.Size(153, 29);
             this.txtPlaceOfBirth.TabIndex = 42;
@@ -204,7 +208,7 @@
             // 
             this.txtPlaceBirth.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPlaceBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlaceBirth.Location = new System.Drawing.Point(341, 291);
+            this.txtPlaceBirth.Location = new System.Drawing.Point(341, 339);
             this.txtPlaceBirth.Name = "txtPlaceBirth";
             this.txtPlaceBirth.Size = new System.Drawing.Size(414, 34);
             this.txtPlaceBirth.TabIndex = 43;
@@ -212,11 +216,47 @@
             // rtxtBio
             // 
             this.rtxtBio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rtxtBio.Location = new System.Drawing.Point(341, 355);
+            this.rtxtBio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtBio.Location = new System.Drawing.Point(341, 403);
             this.rtxtBio.Name = "rtxtBio";
             this.rtxtBio.Size = new System.Drawing.Size(414, 156);
             this.rtxtBio.TabIndex = 30;
             this.rtxtBio.Text = "";
+            // 
+            // dtpDateOfDeath
+            // 
+            this.dtpDateOfDeath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpDateOfDeath.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateOfDeath.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateOfDeath.Location = new System.Drawing.Point(341, 283);
+            this.dtpDateOfDeath.Name = "dtpDateOfDeath";
+            this.dtpDateOfDeath.Size = new System.Drawing.Size(207, 34);
+            this.dtpDateOfDeath.TabIndex = 44;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(81, 288);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 29);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Date of death";
+            // 
+            // chkDead
+            // 
+            this.chkDead.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chkDead.AutoSize = true;
+            this.chkDead.Checked = true;
+            this.chkDead.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDead.Location = new System.Drawing.Point(554, 290);
+            this.chkDead.Name = "chkDead";
+            this.chkDead.Size = new System.Drawing.Size(99, 29);
+            this.chkDead.TabIndex = 46;
+            this.chkDead.Text = "Disable";
+            this.chkDead.UseVisualStyleBackColor = true;
             // 
             // frmPersonAdd
             // 
@@ -224,6 +264,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1337, 763);
+            this.Controls.Add(this.chkDead);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtpDateOfDeath);
             this.Controls.Add(this.txtPlaceBirth);
             this.Controls.Add(this.txtPlaceOfBirth);
             this.Controls.Add(this.btnSave);
@@ -267,5 +310,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPlaceBirth;
         private System.Windows.Forms.RichTextBox rtxtBio;
+        private System.Windows.Forms.DateTimePicker dtpDateOfDeath;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkDead;
     }
 }

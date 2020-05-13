@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace MoviePick.Interfaces
 {
-    interface IUserService
+    public interface IUserService
     {
         Data.Model.User Authenticiraj(UserLoginRequest request);
+        List<Data.Model.User> Get(UserSearchRequest search);
+        Data.Model.User GetById(int Id);
+        Data.Model.User Insert(UserUpsertRequest request);
+        Data.Model.User Update(int Id, UserUpsertRequest request);
+        Data.Model.User Delete(int Id);
     }
 }

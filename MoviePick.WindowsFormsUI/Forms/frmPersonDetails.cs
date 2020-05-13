@@ -39,6 +39,11 @@ namespace MoviePick.WindowsFormsUI.Forms
                 txtFirstName.Text = _person.FirstName;
                 txtLastName.Text = _person.LastName;
                 txtGender.Text = _person.Gender;
+                if (_person.DateOfDeath != null)
+                {
+                    dtpDateOfDeath.Value = (DateTime)_person.DateOfDeath;
+                    chkDisable.Checked = false;
+                }
                 if (_person.Photo != null && _person.Photo.Length > 0)
                 {
                     pictureBox1.Image = GetImage(_person.Photo);
@@ -74,32 +79,18 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             request.Biography = rtxtBio.Text;
             request.DateOfBirth = dtDateOfBirth.Value;
+            request.DateOfDeath = dtDateOfBirth.Value;
             request.PlaceOfBirth = txtPlaceBirth.Text;
             request.FirstName = txtFirstName.Text;
             request.LastName = txtLastName.Text;
             request.Gender = txtGender.Text;
+            if (!chkDisable.Checked)
+                request.DateOfDeath = dtpDateOfDeath.Value;
 
             await _servicePerson.Update<Data.Model.Person>(_person.Id, request);
 
             MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
-        }
-
-        private void btnImage_Click(object sender, EventArgs e)
-        {
-            var result = openFileDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                var fileName = openFileDialog.FileName;
-                var file = File.ReadAllBytes(fileName);
-                request.Photo = file;
-                txtPhoto.Text = fileName;
-
-                Image img = Image.FromFile(fileName);
-                pictureBox1.Image = img;
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
         }
 
         private static Image GetImage(byte[] data)
@@ -114,9 +105,26 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             var item = dgvMTVS.SelectedRows[0].DataBoundItem;
             var MTVS = await _serviceMTVS.GetById<MovieAndTvshow>((item as frmPersonDetailsVM).Id);
-            frmMovieTvShowAdd frm = new frmMovieTvShowAdd(MTVS);
+            frmMovieAndTvShowDetails frm = new frmMovieAndTvShowDetails(MTVS);
             frm.WindowState = FormWindowState.Normal;
             frm.Show();
+        }
+
+        private void btnImage_Click_1(object sender, EventArgs e)
+        {
+            var result = openFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog.FileName;
+                var file = File.ReadAllBytes(fileName);
+                request.Photo = file;
+                txtPhoto.Text = fileName;
+
+                Image img = Image.FromFile(fileName);
+                pictureBox1.Image = img;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
         }
     }
 }

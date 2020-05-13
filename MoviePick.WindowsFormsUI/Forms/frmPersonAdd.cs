@@ -37,6 +37,8 @@ namespace MoviePick.WindowsFormsUI.Forms
             request.FirstName = txtFirstName.Text;
             request.LastName = txtLastName.Text;
             request.Gender = txtGender.Text;
+            if (!chkDead.Checked)
+                request.DateOfDeath = dtpDateOfDeath.Value;
 
             await _servicePerson.Insert<Data.Model.Person>(request);
 

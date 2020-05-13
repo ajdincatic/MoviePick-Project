@@ -19,7 +19,8 @@ namespace MoviePick.Services
 
         public override List<Data.Model.MovieAndTvshow> Get(MovieAndTvshowSearchRequest search)
         {
-            var query = _context.MovieAndTvshow.Include(x => x.ProductionCompany)
+            var query = _context.MovieAndTvshow
+                .Include(x => x.ProductionCompany)
                 .Include("MovieAndTvshowGenre.Genre")
                 .Include("MovieAndTvshowPerson.Role")
                 .Include("MovieAndTvshowPerson.Person")
@@ -44,7 +45,6 @@ namespace MoviePick.Services
             {
                 query = query.Where(x => x.TvshowSeason.Count() == 0);
             }
-
 
             return _mapper.Map<List<Data.Model.MovieAndTvshow>>(query.ToList());
         }
