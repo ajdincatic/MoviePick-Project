@@ -60,6 +60,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
                 btnEditCast.Visible = true;
                 clbGenre.Visible = false;
+                btnQuotes.Visible = true;
             }
         }
 
@@ -182,6 +183,12 @@ namespace MoviePick.WindowsFormsUI.Forms
         private void btnEditSeasons_Click(object sender, EventArgs e)
         {
             frmTvShowSeasonEpisodesAdd frm = new frmTvShowSeasonEpisodesAdd(_MTVS);
+            frm.ShowDialog();
+        }
+
+        private void btnQuotes_Click(object sender, EventArgs e)
+        {
+            frmQuoteDetails frm = new frmQuoteDetails(_MTVS);
             frm.ShowDialog();
         }
     }

@@ -102,6 +102,12 @@
     <Compile Include="Forms\frmPersonSearch.Designer.cs">
       <DependentUpon>frmPersonSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmQuoteDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQuoteDetails.Designer.cs">
+      <DependentUpon>frmQuoteDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmTvShowSeasonEpisodesAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonSearch.resx">
       <DependentUpon>frmPersonSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQuoteDetails.resx">
+      <DependentUpon>frmQuoteDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTvShowSeasonEpisodesAdd.resx">
       <DependentUpon>frmTvShowSeasonEpisodesAdd.cs</DependentUpon>

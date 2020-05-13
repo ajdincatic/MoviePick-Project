@@ -38,16 +38,18 @@
             this.Finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductionCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtTitle = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbGenre = new System.Windows.Forms.ComboBox();
-            this.Genre = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.rbMovie = new System.Windows.Forms.RadioButton();
-            this.rbTvShow = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbTvShow = new System.Windows.Forms.RadioButton();
+            this.rbMovie = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Genre = new System.Windows.Forms.Label();
+            this.cmbGenre = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMTVS)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMTVS
@@ -155,98 +157,6 @@
             this.Genres.Name = "Genres";
             this.Genres.ReadOnly = true;
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(987, 92);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(111, 36);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(358, 100);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(305, 28);
-            this.txtTitle.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(353, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 24);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Title";
-            // 
-            // cmbGenre
-            // 
-            this.cmbGenre.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbGenre.FormattingEnabled = true;
-            this.cmbGenre.Location = new System.Drawing.Point(567, 176);
-            this.cmbGenre.Name = "cmbGenre";
-            this.cmbGenre.Size = new System.Drawing.Size(305, 30);
-            this.cmbGenre.TabIndex = 6;
-            this.cmbGenre.SelectionChangeCommitted += new System.EventHandler(this.cmbGenre_SelectionChangeCommitted);
-            // 
-            // Genre
-            // 
-            this.Genre.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Genre.AutoSize = true;
-            this.Genre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Genre.Location = new System.Drawing.Point(561, 144);
-            this.Genre.Name = "Genre";
-            this.Genre.Size = new System.Drawing.Size(63, 24);
-            this.Genre.TabIndex = 7;
-            this.Genre.Text = "Genre";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(707, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 24);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Type";
-            // 
-            // rbMovie
-            // 
-            this.rbMovie.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rbMovie.AutoSize = true;
-            this.rbMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMovie.Location = new System.Drawing.Point(714, 100);
-            this.rbMovie.Name = "rbMovie";
-            this.rbMovie.Size = new System.Drawing.Size(82, 28);
-            this.rbMovie.TabIndex = 10;
-            this.rbMovie.TabStop = true;
-            this.rbMovie.Text = "Movie";
-            this.rbMovie.UseVisualStyleBackColor = true;
-            // 
-            // rbTvShow
-            // 
-            this.rbTvShow.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rbTvShow.AutoSize = true;
-            this.rbTvShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTvShow.Location = new System.Drawing.Point(819, 100);
-            this.rbTvShow.Name = "rbTvShow";
-            this.rbTvShow.Size = new System.Drawing.Size(105, 28);
-            this.rbTvShow.TabIndex = 11;
-            this.rbTvShow.TabStop = true;
-            this.rbTvShow.Text = "Tv Show";
-            this.rbTvShow.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -258,27 +168,130 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "* double click on record for more details";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.rbTvShow);
+            this.groupBox1.Controls.Add(this.rbMovie);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.Genre);
+            this.groupBox1.Controls.Add(this.cmbGenre);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtTitle);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Location = new System.Drawing.Point(319, 37);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(854, 200);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filters";
+            // 
+            // rbTvShow
+            // 
+            this.rbTvShow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbTvShow.AutoSize = true;
+            this.rbTvShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTvShow.Location = new System.Drawing.Point(521, 61);
+            this.rbTvShow.Name = "rbTvShow";
+            this.rbTvShow.Size = new System.Drawing.Size(105, 28);
+            this.rbTvShow.TabIndex = 19;
+            this.rbTvShow.TabStop = true;
+            this.rbTvShow.Text = "Tv Show";
+            this.rbTvShow.UseVisualStyleBackColor = true;
+            // 
+            // rbMovie
+            // 
+            this.rbMovie.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbMovie.AutoSize = true;
+            this.rbMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMovie.Location = new System.Drawing.Point(416, 61);
+            this.rbMovie.Name = "rbMovie";
+            this.rbMovie.Size = new System.Drawing.Size(82, 28);
+            this.rbMovie.TabIndex = 18;
+            this.rbMovie.TabStop = true;
+            this.rbMovie.Text = "Movie";
+            this.rbMovie.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(409, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 24);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Type";
+            // 
+            // Genre
+            // 
+            this.Genre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Genre.AutoSize = true;
+            this.Genre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Genre.Location = new System.Drawing.Point(263, 105);
+            this.Genre.Name = "Genre";
+            this.Genre.Size = new System.Drawing.Size(63, 24);
+            this.Genre.TabIndex = 16;
+            this.Genre.Text = "Genre";
+            // 
+            // cmbGenre
+            // 
+            this.cmbGenre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbGenre.FormattingEnabled = true;
+            this.cmbGenre.Location = new System.Drawing.Point(269, 137);
+            this.cmbGenre.Name = "cmbGenre";
+            this.cmbGenre.Size = new System.Drawing.Size(305, 30);
+            this.cmbGenre.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(55, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 24);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Title";
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(60, 61);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(305, 28);
+            this.txtTitle.TabIndex = 13;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(689, 53);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(111, 36);
+            this.btnSearch.TabIndex = 12;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
             // frmMovieTvShowSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1477, 799);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.rbTvShow);
-            this.Controls.Add(this.rbMovie);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Genre);
-            this.Controls.Add(this.cmbGenre);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTitle);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dgvMTVS);
             this.Name = "frmMovieTvShowSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Search Movie and TV Show";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvMTVS)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,14 +300,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvMTVS;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbGenre;
-        private System.Windows.Forms.Label Genre;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton rbMovie;
-        private System.Windows.Forms.RadioButton rbTvShow;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
@@ -303,5 +308,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Finished;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductionCompany;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genres;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbTvShow;
+        private System.Windows.Forms.RadioButton rbMovie;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Genre;
+        private System.Windows.Forms.ComboBox cmbGenre;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

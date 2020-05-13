@@ -53,6 +53,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnEditCast = new System.Windows.Forms.Button();
             this.btnEditSeasons = new System.Windows.Forms.Button();
+            this.btnQuotes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -308,11 +309,26 @@
             this.btnEditSeasons.Visible = false;
             this.btnEditSeasons.Click += new System.EventHandler(this.btnEditSeasons_Click);
             // 
+            // btnQuotes
+            // 
+            this.btnQuotes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnQuotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuotes.Location = new System.Drawing.Point(662, 690);
+            this.btnQuotes.Name = "btnQuotes";
+            this.btnQuotes.Size = new System.Drawing.Size(136, 44);
+            this.btnQuotes.TabIndex = 42;
+            this.btnQuotes.Text = "Quotes";
+            this.btnQuotes.UseVisualStyleBackColor = true;
+            this.btnQuotes.Visible = false;
+            this.btnQuotes.Click += new System.EventHandler(this.btnQuotes_Click);
+            // 
             // frmMovieTvShowAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1350, 760);
+            this.Controls.Add(this.btnQuotes);
             this.Controls.Add(this.btnEditSeasons);
             this.Controls.Add(this.btnEditCast);
             this.Controls.Add(this.pictureBox2);
@@ -371,5 +387,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnEditCast;
         private System.Windows.Forms.Button btnEditSeasons;
+        private System.Windows.Forms.Button btnQuotes;
     }
 }

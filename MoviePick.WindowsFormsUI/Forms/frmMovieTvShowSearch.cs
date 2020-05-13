@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -113,6 +114,11 @@ namespace MoviePick.WindowsFormsUI.Forms
             frmMovieTvShowAdd frm = new frmMovieTvShowAdd(MTVS);
             frm.WindowState = FormWindowState.Normal;
             frm.Show();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
         }
     }
 }
