@@ -151,5 +151,19 @@ namespace MoviePick.WindowsFormsUI.Forms
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void addToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmNewsAdd frm = new frmNewsAdd();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void searchToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmNewsSearch frm = new frmNewsSearch();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

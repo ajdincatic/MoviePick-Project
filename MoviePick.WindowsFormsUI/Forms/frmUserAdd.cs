@@ -79,7 +79,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 var mtvs = await _serviceUser.Insert<User>(request);
             }
 
-            MessageBox.Show("Operation successfully completed, now assign cast !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Operation successfully completed!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 

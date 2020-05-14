@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>C:\Users\Ajdin\Downloads\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Flurl, Version=2.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Flurl.2.8.2\lib\net40\Flurl.dll</HintPath>
@@ -46,6 +64,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,12 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
-    <Compile Include="Forms\frmAddNews.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmAddNews.Designer.cs">
-      <DependentUpon>frmAddNews.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmCastAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +114,18 @@
     </Compile>
     <Compile Include="Forms\frmMovieTvShowSearch.Designer.cs">
       <DependentUpon>frmMovieTvShowSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNewsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNewsAdd.Designer.cs">
+      <DependentUpon>frmNewsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNewsSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNewsSearch.Designer.cs">
+      <DependentUpon>frmNewsSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPersonAdd.cs">
       <SubType>Form</SubType>
@@ -152,9 +177,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\frmAddNews.resx">
-      <DependentUpon>frmAddNews.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCastAdd.resx">
       <DependentUpon>frmCastAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +194,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMovieTvShowSearch.resx">
       <DependentUpon>frmMovieTvShowSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNewsAdd.resx">
+      <DependentUpon>frmNewsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNewsSearch.resx">
+      <DependentUpon>frmNewsSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonAdd.resx">
       <DependentUpon>frmPersonAdd.cs</DependentUpon>
@@ -226,6 +254,21 @@
       <Project>{f1c6e348-c285-425f-86bb-818a1997e92c}</Project>
       <Name>MoviePick.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

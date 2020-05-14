@@ -17,6 +17,7 @@ namespace MoviePick.WindowsFormsUI.Forms
     public partial class frmUserSearch : Form
     {
         APIService _serviceUser = new APIService("User");
+        APIService _serviceUserType = new APIService("UserType");
 
         public frmUserSearch()
         {
@@ -28,12 +29,29 @@ namespace MoviePick.WindowsFormsUI.Forms
             await LoadUsers();
         }
 
+        private async Task LoadTypes()
+        {
+            var list = await _serviceUserType.GetAll<List<UserType>>();
+            list.Insert(0, new UserType());
+            cmbType.ValueMember = "Id";
+            cmbType.DisplayMember = "Type";
+            cmbType.DataSource = list;
+        }
+
         private async Task LoadUsers()
         {
             UserSearchRequest request = new UserSearchRequest
             {
                 Username = txtSearch.Text
             };
+
+            var id = cmbType.SelectedValue;
+
+            if (int.TryParse(id.ToString(), out int ID))
+            {
+                request.UserTypeId = ID;
+            }
+
             var list = await _serviceUser.GetAll<List<User>>(request);
             List<frmUserSearchVM> vm = new List<frmUserSearchVM>();
             foreach (var item in list)
@@ -55,6 +73,8 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async void frmUserSearch_Load(object sender, EventArgs e)
         {
+            dgvUser.AutoGenerateColumns = false;
+            await LoadTypes();
             await LoadUsers();
         }
 

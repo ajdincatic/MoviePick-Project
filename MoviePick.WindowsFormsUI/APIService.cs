@@ -42,7 +42,7 @@ namespace eProdaja.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("Niste authentificirani");
+                    //MessageBox.Show("Niste authentificirani");
                 }
                 throw;
             }

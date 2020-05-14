@@ -32,6 +32,11 @@ namespace MoviePick.Services
                 query = query.Where(x => x.FirstName.StartsWith(search.Username));
             }
 
+            if (search?.UserTypeId != null && search?.UserTypeId != 0)
+            {
+                query = query.Where(x => x.UserTypeId == search.UserTypeId);
+            }
+
             return _mapper.Map<List<Data.Model.User>>(query.ToList());
         }
 

@@ -17,8 +17,5 @@ namespace MoviePick.WindowsFormsUI.Forms
             InitializeComponent();
         }
 
-        private void frmHome_Load(object sender, EventArgs e)
-        {
-        }
     }
 }

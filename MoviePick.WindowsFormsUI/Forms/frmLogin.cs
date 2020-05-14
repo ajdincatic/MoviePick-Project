@@ -30,10 +30,11 @@ namespace MoviePick.WindowsFormsUI.Forms
 
                 frmIndex frm = new frmIndex();
                 frm.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Wrong username or password.", "Warining", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Warining", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
