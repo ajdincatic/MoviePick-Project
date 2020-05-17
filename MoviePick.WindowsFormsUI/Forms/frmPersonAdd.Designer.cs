@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPersonAdd));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.txtGender = new System.Windows.Forms.TextBox();
@@ -49,7 +50,9 @@
             this.dtpDateOfDeath = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.chkDead = new System.Windows.Forms.CheckBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -64,6 +67,7 @@
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(55, 34);
             this.txtGender.TabIndex = 35;
+            this.txtGender.Validating += new System.ComponentModel.CancelEventHandler(this.txtGender_Validating);
             // 
             // label4
             // 
@@ -95,6 +99,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(414, 34);
             this.txtLastName.TabIndex = 33;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
             // pictureBox1
             // 
@@ -127,6 +132,8 @@
             this.txtPhoto.Name = "txtPhoto";
             this.txtPhoto.Size = new System.Drawing.Size(414, 34);
             this.txtPhoto.TabIndex = 39;
+            this.txtPhoto.Visible = false;
+            this.txtPhoto.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhoto_Validating);
             // 
             // label2
             // 
@@ -181,6 +188,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(414, 34);
             this.txtFirstName.TabIndex = 25;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
             // 
             // txtPlaceOfBirth
             // 
@@ -212,6 +220,7 @@
             this.txtPlaceBirth.Name = "txtPlaceBirth";
             this.txtPlaceBirth.Size = new System.Drawing.Size(414, 34);
             this.txtPlaceBirth.TabIndex = 43;
+            this.txtPlaceBirth.Validating += new System.ComponentModel.CancelEventHandler(this.txtPlaceBirth_Validating);
             // 
             // rtxtBio
             // 
@@ -222,6 +231,7 @@
             this.rtxtBio.Size = new System.Drawing.Size(414, 156);
             this.rtxtBio.TabIndex = 30;
             this.rtxtBio.Text = "";
+            this.rtxtBio.Validating += new System.ComponentModel.CancelEventHandler(this.rtxtBio_Validating);
             // 
             // dtpDateOfDeath
             // 
@@ -258,6 +268,10 @@
             this.chkDead.Text = "Disable";
             this.chkDead.UseVisualStyleBackColor = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmPersonAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,6 +301,7 @@
             this.Text = "Add person";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +328,6 @@
         private System.Windows.Forms.DateTimePicker dtpDateOfDeath;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkDead;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

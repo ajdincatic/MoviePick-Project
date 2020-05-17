@@ -33,18 +33,21 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async void btnAdd_Click(object sender, EventArgs e)
         {
-            request.Content = txtContent.Text;
-            request.Title = txtTitle.Text;
-            request.DateTimeOfNews = DateTime.Now;
-            var x = await _serviceUser.GetAll<List<User>>(new UserSearchRequest { Username = APIService.username, UserTypeId = 1 });
-            request.AuthorId = x.FirstOrDefault().Id;
+            if (this.ValidateChildren())
+            {
+                request.Content = txtContent.Text;
+                request.Title = txtTitle.Text;
+                request.DateTimeOfNews = DateTime.Now;
+                var x = await _serviceUser.GetAll<List<User>>(new UserSearchRequest { Username = APIService.username, UserTypeId = 1 });
+                request.AuthorId = x.FirstOrDefault().Id;
 
-            if (_news == null)
-                await _serviceNews.Insert<News>(request);
-            else
-                await _serviceNews.Update<News>(_news.Id, request);
-            MessageBox.Show("Operation successfully completed!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+                if (_news == null)
+                    await _serviceNews.Insert<News>(request);
+                else
+                    await _serviceNews.Update<News>(_news.Id, request);
+                MessageBox.Show("Operation successfully completed!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
         }
 
         private void btnAddImage_Click(object sender, EventArgs e)
@@ -84,6 +87,45 @@ namespace MoviePick.WindowsFormsUI.Forms
                     request.CoverPhoto = _news.CoverPhoto;
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
+                button1.Visible = true;
+            }
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await _serviceNews.Delete<User>(_news.Id);
+            MessageBox.Show("Operation successfully completed!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void txtImage_Validating(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void txtTitle_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                errorProvider.SetError(txtTitle, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtTitle, null);
+            }
+        }
+
+        private void txtContent_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtContent.Text))
+            {
+                errorProvider.SetError(txtContent, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtContent, null);
             }
         }
     }

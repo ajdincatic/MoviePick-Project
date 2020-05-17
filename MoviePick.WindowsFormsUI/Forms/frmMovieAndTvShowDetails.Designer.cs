@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMovieAndTvShowDetails));
             this.btnQuotes = new System.Windows.Forms.Button();
             this.btnEditCast = new System.Windows.Forms.Button();
@@ -53,7 +54,9 @@
             this.chkFinished = new System.Windows.Forms.CheckBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnQuotes
@@ -132,6 +135,7 @@
             this.txtBudget.Name = "txtBudget";
             this.txtBudget.Size = new System.Drawing.Size(414, 27);
             this.txtBudget.TabIndex = 61;
+            this.txtBudget.Validating += new System.ComponentModel.CancelEventHandler(this.txtBudget_Validating);
             // 
             // label3
             // 
@@ -166,6 +170,7 @@
             this.btnImage.TabIndex = 58;
             this.btnImage.Text = "Add poster";
             this.btnImage.UseVisualStyleBackColor = true;
+            this.btnImage.Click += new System.EventHandler(this.btnImage_Click_1);
             // 
             // txtPoster
             // 
@@ -175,6 +180,7 @@
             this.txtPoster.Name = "txtPoster";
             this.txtPoster.Size = new System.Drawing.Size(414, 27);
             this.txtPoster.TabIndex = 57;
+            this.txtPoster.Visible = false;
             // 
             // label6
             // 
@@ -206,6 +212,7 @@
             this.txtRtime.Name = "txtRtime";
             this.txtRtime.Size = new System.Drawing.Size(414, 27);
             this.txtRtime.TabIndex = 54;
+            this.txtRtime.Validating += new System.ComponentModel.CancelEventHandler(this.txtRtime_Validating);
             // 
             // label4
             // 
@@ -226,6 +233,7 @@
             this.txtLang.Name = "txtLang";
             this.txtLang.Size = new System.Drawing.Size(414, 27);
             this.txtLang.TabIndex = 52;
+            this.txtLang.Validating += new System.ComponentModel.CancelEventHandler(this.txtLang_Validating);
             // 
             // Language
             // 
@@ -258,6 +266,7 @@
             this.rtxtDescription.Size = new System.Drawing.Size(414, 156);
             this.rtxtDescription.TabIndex = 49;
             this.rtxtDescription.Text = "";
+            this.rtxtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.rtxtDescription_Validating);
             // 
             // dtRelaseDate
             // 
@@ -278,6 +287,7 @@
             this.cmbProductionComp.Name = "cmbProductionComp";
             this.cmbProductionComp.Size = new System.Drawing.Size(414, 28);
             this.cmbProductionComp.TabIndex = 46;
+            this.cmbProductionComp.Validating += new System.ComponentModel.CancelEventHandler(this.cmbProductionComp_Validating);
             // 
             // chkFinished
             // 
@@ -299,6 +309,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(414, 27);
             this.txtTitle.TabIndex = 44;
+            this.txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtTitle_Validating);
             // 
             // label1
             // 
@@ -310,6 +321,10 @@
             this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 43;
             this.label1.Text = "Title";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmMovieAndTvShowDetails
             // 
@@ -342,6 +357,7 @@
             this.Name = "frmMovieAndTvShowDetails";
             this.Text = "Detail Movie And Tv Show";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,5 +389,6 @@
         private System.Windows.Forms.CheckBox chkFinished;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

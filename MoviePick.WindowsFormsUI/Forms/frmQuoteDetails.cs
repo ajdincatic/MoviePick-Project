@@ -44,13 +44,16 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async void btnAdd_Click(object sender, EventArgs e)
         {
-            QuoteUpsertRequest request = new QuoteUpsertRequest
+            if (this.ValidateChildren())
             {
-                MovieAndTvshowId = _MTVS.Id,
-                QuoteText = txtQuote.Text
-            };
-            await _serviceQuote.Insert<Quote>(request);
-            await LoadQuotes();
+                QuoteUpsertRequest request = new QuoteUpsertRequest
+                {
+                    MovieAndTvshowId = _MTVS.Id,
+                    QuoteText = txtQuote.Text
+                };
+                await _serviceQuote.Insert<Quote>(request);
+                await LoadQuotes();
+            }
         }
 
         private async void dgvQuotes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -62,6 +65,19 @@ namespace MoviePick.WindowsFormsUI.Forms
                 var MTVS = await _serviceQuote.Delete<Quote>(item.Id);
             }
             await LoadQuotes();
+        }
+
+        private void txtQuote_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtQuote.Text))
+            {
+                errorProvider.SetError(txtQuote, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtQuote, null);
+            }
         }
     }
 }

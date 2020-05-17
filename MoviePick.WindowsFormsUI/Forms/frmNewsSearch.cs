@@ -27,6 +27,7 @@ namespace MoviePick.WindowsFormsUI.Forms
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             await LoadNews();
+            await LoadUserNews();
         }
 
         private async void frmNewsSearch_Load(object sender, EventArgs e)

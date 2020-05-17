@@ -34,7 +34,6 @@ namespace MoviePick.WindowsFormsUI.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Warining", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -36,8 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvQuotes = new System.Windows.Forms.DataGridView();
             this.QuoteText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuotes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -73,6 +76,7 @@
             this.txtQuote.Size = new System.Drawing.Size(609, 115);
             this.txtQuote.TabIndex = 2;
             this.txtQuote.Text = "";
+            this.txtQuote.Validating += new System.ComponentModel.CancelEventHandler(this.txtQuote_Validating);
             // 
             // label1
             // 
@@ -130,6 +134,10 @@
             this.QuoteText.Name = "QuoteText";
             this.QuoteText.ReadOnly = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmQuoteDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -142,6 +150,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuotes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,5 +163,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuoteText;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbCast = new System.Windows.Forms.GroupBox();
@@ -52,9 +53,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbRoleSearch = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbCast.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCast)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // gbCast
@@ -97,6 +100,7 @@
             this.txtPersonId.Size = new System.Drawing.Size(25, 27);
             this.txtPersonId.TabIndex = 7;
             this.txtPersonId.Visible = false;
+            this.txtPersonId.Validating += new System.ComponentModel.CancelEventHandler(this.txtPersonId_Validating);
             // 
             // label4
             // 
@@ -204,6 +208,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(348, 27);
             this.txtName.TabIndex = 1;
+            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // cmbRole
             // 
@@ -325,6 +330,10 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "* double click on record to delete";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmCastAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -341,6 +350,7 @@
             this.gbCast.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCast)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,5 +380,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

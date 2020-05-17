@@ -30,6 +30,7 @@ namespace MoviePick.WindowsFormsUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMovieTvShowAdd));
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -53,7 +54,9 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.chkTvShow = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,6 +78,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(414, 34);
             this.txtTitle.TabIndex = 1;
+            this.txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtTitle_Validating);
             // 
             // chkFinished
             // 
@@ -98,6 +102,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.cmbProductionComp.Name = "cmbProductionComp";
             this.cmbProductionComp.Size = new System.Drawing.Size(414, 37);
             this.cmbProductionComp.TabIndex = 3;
+            this.cmbProductionComp.Validating += new System.ComponentModel.CancelEventHandler(this.cmbProductionComp_Validating);
             // 
             // clbGenre
             // 
@@ -108,6 +113,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.clbGenre.Name = "clbGenre";
             this.clbGenre.Size = new System.Drawing.Size(327, 234);
             this.clbGenre.TabIndex = 4;
+            this.clbGenre.Validating += new System.ComponentModel.CancelEventHandler(this.clbGenre_Validating);
             // 
             // dtRelaseDate
             // 
@@ -117,6 +123,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.dtRelaseDate.Name = "dtRelaseDate";
             this.dtRelaseDate.Size = new System.Drawing.Size(414, 34);
             this.dtRelaseDate.TabIndex = 5;
+            this.dtRelaseDate.Validating += new System.ComponentModel.CancelEventHandler(this.dtRelaseDate_Validating);
             // 
             // rtxtDescription
             // 
@@ -127,6 +134,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.rtxtDescription.Size = new System.Drawing.Size(414, 156);
             this.rtxtDescription.TabIndex = 6;
             this.rtxtDescription.Text = "";
+            this.rtxtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.rtxtDescription_Validating);
             // 
             // label2
             // 
@@ -147,6 +155,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.txtLang.Name = "txtLang";
             this.txtLang.Size = new System.Drawing.Size(414, 34);
             this.txtLang.TabIndex = 11;
+            this.txtLang.Validating += new System.ComponentModel.CancelEventHandler(this.txtLang_Validating);
             // 
             // Language
             // 
@@ -167,6 +176,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.txtRtime.Name = "txtRtime";
             this.txtRtime.Size = new System.Drawing.Size(414, 34);
             this.txtRtime.TabIndex = 13;
+            this.txtRtime.Validating += new System.ComponentModel.CancelEventHandler(this.txtRtime_Validating);
             // 
             // label4
             // 
@@ -209,6 +219,8 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.txtPoster.Name = "txtPoster";
             this.txtPoster.Size = new System.Drawing.Size(414, 34);
             this.txtPoster.TabIndex = 18;
+            this.txtPoster.Visible = false;
+            this.txtPoster.Validating += new System.ComponentModel.CancelEventHandler(this.txtPoster_Validating);
             // 
             // btnImage
             // 
@@ -242,6 +254,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.txtBudget.Name = "txtBudget";
             this.txtBudget.Size = new System.Drawing.Size(414, 34);
             this.txtBudget.TabIndex = 22;
+            this.txtBudget.Validating += new System.ComponentModel.CancelEventHandler(this.txtBudget_Validating);
             // 
             // label3
             // 
@@ -282,6 +295,10 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.pictureBox2.TabIndex = 39;
             this.pictureBox2.TabStop = false;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmMovieTvShowAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -313,6 +330,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             this.Text = "Add Movie and TV Show";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,5 +360,6 @@ namespace MoviePick.WindowsFormsUI.Forms
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.CheckBox chkTvShow;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

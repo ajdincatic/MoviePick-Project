@@ -70,22 +70,6 @@ namespace MoviePick.WindowsFormsUI.Forms
             cmbProductionComp.DisplayMember = "ProductionCompanyName";
         }
 
-        private void btnImage_Click(object sender, EventArgs e)
-        {
-            var result = openFileDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                var fileName = openFileDialog.FileName;
-                var file = File.ReadAllBytes(fileName);
-                request.Poster = file;
-                txtPoster.Text = fileName;
-
-                Image img = Image.FromFile(fileName);
-                pictureBox2.Image = img;
-                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-        }
 
         private static Image GetImage(byte[] data)
         {
@@ -99,24 +83,27 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            request.Title = txtTitle.Text;
-            request.Budget = double.Parse(txtBudget.Text);
-            request.Description = rtxtDescription.Text;
-            request.Finished = chkFinished.Checked;
-            request.Language = txtLang.Text;
-            request.NumberOfRatings = 0;
-            request.ReleaseDate = dtRelaseDate.Value;
-            request.RunningTime = txtRtime.Text;
-
-            var idProductionComp = cmbProductionComp.SelectedValue;
-
-            if (int.TryParse(idProductionComp.ToString(), out int idProductionCompany))
+            if (this.ValidateChildren())
             {
-                request.ProductionCompanyId = idProductionCompany;
-            }
+                request.Title = txtTitle.Text;
+                request.Budget = double.Parse(txtBudget.Text);
+                request.Description = rtxtDescription.Text;
+                request.Finished = chkFinished.Checked;
+                request.Language = txtLang.Text;
+                request.NumberOfRatings = 0;
+                request.ReleaseDate = dtRelaseDate.Value;
+                request.RunningTime = txtRtime.Text;
 
-            var mtvs = await _serviceMovieAndTvShow.Update<MovieAndTvshow>(_MTVS.Id, request);
-            MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var idProductionComp = cmbProductionComp.SelectedValue;
+
+                if (int.TryParse(idProductionComp.ToString(), out int idProductionCompany))
+                {
+                    request.ProductionCompanyId = idProductionCompany;
+                }
+
+                var mtvs = await _serviceMovieAndTvShow.Update<MovieAndTvshow>(_MTVS.Id, request);
+                MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnEditCast_Click_1(object sender, EventArgs e)
@@ -145,6 +132,121 @@ namespace MoviePick.WindowsFormsUI.Forms
                     btnEditSeasons.Visible = true;
                 else
                     btnEditSeasons.Visible = false;
+            }
+        }
+
+        private void txtTitle_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                errorProvider.SetError(txtTitle, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtTitle, null);
+            }
+        }
+
+        private void rtxtDescription_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(rtxtDescription.Text))
+            {
+                errorProvider.SetError(rtxtDescription, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(rtxtDescription, null);
+            }
+        }
+
+        private void txtLang_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtLang.Text))
+            {
+                errorProvider.SetError(txtLang, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtLang, null);
+            }
+        }
+
+        private void txtRtime_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtRtime.Text))
+            {
+                errorProvider.SetError(txtRtime, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtRtime, null);
+            }
+
+            try
+            {
+                int.Parse(txtRtime.Text);
+            }
+            catch (Exception ex)
+            {
+                errorProvider.SetError(txtRtime, "Requiered integer.");
+                e.Cancel = true;
+            };
+        }
+
+        private void cmbProductionComp_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbProductionComp.SelectedIndex == 0)
+            {
+                errorProvider.SetError(cmbProductionComp, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(cmbProductionComp, null);
+            }
+        }
+
+        private void txtBudget_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBudget.Text))
+            {
+                errorProvider.SetError(txtBudget, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtBudget, null);
+            }
+
+            try
+            {
+                int.Parse(txtBudget.Text);
+            }
+            catch (Exception ex)
+            {
+                errorProvider.SetError(txtBudget, "Requiered integer.");
+                e.Cancel = true;
+            };
+        }
+
+        private void btnImage_Click_1(object sender, EventArgs e)
+        {
+            var result = openFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog.FileName;
+                var file = File.ReadAllBytes(fileName);
+                request.Poster = file;
+                txtPoster.Text = fileName;
+
+                Image img = Image.FromFile(fileName);
+                pictureBox2.Image = img;
+                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
     }

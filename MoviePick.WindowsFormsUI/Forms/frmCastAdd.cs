@@ -120,29 +120,32 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async void btnAddCast_Click(object sender, EventArgs e)
         {
-            MovieAndTvshowPersonUpsertRequest request = new MovieAndTvshowPersonUpsertRequest()
+            if (this.ValidateChildren())
             {
-                NameInMovie = txtName.Text,
-                MovieAndTvshowId = MTVS.Id,
-                PersonId = int.Parse(txtPersonId.Text)
-            };
+                MovieAndTvshowPersonUpsertRequest request = new MovieAndTvshowPersonUpsertRequest()
+                {
+                    NameInMovie = txtName.Text,
+                    MovieAndTvshowId = MTVS.Id,
+                    PersonId = int.Parse(txtPersonId.Text)
+                };
 
-            var idRole = cmbRole.SelectedValue;
+                var idRole = cmbRole.SelectedValue;
 
-            if (int.TryParse(idRole.ToString(), out int id))
-            {
-                request.RoleId = id;
-                cmbRoleSearch.SelectedValue = cmbRole.SelectedValue;
+                if (int.TryParse(idRole.ToString(), out int id))
+                {
+                    request.RoleId = id;
+                    cmbRoleSearch.SelectedValue = cmbRole.SelectedValue;
+                }
+
+                await _serviceCast.Insert<Data.Model.MovieAndTvshowPerson>(request);
+
+                MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtName.Text = "";
+                txtPerson.Text = "";
+                txtPersonId.Text = "";
+
+                await LoadPersons();
             }
-
-            await _serviceCast.Insert<Data.Model.MovieAndTvshowPerson>(request);
-
-            MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txtName.Text = "";
-            txtPerson.Text = "";
-            txtPersonId.Text = "";
-
-            await LoadPersons();
         }
 
         private async void cmbRoleSearch_SelectionChangeCommitted(object sender, EventArgs e)
@@ -165,6 +168,35 @@ namespace MoviePick.WindowsFormsUI.Forms
             {
                 var MTVS = await _serviceCast.Delete<MovieAndTvshowPerson>(item.MTVSPId);
                 await LoadPersons();
+            }
+        }
+
+        private void txtPersonId_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPersonId.Text))
+            {
+                errorProvider.SetError(txtPersonId, "Required");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtPersonId, null);
+            }
+        }
+
+        private void txtName_Validating(object sender, CancelEventArgs e)
+        {
+            if(cmbRole.SelectedIndex == 0)
+            {
+                if (string.IsNullOrWhiteSpace(txtName.Text))
+                {
+                    errorProvider.SetError(txtName, "Required");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    errorProvider.SetError(txtName, null);
+                }
             }
         }
     }

@@ -42,7 +42,11 @@ namespace eProdaja.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    //MessageBox.Show("Niste authentificirani");
+                    MessageBox.Show("Wrong username or password.", "Warining", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
+                {
+                    MessageBox.Show("You are not administrator.", "Warining", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 throw;
             }

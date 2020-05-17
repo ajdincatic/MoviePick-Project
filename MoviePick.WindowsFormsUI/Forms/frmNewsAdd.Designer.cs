@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewsAdd));
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtPlaceOfBirth = new System.Windows.Forms.Label();
@@ -38,7 +39,10 @@
             this.txtImage = new System.Windows.Forms.TextBox();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -49,6 +53,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(699, 34);
             this.txtTitle.TabIndex = 67;
+            this.txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtTitle_Validating);
             // 
             // txtPlaceOfBirth
             // 
@@ -70,6 +75,7 @@
             this.txtContent.Size = new System.Drawing.Size(699, 191);
             this.txtContent.TabIndex = 68;
             this.txtContent.Text = "";
+            this.txtContent.Validating += new System.ComponentModel.CancelEventHandler(this.txtContent_Validating);
             // 
             // label1
             // 
@@ -113,6 +119,8 @@
             this.txtImage.Name = "txtImage";
             this.txtImage.Size = new System.Drawing.Size(321, 27);
             this.txtImage.TabIndex = 72;
+            this.txtImage.Visible = false;
+            this.txtImage.Validating += new System.ComponentModel.CancelEventHandler(this.txtImage_Validating);
             // 
             // btnAddImage
             // 
@@ -130,11 +138,29 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(790, 683);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 36);
+            this.button1.TabIndex = 74;
+            this.button1.Text = "Delete";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmNewsAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 755);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAddImage);
             this.Controls.Add(this.txtImage);
             this.Controls.Add(this.pictureBox1);
@@ -148,6 +174,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmNewsAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +191,7 @@
         private System.Windows.Forms.TextBox txtImage;
         private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
