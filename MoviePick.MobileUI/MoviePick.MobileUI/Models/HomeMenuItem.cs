@@ -7,7 +7,8 @@ namespace MoviePick.MobileUI.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        MTVS
     }
     public class HomeMenuItem
     {
