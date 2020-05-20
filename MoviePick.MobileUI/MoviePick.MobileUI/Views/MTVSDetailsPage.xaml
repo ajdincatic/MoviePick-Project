@@ -3,13 +3,162 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
              mc:Ignorable="d"
              x:Class="MoviePick.MobileUI.Views.MTVSDetailsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ContentPage.BindingContext>
+        <vm:MTVSDetailsViewModel></vm:MTVSDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image
+            Grid.Column="0"
+            Grid.Row="0"
+            HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" 
+            Source="{Binding mtvs.Poster, Converter={StaticResource imgConv}}"></Image>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Padding="20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                FontSize="Small"
+                VerticalOptions="StartAndExpand"
+                Text="{Binding MTVSYear}"></Label>
+            
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                FontSize="Small"
+                VerticalOptions="StartAndExpand"
+                Text="{Binding Genres}"></Label>
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                HorizontalOptions="End"
+                FontSize="Micro"
+                Text="Rating"></Label>
+            <Slider 
+                Grid.Row="2"
+                Grid.Column="1"
+                Maximum="100" HorizontalOptions="FillAndExpand"></Slider>
+            <Label
+                Grid.Row="2"
+                Grid.Column="2"
+                FontSize="Micro"
+                HorizontalOptions="Start"
+                Text="20%"></Label>
+            
+            <Label
+                HorizontalOptions="End"
+                Grid.Row="3"
+                Grid.Column="0"
+                FontSize="Micro"
+                Text="Your rating"></Label>
+            <Slider 
+                Grid.Row="3"
+                Grid.Column="1"
+                Maximum="100" HorizontalOptions="FillAndExpand"></Slider>
+            <Label
+                Grid.Row="3"
+                Grid.Column="2"
+                FontSize="Micro"
+                HorizontalOptions="Start"
+                Text="80%"></Label>
+        </Grid>
+
+        <StackLayout
+            Grid.Row="1"
+            Grid.Column="0">
+            <Label
+                FontSize="Subtitle"
+                Text="Director"></Label>
+            <Label
+                FontSize="Micro"
+                Text="Clint Eastwood"></Label>
         </StackLayout>
-    </ContentPage.Content>
+            
+        <StackLayout
+            Grid.Row="2"
+            Grid.Column="0">
+            <Label
+                FontSize="Subtitle"
+                Text="Writter"></Label>
+            <Label
+                FontSize="Micro"
+                Text="Clint Eastwood"></Label>
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="3"
+            Grid.ColumnSpan="3">
+            <Label
+                FontSize="Subtitle"
+                Text="Actors"></Label>
+            <ListView ItemsSource="{Binding CastList}" BackgroundColor="AntiqueWhite">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image WidthRequest="80" HeightRequest="80" Source="{Binding Person.Photo, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Person.LastName}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding Person.FirstName}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding NameInMovie}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="12" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </Grid>
 </ContentPage>

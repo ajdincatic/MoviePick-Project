@@ -224,9 +224,7 @@ namespace MoviePick.Database
             {
                 entity.Property(e => e.MovieAndTvshowId).HasColumnName("MovieAndTVShowId");
 
-                entity.Property(e => e.QuoteText)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.QuoteText).HasMaxLength(1000);
 
                 entity.HasOne(d => d.MovieAndTvshow)
                     .WithMany(p => p.Quote)

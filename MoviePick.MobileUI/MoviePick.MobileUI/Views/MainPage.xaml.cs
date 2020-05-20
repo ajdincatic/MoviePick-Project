@@ -33,9 +33,6 @@ namespace MoviePick.MobileUI.Views
                     case (int)MenuItemType.Browse:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
                     case (int)MenuItemType.MTVS:
                         MenuPages.Add(id, new NavigationPage(new MTVSListPage()));
                         break;

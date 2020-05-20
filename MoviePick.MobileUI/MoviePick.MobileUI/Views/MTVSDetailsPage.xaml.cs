@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MoviePick.MobileUI.Models;
+using MoviePick.MobileUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,20 @@ namespace MoviePick.MobileUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MTVSDetailsPage : ContentPage
     {
-        public MTVSDetailsPage(MoviePick.Data.Model.MovieAndTvshow movieAndTvshow)
+        MTVSDetailsViewModel model = null;
+        public MTVSDetailsPage(Data.Model.MovieAndTvshow movieAndTvshow)
         {
             InitializeComponent();
+            BindingContext = model = new MTVSDetailsViewModel()
+            {
+                mtvs = movieAndTvshow
+            };
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.LoadActor();
         }
     }
 }

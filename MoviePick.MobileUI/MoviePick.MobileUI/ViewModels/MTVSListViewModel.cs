@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using MoviePick.Data.Model;
+using MoviePick.MobileUI.Models;
 
 namespace MoviePick.MobileUI.ViewModels
 {
@@ -14,7 +15,7 @@ namespace MoviePick.MobileUI.ViewModels
     {
         private readonly APIService _MTVSService = new APIService("MovieAndTvShow");
 
-        public ObservableCollection<MovieAndTvshow> MTVSList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshow>();
+        public ObservableCollection<Data.Model.MovieAndTvshow> MTVSList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshow>();
 
         public MTVSListViewModel()
         {
@@ -28,9 +29,9 @@ namespace MoviePick.MobileUI.ViewModels
             var listMTVS = await _MTVSService.Get<List<MovieAndTvshow>>(null);
 
             MTVSList.Clear();
-            foreach (var MTVS in listMTVS)
+            foreach (var mtvs in listMTVS)
             {
-                MTVSList.Add(MTVS);
+                MTVSList.Add(mtvs);
             }
         }
     }

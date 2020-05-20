@@ -31,18 +31,15 @@
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
+                                    <Label Text="{Binding ReleaseDate.Year}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="12" />
                                     <Label Text="{Binding Description}" 
                                     d:Text="Item descripton"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="13" />
-                                    <Label Text="{Binding RunningTime}" 
-                                    d:Text="Item descripton"
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="13" />
-                                    <Label Text="{Binding Language}" 
-                                    d:Text="Item descripton"
-                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                    FontSize="13" />
+                                    FontSize="11" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
