@@ -26,8 +26,26 @@ namespace MoviePick.MobileUI.Views
 
         protected async override void OnAppearing()
         {
+            await model.LoadActors();
+            await model.LoadDirectors();
             base.OnAppearing();
-            await model.LoadActor();
+        }
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.Item as Data.Model.MovieAndTvshowPerson;
+
+            await Navigation.PushAsync(new PersonDetailsPage(item.Person));
+        }
+
+        private void btnMovieChat_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFullCast_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

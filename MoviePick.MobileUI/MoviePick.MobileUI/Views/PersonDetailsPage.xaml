@@ -6,9 +6,9 @@
              xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
              xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
              mc:Ignorable="d"
-             x:Class="MoviePick.MobileUI.Views.MTVSDetailsPage">
+             x:Class="MoviePick.MobileUI.Views.PersonDetailsPage">
     <ContentPage.BindingContext>
-        <vm:MTVSDetailsViewModel></vm:MTVSDetailsViewModel>
+        <vm:PersonDetailsViewModel></vm:PersonDetailsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -20,8 +20,7 @@
             <RowDefinition Height="200"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -32,7 +31,7 @@
             Grid.Column="0"
             Grid.Row="0"
             HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" 
-            Source="{Binding mtvs.Poster, Converter={StaticResource imgConv}}"></Image>
+            Source="{Binding person.Photo, Converter={StaticResource imgConv}}"></Image>
 
         <Grid
             Grid.Row="0"
@@ -59,15 +58,15 @@
                 FontSize="20"
                 FontAttributes="Bold"
                 VerticalOptions="StartAndExpand"
-                Text="{Binding MTVSYear}"></Label>
-
+                Text="{Binding FullName}"></Label>
+            
             <Label
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 FontSize="14"
                 VerticalOptions="StartAndExpand"
-                Text="{Binding Genres}"></Label>
+                Text="{Binding PersonDates}"></Label>
             
             <Label
                 Grid.Row="2"
@@ -75,101 +74,42 @@
                 Grid.ColumnSpan="3"
                 FontSize="11"
                 VerticalOptions="StartAndExpand"
-                Text="{Binding RunningTimeInMins}"></Label>
+                Text="{Binding person.PlaceOfBirth}"></Label>
             
             <Label
                 Grid.Row="3"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
+                Grid.RowSpan="2"
                 FontSize="10"
                 VerticalOptions="StartAndExpand"
-                Text="{Binding mtvs.Description}"></Label>
-            
-            
+                Text="{Binding person.Biography}"></Label>
+
         </Grid>
-
         <Label
             Grid.Row="1"
-            x:Name="RatingValue"
             Grid.Column="0"
-            HorizontalOptions="End"
-            FontSize="Micro"
-            Text="Rating"></Label>
-        <Slider 
-            x:Name="RatingSlider"
-            Grid.Row="1"
-            IsEnabled="False"
-            Grid.Column="1"
-            Maximum="100" HorizontalOptions="FillAndExpand"></Slider>
-        <Label
+            FontSize="Subtitle"
+            Text="Filmography"></Label>
+
+        <Button
             Grid.Row="1"
             Grid.Column="2"
-            FontSize="Micro"
-            HorizontalOptions="Start"
-            Text="{Binding Source={x:Reference RatingSlider},Path=Value}"
-            ></Label>
-
-        <Label
-            HorizontalOptions="End"
-            Grid.Row="2"
-            Grid.Column="0"
-            FontSize="Micro"
-            Text="Your rating"></Label>
-        <Slider 
-            x:Name="UserRatingSlider"
-            Grid.Row="2"
-            Grid.Column="1"
-            Maximum="100" HorizontalOptions="FillAndExpand"></Slider>
-        <Label
-            Grid.Row="2"
-            Grid.Column="2"
-            FontSize="Micro"
-            HorizontalOptions="Start"
-            Text="{Binding Source={x:Reference UserRatingSlider},Path=Value}"
-            ></Label>
-
+            x:Name="btnOrderType"
+            Clicked="btnOrderType_Clicked"
+            Text="Order by : desc"></Button>
+        
         <StackLayout
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.ColumnSpan="3">
-
-            <Label
-                FontSize="13"
-                Text="Director"></Label>
-
-            <ListView HeightRequest="40" ItemsSource="{Binding DirectorsList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical">
-                                    <Label
-                                        FontSize="13"
-                                        FontAttributes="Bold">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Person.FirstName}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding Person.LastName}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <Label
-                FontSize="13"
-                Text="Actors"></Label>
-            <ListView ItemsSource="{Binding ActorsList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
+            
+            <ListView ItemsSource="{Binding MovieList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <StackLayout>
-                                    <Image WidthRequest="70" HeightRequest="70" Source="{Binding Person.Photo, Converter={StaticResource imgConv}}"></Image>
+                                    <Image WidthRequest="80" HeightRequest="80" Source="{Binding MovieAndTvshow.Poster, Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical">
                                     <Label
@@ -177,12 +117,18 @@
                                         FontAttributes="Bold">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding Person.FirstName}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding Person.LastName}" />
+                                                <Span Text="{Binding MovieAndTvshow.Title}"/>
+                                                <Span Text="("/>
+                                                <Span Text="{Binding MovieAndTvshow.ReleaseDate.Year}" />
+                                                <Span Text=")"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
+                                    <Label Text="{Binding Role.RoleName}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="12" />
                                     <Label Text="{Binding NameInMovie}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
@@ -194,33 +140,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
-
         </StackLayout>
-
-
-        <Button
-            x:Name="btnMovieChat"
-            Clicked="btnMovieChat_Clicked"
-            Grid.Row="4"
-            Grid.Column="0"
-            FontSize="Micro"
-            HorizontalOptions="Start"
-            Text="Movie Chat"
-            >
-        </Button>
-        
-        <Button
-            Clicked="btnFullCast_Clicked"
-            x:Name="btnFullCast"
-            Grid.Row="4"
-            Grid.Column="2"
-            FontSize="Micro"
-            HorizontalOptions="End"
-            Text="See full cast >"
-            >
-        </Button>
-        
 
     </Grid>
 </ContentPage>

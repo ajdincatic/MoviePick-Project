@@ -22,7 +22,9 @@ namespace MoviePick.Services
         public override List<Data.Model.MovieAndTvshowPerson> Get(MovieAndTvshowPersonSearchRequest request)
         {
             var query = _context.MovieAndTvshowPerson
-                .Include(x => x.MovieAndTvshow).Include(x => x.Person).Include(x => x.Role).AsQueryable();
+                .Include(x => x.MovieAndTvshow).Include(x => x.Person).Include(x => x.Role)
+                .Include("MovieAndTvshow.MovieAndTvshowGenre.Genre")
+                .AsQueryable();
 
             if (request?.RoleId != 0)
             {

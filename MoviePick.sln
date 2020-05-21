@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviePick.MobileUI.Android"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviePick.MobileUI.iOS", "MoviePick.MobileUI\MoviePick.MobileUI.iOS\MoviePick.MobileUI.iOS.csproj", "{50C08D6C-4932-4E11-907F-5948E5D56465}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviePick.MobileUI", "MoviePick.MobileUI\MoviePick.MobileUI\MoviePick.MobileUI.csproj", "{A4AA145F-C5E5-4BDB-9544-255C9E749FFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviePick.MobileUI", "MoviePick.MobileUI\MoviePick.MobileUI\MoviePick.MobileUI.csproj", "{A4AA145F-C5E5-4BDB-9544-255C9E749FFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,6 +4,7 @@ using MoviePick.Data.Request;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,16 +14,16 @@ namespace MoviePick.MobileUI.ViewModels
 {
     public class MTVSDetailsViewModel : BaseViewModel
     {
-        private readonly APIService _MTVSService = new APIService("MovieAndTvShow");
         private readonly APIService _CastService = new APIService("Cast");
 
         public Data.Model.MovieAndTvshow mtvs { get; set; }
 
-        public ObservableCollection<Data.Model.MovieAndTvshowPerson> CastList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
+        public ObservableCollection<Data.Model.MovieAndTvshowPerson> ActorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
+        public ObservableCollection<Data.Model.MovieAndTvshowPerson> DirectorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
 
         public MTVSDetailsViewModel()
         {
-            LoadActorsCommand = new Command(async () => await LoadActor());
+            LoadActorsCommand = new Command(async () => await LoadActors());
         }
 
         public string MTVSYear { 
@@ -48,9 +49,22 @@ namespace MoviePick.MobileUI.ViewModels
             }
         }
 
+        public string RunningTimeInMins
+        {
+            get
+            {
+                var str = string.Empty;
+                if (mtvs != null)
+                {
+                    return mtvs.RunningTime + " min";
+                }
+                return str;
+            }
+        }
+
         public ICommand LoadActorsCommand { get; set; }
 
-        public async Task LoadActor()
+        public async Task LoadActors()
         {
             var listCast = await _CastService.Get<List<Data.Model.MovieAndTvshowPerson>>(new MovieAndTvshowPersonSearchRequest()
             {
@@ -58,10 +72,25 @@ namespace MoviePick.MobileUI.ViewModels
                 RoleId = 1,
             });
 
-            CastList.Clear();
+            ActorsList.Clear();
             foreach (var person in listCast)
             {
-                CastList.Add(person);
+                ActorsList.Add(person);
+            }
+        }
+
+        public async Task LoadDirectors()
+        {
+            IEnumerable<MovieAndTvshowPerson> listCast = await _CastService.Get<List<Data.Model.MovieAndTvshowPerson>>(new MovieAndTvshowPersonSearchRequest()
+            {
+                MovieAndTvshowId = mtvs.Id,
+                RoleId = 2,
+            });
+
+            DirectorsList.Clear();
+            foreach (var person in listCast)
+            {
+                DirectorsList.Add(person);
             }
         }
     }
