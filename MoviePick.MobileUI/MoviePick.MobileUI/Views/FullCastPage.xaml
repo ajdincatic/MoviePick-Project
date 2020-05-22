@@ -3,13 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
              mc:Ignorable="d"
              x:Class="MoviePick.MobileUI.Views.FullCastPage">
+    <ContentPage.BindingContext>
+        <vm:FullCastViewModel></vm:FullCastViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+        <Label Text="Roles"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Picker ItemsSource="{Binding RolesList}" SelectedItem="{Binding SelectedRole}" ItemDisplayBinding="{Binding RoleName}"></Picker>
+            <ListView ItemsSource="{Binding Cast}" ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <StackLayout>
+                                <Image WidthRequest="70" HeightRequest="70" Source="{Binding Person.Photo, Converter={StaticResource imgConv}}"></Image>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <Label
+                                    FontSize="13"
+                                    FontAttributes="Bold">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Person.FirstName}"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding Person.LastName}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="{Binding NameInMovie}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="10" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

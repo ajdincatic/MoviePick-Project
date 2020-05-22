@@ -20,10 +20,10 @@ namespace MoviePick.MobileUI.ViewModels
 
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> ActorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> DirectorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
+        public ObservableCollection<Data.Model.MovieAndTvshowPerson> PersonsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
 
         public MTVSDetailsViewModel()
         {
-            LoadActorsCommand = new Command(async () => await LoadActors());
         }
 
         public string MTVSYear { 
@@ -62,16 +62,25 @@ namespace MoviePick.MobileUI.ViewModels
             }
         }
 
-        public ICommand LoadActorsCommand { get; set; }
-
-        public async Task LoadActors()
+        public async Task LoadPersons()
         {
             var listCast = await _CastService.Get<List<Data.Model.MovieAndTvshowPerson>>(new MovieAndTvshowPersonSearchRequest()
             {
                 MovieAndTvshowId = mtvs.Id,
-                RoleId = 1,
             });
 
+            PersonsList.Clear();
+            foreach (var person in listCast)
+            {
+                PersonsList.Add(person);
+            }
+            LoadActors();
+            LoadDirectors();
+        }
+
+        public void LoadActors()
+        {
+            var listCast = PersonsList.Where(x => x.RoleId == 1).ToList();
             ActorsList.Clear();
             foreach (var person in listCast)
             {
@@ -79,13 +88,9 @@ namespace MoviePick.MobileUI.ViewModels
             }
         }
 
-        public async Task LoadDirectors()
+        public void LoadDirectors()
         {
-            IEnumerable<MovieAndTvshowPerson> listCast = await _CastService.Get<List<Data.Model.MovieAndTvshowPerson>>(new MovieAndTvshowPersonSearchRequest()
-            {
-                MovieAndTvshowId = mtvs.Id,
-                RoleId = 2,
-            });
+            var listCast = PersonsList.Where(x => x.RoleId == 2).ToList();
 
             DirectorsList.Clear();
             foreach (var person in listCast)

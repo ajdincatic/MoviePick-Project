@@ -1,10 +1,11 @@
 ﻿using MoviePick.Data.Model;
+using MoviePick.MobileUI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,13 +14,28 @@ namespace MoviePick.MobileUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FullCastPage : ContentPage
     {
-        public MovieAndTvshow _MovieAndTvshow { get; }
+        public FullCastViewModel model = null;
 
-        public FullCastPage(Data.Model.MovieAndTvshow movieAndTvshow)
+        public FullCastPage(ObservableCollection<Data.Model.MovieAndTvshowPerson> movieAndTvshowPerson)
         {
             InitializeComponent();
-            _MovieAndTvshow = movieAndTvshow;
+            BindingContext = model = new FullCastViewModel()
+            {
+                Cast = movieAndTvshowPerson
+            };
         }
 
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.Item as Data.Model.MovieAndTvshowPerson;
+
+            await Navigation.PushAsync(new PersonDetailsPage(item.Person));
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.LoadRoles();
+        }
     }
 }

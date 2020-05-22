@@ -26,8 +26,7 @@ namespace MoviePick.MobileUI.Views
 
         protected async override void OnAppearing()
         {
-            await model.LoadActors();
-            await model.LoadDirectors();
+            await model.LoadPersons();
             base.OnAppearing();
         }
 
@@ -38,14 +37,13 @@ namespace MoviePick.MobileUI.Views
             await Navigation.PushAsync(new PersonDetailsPage(item.Person));
         }
 
-        private void btnMovieChat_Clicked(object sender, EventArgs e)
+        private async void btnMovieChat_Clicked(object sender, EventArgs e)
         {
-
         }
 
-        private void btnFullCast_Clicked(object sender, EventArgs e)
+        private async void btnFullCast_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new FullCastPage(model.PersonsList));
         }
     }
 }
