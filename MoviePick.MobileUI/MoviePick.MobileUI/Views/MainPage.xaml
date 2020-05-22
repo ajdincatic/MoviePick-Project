@@ -5,7 +5,8 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:views="clr-namespace:MoviePick.MobileUI.Views"
-            x:Class="MoviePick.MobileUI.Views.MainPage">
+            x:Class="MoviePick.MobileUI.Views.MainPage"
+            >
 
     <MasterDetailPage.Master>
         <views:MenuPage />
