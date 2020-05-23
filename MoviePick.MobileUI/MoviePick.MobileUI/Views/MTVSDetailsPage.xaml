@@ -211,6 +211,17 @@
         </Button>
         
         <Button
+            Clicked="btnEpisodes_Clicked"
+            x:Name="btnEpisodes"
+            Grid.Row="4"
+            Grid.Column="1"
+            FontSize="Micro"
+            HorizontalOptions="FillAndExpand"
+            Text="Episodes"
+            >
+        </Button>
+         
+        <Button
             Clicked="btnFullCast_Clicked"
             x:Name="btnFullCast"
             Grid.Row="4"

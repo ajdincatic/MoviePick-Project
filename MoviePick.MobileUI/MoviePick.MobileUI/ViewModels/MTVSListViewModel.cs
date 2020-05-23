@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using MoviePick.Data.Model;
 using MoviePick.MobileUI.Models;
+using MoviePick.Data.Request;
 
 namespace MoviePick.MobileUI.ViewModels
 {
@@ -26,7 +27,10 @@ namespace MoviePick.MobileUI.ViewModels
 
         public async Task Init()
         {
-            var listMTVS = await _MTVSService.Get<List<MovieAndTvshow>>(null);
+            var listMTVS = await _MTVSService.Get<List<MovieAndTvshow>>(new MovieAndTvshowSearchRequest
+            {
+                isTvShow = null
+            });
 
             MTVSList.Clear();
             foreach (var mtvs in listMTVS)

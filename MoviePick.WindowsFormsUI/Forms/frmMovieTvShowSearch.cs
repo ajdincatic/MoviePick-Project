@@ -84,6 +84,7 @@ namespace MoviePick.WindowsFormsUI.Forms
         private async void btnSearch_Click_1(object sender, EventArgs e)
         {
             await LoadMTVS();
+            cmbGenre.SelectedIndex = 0;
         }
 
         private async void cmbGenre_SelectionChangeCommitted_1(object sender, EventArgs e)
@@ -98,6 +99,9 @@ namespace MoviePick.WindowsFormsUI.Forms
             }
 
             var list = await _serviceMTVSGenre.GetAll<List<MovieTvShowGenre>>(searchRequest);
+
+            list = list.GroupBy(p => p.MovieAndTvshowId)
+                    .Select(g => g.First()).ToList();
 
             List<frmMovieTvShowSearchVM> vm = new List<frmMovieTvShowSearchVM>();
             foreach (var item in list)

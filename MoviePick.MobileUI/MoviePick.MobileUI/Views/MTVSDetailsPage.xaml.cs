@@ -22,6 +22,10 @@ namespace MoviePick.MobileUI.Views
             {
                 mtvs = movieAndTvshow
             };
+            if(model.mtvs.TvshowSeason.Count() == 0)
+            {
+                btnEpisodes.IsVisible = false;
+            }
         }
 
         protected async override void OnAppearing()
@@ -37,13 +41,18 @@ namespace MoviePick.MobileUI.Views
             await Navigation.PushAsync(new PersonDetailsPage(item.Person));
         }
 
-        private async void btnMovieChat_Clicked(object sender, EventArgs e)
+        private void btnMovieChat_Clicked(object sender, EventArgs e)
         {
         }
 
         private async void btnFullCast_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FullCastPage(model.PersonsList));
+        }
+
+        private void btnEpisodes_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

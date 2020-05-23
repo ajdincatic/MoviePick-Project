@@ -8,6 +8,6 @@ namespace MoviePick.Data.Request
     {
         public string Title { get; set; }
         public int ProductionCompanyId { get; set; }
-        public bool isTvShow { get; set; }
+        public bool? isTvShow { get; set; }
     }
 }

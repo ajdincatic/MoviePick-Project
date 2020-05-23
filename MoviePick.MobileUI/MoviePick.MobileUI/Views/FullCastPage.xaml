@@ -17,9 +17,6 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-        <Label Text="Roles"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <Picker ItemsSource="{Binding RolesList}" SelectedItem="{Binding SelectedRole}" ItemDisplayBinding="{Binding RoleName}"></Picker>
             <ListView ItemsSource="{Binding Cast}" ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
@@ -41,6 +38,11 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <Label Text="{Binding Role.RoleName}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="10" />
                                 <Label Text="{Binding NameInMovie}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 

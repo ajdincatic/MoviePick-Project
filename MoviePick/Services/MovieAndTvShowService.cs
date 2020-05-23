@@ -24,6 +24,7 @@ namespace MoviePick.Services
                 .Include("MovieAndTvshowGenre.Genre")
                 .Include("MovieAndTvshowPerson.Role")
                 .Include("MovieAndTvshowPerson.Person")
+                .Include(x => x.TvshowSeason)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Title))

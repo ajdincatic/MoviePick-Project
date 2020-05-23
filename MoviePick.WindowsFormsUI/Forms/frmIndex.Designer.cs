@@ -43,8 +43,9 @@
             this.searchToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.newsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.searchToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             this.movieAndTvShowToolStripMenuItem,
             this.personToolStripMenuItem,
             this.userToolStripMenuItem,
-            this.newsToolStripMenuItem});
+            this.newsToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1283, 28);
@@ -151,16 +153,23 @@
             // addToolStripMenuItem3
             // 
             this.addToolStripMenuItem3.Name = "addToolStripMenuItem3";
-            this.addToolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
+            this.addToolStripMenuItem3.Size = new System.Drawing.Size(136, 26);
             this.addToolStripMenuItem3.Text = "Add";
             this.addToolStripMenuItem3.Click += new System.EventHandler(this.addToolStripMenuItem3_Click);
             // 
             // searchToolStripMenuItem3
             // 
             this.searchToolStripMenuItem3.Name = "searchToolStripMenuItem3";
-            this.searchToolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
+            this.searchToolStripMenuItem3.Size = new System.Drawing.Size(136, 26);
             this.searchToolStripMenuItem3.Text = "Search";
             this.searchToolStripMenuItem3.Click += new System.EventHandler(this.searchToolStripMenuItem3_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // frmIndex
             // 
@@ -203,6 +212,7 @@
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

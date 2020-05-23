@@ -86,5 +86,10 @@ namespace MoviePick.WindowsFormsUI.Forms
             frm.WindowState = FormWindowState.Normal;
             frm.Show();
         }
+
+        private async void cmbType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            await LoadUsers();
+        }
     }
 }

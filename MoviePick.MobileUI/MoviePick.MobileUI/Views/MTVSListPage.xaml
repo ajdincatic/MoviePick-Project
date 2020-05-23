@@ -6,7 +6,8 @@
              xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
              xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
              mc:Ignorable="d"
-             x:Class="MoviePick.MobileUI.Views.MTVSListPage">
+             x:Class="MoviePick.MobileUI.Views.MTVSListPage"
+             Title="MoviePick">
     <ContentPage.BindingContext>
         <vm:MTVSListViewModel></vm:MTVSListViewModel>
     </ContentPage.BindingContext>
@@ -31,6 +32,11 @@
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
+                                    <Label Text="{Binding ReleaseDate.Year}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="12" />
                                     <Label Text="{Binding ReleaseDate.Year}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
