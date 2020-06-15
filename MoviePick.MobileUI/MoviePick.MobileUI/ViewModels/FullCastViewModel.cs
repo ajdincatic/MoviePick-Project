@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace MoviePick.MobileUI.ViewModels
 {
-    public class FullCastViewModel :BaseViewModel
+    public class FullCastViewModel : BaseViewModel
     {
         private readonly APIService _RoleService = new APIService("Role");
 

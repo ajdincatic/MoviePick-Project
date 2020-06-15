@@ -25,6 +25,12 @@ namespace MoviePick.MobileUI.Views
             };
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.LoadRoles();
+        }
+
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as Data.Model.MovieAndTvshowPerson;
@@ -32,10 +38,5 @@ namespace MoviePick.MobileUI.Views
             await Navigation.PushAsync(new PersonDetailsPage(item.Person));
         }
 
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            await model.LoadRoles();
-        }
     }
 }

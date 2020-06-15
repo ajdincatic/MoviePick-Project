@@ -109,7 +109,8 @@ namespace MoviePick.WindowsFormsUI.Forms
             {
                 EpisodeName = txtEpisodeName.Text,
                 AirDate = dtpAirDate.Value,
-                EpisodeNumber = int.Parse(txtEpNumber.Text)
+                EpisodeNumber = int.Parse(txtEpNumber.Text),
+                TvshowId = MTVS.Id
             };
 
             var idSeason = cmbSeasonAdd.SelectedValue;

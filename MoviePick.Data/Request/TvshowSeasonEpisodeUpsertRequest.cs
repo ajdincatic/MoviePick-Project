@@ -9,6 +9,7 @@ namespace MoviePick.Data.Request
         public string EpisodeName { get; set; }
         public DateTime AirDate { get; set; }
         public int TvshowSeasonId { get; set; }
+        public int TvshowId { get; set; }
         public int EpisodeNumber { get; set; }
     }
 }

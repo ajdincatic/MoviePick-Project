@@ -284,6 +284,8 @@ namespace MoviePick.Database
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.TvshowId).HasColumnName("TVShowId");
+
                 entity.Property(e => e.TvshowSeasonId).HasColumnName("TVShowSeasonId");
 
                 entity.HasOne(d => d.TvshowSeason)

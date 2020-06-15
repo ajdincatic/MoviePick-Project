@@ -18,8 +18,10 @@ namespace MoviePick.Data.Model
         public int NumberOfRatings { get; set; }
         public bool? Finished { get; set; }
         public int ProductionCompanyId { get; set; }
+        public string CalculatedRating { get; set; }
         public ProductionCompany ProductionCompany { get; set; }
         public ICollection<MovieTvShowGenre> MovieAndTvshowGenre { get; set; }
         public ICollection<TvshowSeason> TvshowSeason { get; set; }
+        public virtual ICollection<Rating> Rating { get; set; }
     }
 }

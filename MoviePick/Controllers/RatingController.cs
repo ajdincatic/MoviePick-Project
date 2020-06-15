@@ -9,7 +9,7 @@ using MoviePick.Interfaces;
 
 namespace MoviePick.Controllers
 {
-    [Route("api")]
+    [Route("api/[controller]")]
     [ApiController]
     public class RatingController : ControllerBase
     {
@@ -20,13 +20,13 @@ namespace MoviePick.Controllers
             _service = service;
         }
 
-        [HttpGet("/Rating")]
-        public List<Data.Model.Rating> Get(RatingSearchRequest request)
+        [HttpGet]
+        public List<Data.Model.Rating> Get([FromQuery]RatingSearchRequest request)
         {
             return _service.Get(request);
         }
 
-        [HttpPost("/Rating")]
+        [HttpPost]
         public Data.Model.Rating InsertRatingByUser(RatingUpsertRequest request)
         {
             return _service.InsertRatingByUser(request);

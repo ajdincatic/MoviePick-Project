@@ -11,22 +11,17 @@ using Xamarin.Forms.Xaml;
 namespace MoviePick.MobileUI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SeasonEpisodesPage : ContentPage
+    public partial class NewsDetailsPage : ContentPage
     {
-        SeasonEpisodesViewModel model = null;
-        public SeasonEpisodesPage(int mtvId)
+        NewsDetailsViewModel model = null;
+
+        public NewsDetailsPage(Data.Model.News news)
         {
             InitializeComponent();
-            BindingContext = model = new SeasonEpisodesViewModel
+            BindingContext = model = new NewsDetailsViewModel
             {
-                MTVSId = mtvId
+                news = news
             };
-        }
-
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            await model.Init();
         }
     }
 }

@@ -7,5 +7,6 @@ namespace MoviePick.Data.Request
     public class TvshowSeasonEpisodeSearchRequest
     {
         public int TvshowSeasonId { get; set; }
+        public int TvshowId { get; set; }
     }
 }

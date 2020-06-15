@@ -27,6 +27,11 @@ namespace MoviePick.Services
                 query = query.Where(x => x.TvshowSeasonId == search.TvshowSeasonId);
             }
 
+            if (search?.TvshowId != null && search?.TvshowId != 0)
+            {
+                query = query.Where(x => x.TvshowId == search.TvshowId);
+            }
+
             return _mapper.Map<List<Data.Model.TvshowSeasonEpisode>>(query.ToList());
         }
     }

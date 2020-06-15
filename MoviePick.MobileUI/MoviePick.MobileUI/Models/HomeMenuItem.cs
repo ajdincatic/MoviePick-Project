@@ -8,7 +8,8 @@ namespace MoviePick.MobileUI.Models
     {
         Browse,
         About,
-        MTVS
+        MTVS,
+        News
     }
     public class HomeMenuItem
     {

@@ -95,19 +95,22 @@
             HorizontalOptions="End"
             FontSize="Micro"
             Text="Rating"></Label>
-        <Slider 
-            x:Name="RatingSlider"
-            Grid.Row="1"
-            IsEnabled="False"
+        <Entry Grid.Row="1"
             Grid.Column="1"
-            Maximum="100" HorizontalOptions="FillAndExpand"></Slider>
+            IsReadOnly="True"
+            HorizontalTextAlignment="Center"
+            HorizontalOptions="FillAndExpand"
+            Text="{Binding mtvs.CalculatedRating}"
+            BackgroundColor="Green"
+            TextColor="White"
+            >
+        </Entry>
         <Label
             Grid.Row="1"
             Grid.Column="2"
             FontSize="Micro"
             HorizontalOptions="Start"
-            Text="{Binding Source={x:Reference RatingSlider},Path=Value}"
-            ></Label>
+        ></Label>
 
         <Label
             HorizontalOptions="End"
@@ -115,18 +118,22 @@
             Grid.Column="0"
             FontSize="Micro"
             Text="Your rating"></Label>
-        <Slider 
-            x:Name="UserRatingSlider"
-            Grid.Row="2"
+        <Entry Grid.Row="2"
             Grid.Column="1"
-            Maximum="100" HorizontalOptions="FillAndExpand"></Slider>
-        <Label
+            HorizontalTextAlignment="Center"
+            HorizontalOptions="FillAndExpand"
+            x:Name="UserRating"
+            Keyboard="Numeric"   
+            >
+        </Entry>
+        <Button
             Grid.Row="2"
             Grid.Column="2"
             FontSize="Micro"
             HorizontalOptions="Start"
-            Text="{Binding Source={x:Reference UserRatingSlider},Path=Value}"
-            ></Label>
+            Text="Submit"
+            Clicked="Button_Clicked"
+        ></Button>
 
         <StackLayout
             Grid.Row="3"
@@ -141,7 +148,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" >
                                     <Label
                                         FontSize="13"
                                         FontAttributes="Bold">
@@ -171,7 +178,7 @@
                                 <StackLayout>
                                     <Image WidthRequest="70" HeightRequest="70" Source="{Binding Person.Photo, Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical"  Margin="0,10,0,0">
                                     <Label
                                         FontSize="13"
                                         FontAttributes="Bold">

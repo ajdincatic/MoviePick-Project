@@ -17,7 +17,6 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Picker ItemsSource="{Binding RolesList}" SelectedItem="{Binding SelectedRole}" ItemDisplayBinding="{Binding RoleName}"></Picker>
             <ListView ItemsSource="{Binding Cast}" ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>

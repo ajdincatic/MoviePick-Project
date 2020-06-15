@@ -18,7 +18,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding MTVSList}" ItemTapped="ListView_ItemTapped">
+            <ListView x:Name="Lista" ItemsSource="{Binding MTVSList}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,13 +26,16 @@
                                 <StackLayout>
                                     <Image WidthRequest="120" HeightRequest="120" Source="{Binding Poster, Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" >
                                     <Label Text="{Binding Title}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
-                                    <Label Text="{Binding ReleaseDate.Year}" 
+                                    <Label Text="{Binding CalculatedRating}"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="White"
+                                    BackgroundColor="Green"
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
@@ -41,7 +44,7 @@
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="12" />
+                                    FontSize="11" />
                                     <Label Text="{Binding Description}" 
                                     d:Text="Item descripton"
                                     Style="{DynamicResource ListItemDetailTextStyle}"

@@ -25,6 +25,7 @@ namespace MoviePick.Services
                 .Include("MovieAndTvshowPerson.Role")
                 .Include("MovieAndTvshowPerson.Person")
                 .Include(x => x.TvshowSeason)
+                .Include(x => x.Rating)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Title))
@@ -47,7 +48,16 @@ namespace MoviePick.Services
                 query = query.Where(x => x.TvshowSeason.Count() == 0);
             }
 
-            return _mapper.Map<List<Data.Model.MovieAndTvshow>>(query.ToList());
+            var mapper = _mapper.Map<List<Data.Model.MovieAndTvshow>>(query.ToList());
+            foreach (var item in mapper)
+            {
+                if (item.Rating.Count() > 0)
+                    item.CalculatedRating = item.Rating.Average(x => x.RatingValue).ToString();
+                else
+                    item.CalculatedRating = "0";
+            }
+
+            return mapper;
         }
 
         public override Data.Model.MovieAndTvshow GetById(int Id)

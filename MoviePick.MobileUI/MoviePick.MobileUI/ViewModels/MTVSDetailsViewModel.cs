@@ -15,8 +15,10 @@ namespace MoviePick.MobileUI.ViewModels
     public class MTVSDetailsViewModel : BaseViewModel
     {
         private readonly APIService _CastService = new APIService("Cast");
+        private readonly APIService _RatingService = new APIService("Rating");
 
         public Data.Model.MovieAndTvshow mtvs { get; set; }
+        public string Rating { get; set; }
 
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> ActorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> DirectorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();

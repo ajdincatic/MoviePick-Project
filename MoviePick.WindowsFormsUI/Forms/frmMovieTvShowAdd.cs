@@ -124,7 +124,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
                 errorProvider.SetError(txtTitle, "Required");
-                e.Cancel = true;
+                //e.Cancel = true;
             }
             else
             {

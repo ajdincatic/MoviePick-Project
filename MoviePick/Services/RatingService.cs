@@ -24,7 +24,7 @@ namespace MoviePick.Services
         {
             var query = _context.Rating.AsQueryable();
 
-            if(request.AppUserId != 0)
+            if(request.MovieAndTvshowId != 0)
             {
                 query = query.Where(x => x.MovieAndTvshowId == request.MovieAndTvshowId);
             }
@@ -38,12 +38,20 @@ namespace MoviePick.Services
 
         public Data.Model.Rating InsertRatingByUser(RatingUpsertRequest request)
         {
-            var entity = _mapper.Map<Database.Rating>(request);
-
-            _context.Rating.Add(entity);
-            _context.SaveChanges();
-
-            return _mapper.Map<Data.Model.Rating>(entity);
+            var x = _context.Rating.Where(x => x.AppUserId == request.AppUserId && x.MovieAndTvshowId == request.MovieAndTvshowId).SingleOrDefault();
+            if (x != null)
+            {
+                x.RatingValue = request.RatingValue;
+                _context.SaveChanges();
+                return _mapper.Map<Data.Model.Rating>(x);
+            }
+            else
+            {
+                var entity = _mapper.Map<Database.Rating>(request);
+                _context.Rating.Add(entity);
+                _context.SaveChanges();
+                return _mapper.Map<Data.Model.Rating>(entity);
+            }
         }
     }
 }

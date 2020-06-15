@@ -10,6 +10,7 @@ namespace MoviePick.Database
         public string EpisodeName { get; set; }
         public DateTime AirDate { get; set; }
         public int? EpisodeNumber { get; set; }
+        public int? TvshowId { get; set; }
 
         public virtual TvshowSeason TvshowSeason { get; set; }
     }

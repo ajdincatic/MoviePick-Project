@@ -15,6 +15,7 @@ namespace MoviePick.MobileUI.ViewModels
     public class MTVSListViewModel
     {
         private readonly APIService _MTVSService = new APIService("MovieAndTvShow");
+        private readonly APIService _RatingService = new APIService("Rating");
 
         public ObservableCollection<Data.Model.MovieAndTvshow> MTVSList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshow>();
 

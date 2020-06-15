@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
+             mc:Ignorable="d"
+             x:Class="MoviePick.MobileUI.Views.NewsDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:NewsDetailsViewModel></vm:NewsDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Image WidthRequest="220" HeightRequest="220" Margin="10,0,0,0" Source="{Binding news.CoverPhoto, Converter={StaticResource imgConv}}"></Image>
+            <Label Text="{Binding news.Title}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title"></Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Author: "/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding news.Author.Username}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="{Binding news.Content}" HorizontalOptions="Start"></Label>
+            <Label Text="" ></Label>
+            <Label Text="{Binding news.DateTimeOfNews}" HorizontalOptions="End"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

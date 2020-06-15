@@ -4,29 +4,38 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
              mc:Ignorable="d"
-             x:Class="MoviePick.MobileUI.Views.SeasonEpisodesPage">
+             x:Class="MoviePick.MobileUI.Views.NewsPage">
     <ContentPage.BindingContext>
-        <vm:SeasonEpisodesViewModel></vm:SeasonEpisodesViewModel>
+        <vm:NewsViewModel></vm:NewsViewModel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding EpisodesList}" >
+        <StackLayout Padding="10">
+            <Label Text="Latest news!" FontSize="Medium" HorizontalOptions="Start"/>
+            <ListView ItemsSource="{Binding NewsList}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding EpisodeName}" 
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image WidthRequest="120" HeightRequest="120" Source="{Binding CoverPhoto, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Margin="0,30,0,0">
+                                    <Label Text="{Binding Title}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="16" />
-                                    <Label Text="{Binding AirDate.Date}" 
+                                    FontSize="14" />
+                                    <Label Text="{Binding DateTimeOfNews}" 
                                     d:Text="{Binding .}"
-                                    LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="12" />
+                                    FontSize="11" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
