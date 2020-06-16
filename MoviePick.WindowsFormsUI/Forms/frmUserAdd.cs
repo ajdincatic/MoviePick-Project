@@ -20,6 +20,8 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private User _user;
 
+        private List<User> Users = null;
+
         public frmUserAdd(User user = null)
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace MoviePick.WindowsFormsUI.Forms
         private async void frmUserAdd_Load(object sender, EventArgs e)
         {
             await LoadTypes();
+            await LoadUsers();
             if(_user != null)
             {
                 txtUsername.Text = _user.Username;
@@ -44,7 +47,6 @@ namespace MoviePick.WindowsFormsUI.Forms
                 txtPasswordConfirm.Enabled = false;
                 chkShow.Visible = false;
                 chkGenerate.Visible = false;
-                btnDelete.Visible = true;
             }
         }
 
@@ -56,6 +58,12 @@ namespace MoviePick.WindowsFormsUI.Forms
             cmbType.DisplayMember = "Type";
             cmbType.DataSource = list;
         }
+
+        private async Task LoadUsers()
+        {
+            Users = await _serviceUser.GetAll<List<User>>();
+        }
+
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -118,15 +126,15 @@ namespace MoviePick.WindowsFormsUI.Forms
             }
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Do you want do delete this record?", "Warining", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                var MTVS = await _serviceUser.Delete<User>(_user.Id);
-                this.Close();
-            }
-        }
+        //private async void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    DialogResult result = MessageBox.Show("Do you want do delete this record?", "Warining", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        var MTVS = await _serviceUser.Delete<User>(_user.Id);
+        //        this.Close();
+        //    }
+        //}
 
         private void txtFirstName_Validating(object sender, CancelEventArgs e)
         {
@@ -156,9 +164,20 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
         {
+            bool flag = false;
+            foreach (var item in Users)
+            {
+                if (item.Username == txtUsername.Text)
+                    flag = true;
+            }
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 errorProvider.SetError(txtUsername, "Required");
+                e.Cancel = true;
+            }
+            else if (flag)
+            {
+                errorProvider.SetError(txtUsername, "Username already exists");
                 e.Cancel = true;
             }
             else

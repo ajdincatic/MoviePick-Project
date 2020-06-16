@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MoviePick.Data.Request;
 using MoviePick.Database;
 using MoviePick.Interfaces;
@@ -22,7 +23,10 @@ namespace MoviePick.Services
 
         public List<Data.Model.Rating> Get(RatingSearchRequest request)
         {
-            var query = _context.Rating.AsQueryable();
+            var query = _context.Rating
+                .Include(x => x.MovieAndTvshow)
+                .Include(x => x.MovieAndTvshow.Rating)
+                .AsQueryable();
 
             if(request.MovieAndTvshowId != 0)
             {
@@ -49,6 +53,7 @@ namespace MoviePick.Services
             {
                 var entity = _mapper.Map<Database.Rating>(request);
                 _context.Rating.Add(entity);
+                _context.MovieAndTvshow.Where(x => x.Id == request.MovieAndTvshowId).SingleOrDefault().NumberOfRatings++;
                 _context.SaveChanges();
                 return _mapper.Map<Data.Model.Rating>(entity);
             }

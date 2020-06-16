@@ -12,7 +12,6 @@ using MoviePick.Interfaces;
 
 namespace MoviePick.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -30,24 +29,28 @@ namespace MoviePick.Controllers
             return _service.Get(search);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{Id}")]
         public Data.Model.User GetById(int Id)
         {
             return _service.GetById(Id);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public Data.Model.User Post(UserUpsertRequest request)
         {
             return _service.Insert(request);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{Id}")]
         public Data.Model.User Update(int Id, [FromBody]UserUpsertRequest request)
         {
             return _service.Update(Id, request);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{Id}")]
         public Data.Model.User Delete(int Id)
         {

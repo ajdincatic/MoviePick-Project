@@ -1,4 +1,6 @@
-﻿using MoviePick.MobileUI.ViewModels;
+﻿using eProdaja.Mobile;
+using MoviePick.Data.Request;
+using MoviePick.MobileUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace MoviePick.MobileUI.Views
     public partial class MTVSListPage : ContentPage
     {
         MTVSListViewModel model = null;
+        private readonly APIService _RatingService = new APIService("Rating");
 
         public MTVSListPage()
         {
@@ -31,7 +34,14 @@ namespace MoviePick.MobileUI.Views
         {
             var item = e.Item as Data.Model.MovieAndTvshow;
 
-            await Navigation.PushAsync(new MTVSDetailsPage(item));
+            var temp = await _RatingService.Get<List<Data.Model.Rating>>(new RatingSearchRequest()
+            {
+                MovieAndTvshowId = item.Id,
+                AppUserId = APIService.UserId
+            });
+            var UserRating = temp.Select(x => x.RatingValue).FirstOrDefault().ToString();
+
+            await Navigation.PushAsync(new MTVSDetailsPage(item, UserRating));
         }
     }
 }

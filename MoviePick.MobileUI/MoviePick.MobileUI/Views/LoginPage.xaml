@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
+             mc:Ignorable="d"
+             x:Class="MoviePick.MobileUI.Views.LoginPage"
+             BackgroundColor="LightBlue"
+             >
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel></vm:LoginViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="Start">
+            <Label Text="MoviePick" 
+                   FontSize="40"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,100,0,0"
+                   FontAttributes="Bold"
+                   ></Label>
+
+            <Label Text="You must log in for full experience." 
+                   FontSize="Micro"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   ></Label>
+
+            <Label Text="Username" Margin="0,100,0,0"></Label>
+            <Entry Text="{Binding Username}"></Entry>
+
+            <Label  Text="Password"></Label>
+            <Entry Text="{Binding Password}" IsPassword="True"></Entry>
+
+            <Button Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Text="Login"></Button>
+            <Button  
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                Text="You don't have account, Register now" HorizontalOptions="End"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

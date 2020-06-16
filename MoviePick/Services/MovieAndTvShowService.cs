@@ -52,7 +52,7 @@ namespace MoviePick.Services
             foreach (var item in mapper)
             {
                 if (item.Rating.Count() > 0)
-                    item.CalculatedRating = item.Rating.Average(x => x.RatingValue).ToString();
+                    item.CalculatedRating = Math.Ceiling(item.Rating.Average(x => x.RatingValue)).ToString();
                 else
                     item.CalculatedRating = "0";
             }

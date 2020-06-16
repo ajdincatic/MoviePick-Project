@@ -48,7 +48,6 @@
             this.cmbType = new System.Windows.Forms.ComboBox();
             this.chkGenerate = new System.Windows.Forms.CheckBox();
             this.chkShow = new System.Windows.Forms.CheckBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -265,19 +264,6 @@
             this.chkShow.UseVisualStyleBackColor = true;
             this.chkShow.CheckedChanged += new System.EventHandler(this.chkShow_CheckedChanged);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(850, 614);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(136, 44);
-            this.btnDelete.TabIndex = 71;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Visible = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
@@ -287,7 +273,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1349, 756);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.chkShow);
             this.Controls.Add(this.chkGenerate);
             this.Controls.Add(this.cmbType);
@@ -338,7 +323,6 @@
         private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.CheckBox chkGenerate;
         private System.Windows.Forms.CheckBox chkShow;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

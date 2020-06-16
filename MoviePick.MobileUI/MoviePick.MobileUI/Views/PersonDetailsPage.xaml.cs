@@ -1,4 +1,6 @@
-﻿using MoviePick.Data.Model;
+﻿using eProdaja.Mobile;
+using MoviePick.Data.Model;
+using MoviePick.Data.Request;
 using MoviePick.MobileUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,8 @@ namespace MoviePick.MobileUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PersonDetailsPage : ContentPage
     {
+        private readonly APIService _RatingService = new APIService("Rating");
+
         PersonDetailsViewModel model = null;
 
         public PersonDetailsPage(Person p)
@@ -35,7 +39,14 @@ namespace MoviePick.MobileUI.Views
         {
             var item = e.Item as Data.Model.MovieAndTvshowPerson;
 
-            await Navigation.PushAsync(new MTVSDetailsPage(item.MovieAndTvshow));
+            var temp = await _RatingService.Get<List<Data.Model.Rating>>(new RatingSearchRequest()
+            {
+                MovieAndTvshowId = item.MovieAndTvshow.Id,
+                AppUserId = APIService.UserId
+            });
+            var UserRating = temp.Select(x => x.RatingValue).FirstOrDefault().ToString();
+            item.MovieAndTvshow.CalculatedRating = Math.Ceiling(item.MovieAndTvshow.Rating.Average(x => x.RatingValue)).ToString();
+            await Navigation.PushAsync(new MTVSDetailsPage(item.MovieAndTvshow, UserRating));
         }
 
         private async void btnOrderType_Clicked(object sender, EventArgs e)

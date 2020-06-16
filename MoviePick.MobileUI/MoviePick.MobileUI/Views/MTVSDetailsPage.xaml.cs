@@ -1,4 +1,5 @@
 ﻿using eProdaja.Mobile;
+using MoviePick.Data.Model;
 using MoviePick.Data.Request;
 using MoviePick.MobileUI.Models;
 using MoviePick.MobileUI.ViewModels;
@@ -7,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,23 +19,25 @@ namespace MoviePick.MobileUI.Views
         private readonly APIService _RatingService = new APIService("Rating");
 
         MTVSDetailsViewModel model = null;
-        public MTVSDetailsPage(Data.Model.MovieAndTvshow movieAndTvshow)
+        public MTVSDetailsPage(Data.Model.MovieAndTvshow movieAndTvshow, string UserRating)
         {
             InitializeComponent();
             BindingContext = model = new MTVSDetailsViewModel()
             {
                 mtvs = movieAndTvshow,
+                UserRating = UserRating
             };
             if(model.mtvs.TvshowSeason.Count() == 0)
             {
                 btnEpisodes.IsVisible = false;
             }
+            
         }
 
         protected async override void OnAppearing()
         {
-            await model.LoadPersons();
             base.OnAppearing();
+            await model.LoadPersons();
         }
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -45,8 +47,9 @@ namespace MoviePick.MobileUI.Views
             await Navigation.PushAsync(new PersonDetailsPage(item.Person));
         }
 
-        private void btnMovieChat_Clicked(object sender, EventArgs e)
+        private async void btnMovieChat_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new MovieChatPage(model.mtvs));
         }
 
         private async void btnFullCast_Clicked(object sender, EventArgs e)
@@ -73,7 +76,7 @@ namespace MoviePick.MobileUI.Views
                     }
                     await _RatingService.Insert<Data.Model.Rating>(new RatingUpsertRequest
                     {
-                        AppUserId = 6,
+                        AppUserId = APIService.UserId,
                         MovieAndTvshowId = model.mtvs.Id,
                         RatingValue = int.Parse(UserRating.Text)
                     });

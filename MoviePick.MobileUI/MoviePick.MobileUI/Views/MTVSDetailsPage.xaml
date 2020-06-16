@@ -109,6 +109,7 @@
             Grid.Row="1"
             Grid.Column="2"
             FontSize="Micro"
+            Text="{Binding mtvs.NumberOfRatings}"
             HorizontalOptions="Start"
         ></Label>
 
@@ -122,6 +123,8 @@
             Grid.Column="1"
             HorizontalTextAlignment="Center"
             HorizontalOptions="FillAndExpand"
+            BackgroundColor="LightGray"
+            Text="{Binding UserRating}"
             x:Name="UserRating"
             Keyboard="Numeric"   
             >

@@ -39,6 +39,7 @@ namespace MoviePick.Mapper
             CreateMap<Rating, Data.Model.Rating>();
             CreateMap<RatingUpsertRequest, Rating>();
             CreateMap<CommentUpsertRequest, Comment>();
+            CreateMap<Data.Model.Comment, Comment>().ReverseMap();
         }
     }
 }

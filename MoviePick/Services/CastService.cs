@@ -23,6 +23,7 @@ namespace MoviePick.Services
         {
             var query = _context.MovieAndTvshowPerson
                 .Include(x => x.MovieAndTvshow).Include(x => x.Person).Include(x => x.Role)
+                .Include(x => x.MovieAndTvshow.Rating)
                 .Include("MovieAndTvshow.MovieAndTvshowGenre.Genre")
                 .AsQueryable();
 

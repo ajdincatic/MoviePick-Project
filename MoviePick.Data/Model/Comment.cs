@@ -10,5 +10,6 @@ namespace MoviePick.Data.Model
         public int MovieAndTvshowId { get; set; }
         public DateTime DateTimeOfComment { get; set; }
         public string Content { get; set; }
+        public virtual User AppUser { get; set; }
     }
 }

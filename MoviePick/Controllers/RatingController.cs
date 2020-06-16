@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviePick.Data.Request;
@@ -20,12 +21,14 @@ namespace MoviePick.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpGet]
         public List<Data.Model.Rating> Get([FromQuery]RatingSearchRequest request)
         {
             return _service.Get(request);
         }
 
+        [Authorize]
         [HttpPost]
         public Data.Model.Rating InsertRatingByUser(RatingUpsertRequest request)
         {

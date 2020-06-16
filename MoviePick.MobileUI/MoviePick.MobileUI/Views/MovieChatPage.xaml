@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             mc:Ignorable="d"
+             Title="{Binding PageTitle}"
+             x:Class="MoviePick.MobileUI.Views.MovieChatPage">
+    <ContentPage.BindingContext>
+        <vm:MovieChatViewModel></vm:MovieChatViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <ListView x:Name="MessageList" ItemsSource="{Binding CommentList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightGray" Margin="0,8,0,5">
+                                <StackLayout Orientation="Vertical" >
+                                    <Label Text="{Binding AppUser.Username}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding Content}"
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="12" />
+                                    <Label Text="{Binding DateTimeOfComment}"
+                                    d:Text="{Binding .}"
+                                    HorizontalOptions="End"
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="9" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Entry Placeholder="New message..."
+                   x:Name="MessageText">
+                
+            </Entry>
+            <Button
+                Text="Send"
+                Clicked="Button_Clicked">
+                
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
