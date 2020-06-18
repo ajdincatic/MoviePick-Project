@@ -38,6 +38,8 @@ namespace MoviePick.MobileUI.Views
         {
             base.OnAppearing();
             await model.Init();
+            QOTD.Text = model.QuoteOfTheDay.QuoteText;
+            MovieQOTD.Text = model.QuoteOfTheDay.MovieAndTvshow.Title;
         }
         
         private async Task ClickNewsPlace()

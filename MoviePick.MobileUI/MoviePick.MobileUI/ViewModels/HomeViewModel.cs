@@ -16,6 +16,9 @@ namespace MoviePick.MobileUI.ViewModels
     {
         private readonly APIService _MTVSService = new APIService("MovieAndTvShow");
         private readonly APIService _NewsService = new APIService("News");
+        private readonly APIService _QOTDService = new APIService("QuoteOfTheDay");
+
+        public Data.Model.Quote QuoteOfTheDay { get; set; }
 
         public ObservableCollection<Data.Model.MovieAndTvshow> MTVSList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshow>();
         public ObservableCollection<Data.Model.News> NewsList { get; set; } = new ObservableCollection<Data.Model.News>();
@@ -59,6 +62,8 @@ namespace MoviePick.MobileUI.ViewModels
                 if (NewsList.Count() == 3)
                     break;
             }
+
+            QuoteOfTheDay = await _QOTDService.Get<Data.Model.Quote>(null);
         }
     }
 }

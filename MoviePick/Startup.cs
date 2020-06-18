@@ -1,5 +1,7 @@
 using AutoMapper;
 using eProdaja.Services;
+using Hangfire;
+using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +19,7 @@ using MoviePick.Services;
 using MoviePick.WebAPI.Filters;
 using MoviePick.WebAPI.Security;
 using Newtonsoft.Json;
+using System;
 
 namespace MoviePick
 {
@@ -74,8 +77,16 @@ namespace MoviePick
             // Scaffold-DbContext -Connection "Server=(local);Database=MoviePick;Integrated Security=True;Trusted_Connection=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database -context MoviePickContext -force
             services.AddDbContext<MoviePickContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("localDb")));
 
+            // basic auth
             services.AddAuthentication("BasicAuthentication")
                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+            services.AddHangfire(x =>
+                x.SetDataCompatibilityLevel(CompatibilityLevel.Version_110)
+                .UseDefaultTypeSerializer()
+                .UseMemoryStorage());
+
+            services.AddHangfireServer();
 
             // auto mapper configuration
             services.AddAutoMapper(typeof(Startup));
@@ -100,12 +111,16 @@ namespace MoviePick
             services.AddScoped<IRatingService, RatingService>();
             services.AddScoped<ICommentService, CommentService>();
 
+
+            services.AddScoped<IQuoteOfTheDay, QuoteOfTheDay>();
+
             #endregion
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager recurringJobManager,
+            IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -131,6 +146,16 @@ namespace MoviePick
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHangfireDashboard();
+
+            // BACKGROUND SERVICE FOR QUOTE OF THE DAY
+            recurringJobManager.AddOrUpdate(
+                "Generate QOTD",
+                () => serviceProvider.GetService<IQuoteOfTheDay>().GenerateRandomQuote(),
+                Cron.Daily
+            );
+            recurringJobManager.Trigger("Generate QOTD");
         }
     }
 }
