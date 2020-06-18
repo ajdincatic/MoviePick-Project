@@ -14,7 +14,8 @@ namespace MoviePick.MobileUI.ViewModels
     public class SeasonEpisodesViewModel
     {
         private readonly APIService _EpisodesService = new APIService("TvshowSeasonEpisode");
-        public int MTVSId;
+        public Data.Model.TvshowSeason TvshowSeason;
+
         public ObservableCollection<Data.Model.TvshowSeasonEpisode> EpisodesList { get; set; } = new ObservableCollection<Data.Model.TvshowSeasonEpisode>();
 
         public SeasonEpisodesViewModel()
@@ -28,7 +29,8 @@ namespace MoviePick.MobileUI.ViewModels
         {
             var listMTVS = await _EpisodesService.Get<List<TvshowSeasonEpisode>>(new TvshowSeasonEpisodeSearchRequest
             {
-                TvshowId = MTVSId
+                TvshowId = TvshowSeason.MovieAndTvshowId,
+                TvshowSeasonId = TvshowSeason.Id
             });
 
             EpisodesList.Clear();

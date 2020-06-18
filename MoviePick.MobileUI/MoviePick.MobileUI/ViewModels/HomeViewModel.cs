@@ -44,6 +44,9 @@ namespace MoviePick.MobileUI.ViewModels
             foreach (var mtvs in listMTVS)
             {
                 MTVSList.Add(mtvs);
+                // shows just top 3 on home page
+                if (MTVSList.Count() == 3)
+                    break;
             }
 
             var ListNews = await _NewsService.Get<List<Data.Model.News>>(null);
@@ -53,6 +56,8 @@ namespace MoviePick.MobileUI.ViewModels
             foreach (var mtvs in ListNews)
             {
                 NewsList.Add(mtvs);
+                if (NewsList.Count() == 3)
+                    break;
             }
         }
     }

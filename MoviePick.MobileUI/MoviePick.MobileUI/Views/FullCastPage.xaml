@@ -6,6 +6,7 @@
              xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
              xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
              mc:Ignorable="d"
+             Title="MoviePick"
              x:Class="MoviePick.MobileUI.Views.FullCastPage">
     <ContentPage.BindingContext>
         <vm:FullCastViewModel></vm:FullCastViewModel>

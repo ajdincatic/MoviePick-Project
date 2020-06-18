@@ -168,7 +168,10 @@ namespace MoviePick.WindowsFormsUI.Forms
             foreach (var item in Users)
             {
                 if (item.Username == txtUsername.Text)
+                {
                     flag = true;
+                    break;
+                }
             }
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {

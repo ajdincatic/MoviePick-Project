@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
              xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
              mc:Ignorable="d"
+             Title="MoviePick"
              x:Class="MoviePick.MobileUI.Views.PersonDetailsPage">
     <ContentPage.BindingContext>
         <vm:PersonDetailsViewModel></vm:PersonDetailsViewModel>

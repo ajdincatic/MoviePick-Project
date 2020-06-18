@@ -16,7 +16,9 @@
                     Windows forms application
                     Xamarin mobile application
             </Label>
+            <Label></Label>
             <Label>Source code: https://github.com/ajdincatic/MoviePick-Project</Label>
+            <Label></Label>
             <Label VerticalOptions="End">
                 © Ajdin Ćatić, Faculty of Information Technology, University Džemal Bijedić of Mostar</Label>
         </StackLayout>

@@ -6,35 +6,24 @@
              xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
              mc:Ignorable="d"
              Title="MoviePick"
-             x:Class="MoviePick.MobileUI.Views.SeasonEpisodesPage">
-    <ContentPage.BindingContext>
-        <vm:SeasonEpisodesViewModel></vm:SeasonEpisodesViewModel>
-    </ContentPage.BindingContext>
-    <ContentPage.Content>
+             x:Class="MoviePick.MobileUI.Views.SeasonPage">
+        <ContentPage.BindingContext>
+            <vm:SeasonViewModel></vm:SeasonViewModel>
+        </ContentPage.BindingContext>
+        <ContentPage.Content>
         <StackLayout Padding="10">
-            <Label Margin="0,10,0,10" FontSize="Medium">Episodes</Label>
-            <ListView ItemsSource="{Binding EpisodesList}" >
+            <Label Margin="0,10,0,10" FontSize="Medium">Seasons</Label>
+            <ListView ItemsSource="{Binding SeasonsList}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding EpisodeName}" 
+                                    <Label Text="{Binding SeasonName}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
-                                    <Label LineBreakMode="NoWrap" 
-                                    Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="12">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Air date: "/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding AirDate.Date}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

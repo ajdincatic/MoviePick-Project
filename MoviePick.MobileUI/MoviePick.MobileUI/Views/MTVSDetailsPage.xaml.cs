@@ -59,7 +59,7 @@ namespace MoviePick.MobileUI.Views
 
         private async void btnEpisodes_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SeasonEpisodesPage(model.mtvs.Id));
+            await Navigation.PushAsync(new SeasonPage(model.mtvs.Id));
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

@@ -29,27 +29,27 @@
             </Label>
             <Label FontSize="18" Text="Quote of the day"></Label>
             <Label BackgroundColor="AntiqueWhite" Padding="10">
-                “I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.”
+                “I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.” - The Godfather
             </Label>
             <Label x:Name="NewsPlace" FontSize="18" Text="News place >"></Label>
             <ListView ItemsSource="{Binding NewsList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" Padding="10">
                                 <StackLayout>
-                                    <Image WidthRequest="90" HeightRequest="90" Source="{Binding CoverPhoto, Converter={StaticResource imgConv}}"></Image>
+                                    <Image WidthRequest="80" HeightRequest="80" Source="{Binding CoverPhoto, Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" Margin="0,15,0,0">
                                     <Label Text="{Binding Title}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="14" />
+                                    FontSize="13" />
                                     <Label Text="{Binding DateTimeOfNews}" 
                                     d:Text="{Binding .}"
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="11" />
+                                    FontSize="10" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
@@ -63,14 +63,14 @@
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <StackLayout>
-                                    <Image WidthRequest="90" HeightRequest="90" Source="{Binding Poster, Converter={StaticResource imgConv}}"></Image>
+                                    <Image WidthRequest="80" HeightRequest="80" Source="{Binding Poster, Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" >
                                     <Label Text="{Binding Title}" 
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="16" />
+                                    FontSize="13" />
                                     <Label Text="{Binding CalculatedRating}"
                                     HorizontalTextAlignment="Center"
                                     TextColor="White"
@@ -84,7 +84,7 @@
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="11" />
+                                    FontSize="10" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

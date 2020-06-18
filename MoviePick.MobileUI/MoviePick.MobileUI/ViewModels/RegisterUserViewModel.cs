@@ -33,17 +33,31 @@ namespace MoviePick.MobileUI.ViewModels
         {
             try
             {
-                if(Password != PasswordConfirm)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "Passwords are not matched", "Try again");
-                    return;
-                }
                 if(string.IsNullOrWhiteSpace(FirstName) || string.IsNullOrWhiteSpace(LastName) ||
                     string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Phone)
                     || string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(PasswordConfirm))
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error", "Required field is empty", "Try again");
+                    await Application.Current.MainPage.DisplayAlert("Error", "All fields are required.", "Try again");
                     return;
+                }
+                if (Password != PasswordConfirm)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Passwords are not matched.", "Try again");
+                    return;
+                }
+                if (Password.Length < 4 || Username.Length < 4)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Username & Password must have minimum 4 characthers.", "Try again");
+                    return;
+                }
+                var listUsers = await _serviceUser.Get<List<Data.Model.User>>(null);
+                foreach (var item in listUsers)
+                {
+                    if (Username == item.Username)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error", "Username already exist.", "Try again");
+                        return;
+                    }
                 }
                 await _serviceUser.Insert<Data.Model.User>(new UserUpsertRequest
                 {

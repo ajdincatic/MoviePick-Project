@@ -11,15 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace MoviePick.MobileUI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SeasonEpisodesPage : ContentPage
+    public partial class SeasonPage : ContentPage
     {
-        SeasonEpisodesViewModel model = null;
-        public SeasonEpisodesPage(Data.Model.TvshowSeason TvshowSeason)
+        SeasonViewModel model = null;
+
+        public SeasonPage(int mtvsId)
         {
             InitializeComponent();
-            BindingContext = model = new SeasonEpisodesViewModel
+            BindingContext = model = new SeasonViewModel
             {
-                TvshowSeason = TvshowSeason
+                MTVSId = mtvsId
             };
         }
 
@@ -27,6 +28,13 @@ namespace MoviePick.MobileUI.Views
         {
             base.OnAppearing();
             await model.Init();
+        }
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.Item as Data.Model.TvshowSeason;
+
+            await Navigation.PushAsync(new SeasonEpisodesPage(item));
         }
     }
 }
