@@ -167,15 +167,11 @@ namespace MoviePick.Database
 
             modelBuilder.Entity<News>(entity =>
             {
-                entity.Property(e => e.Content)
-                    .IsRequired()
-                    .HasMaxLength(1000);
+                entity.Property(e => e.Content).HasMaxLength(4000);
 
                 entity.Property(e => e.DateTimeOfNews).HasColumnType("datetime");
 
-                entity.Property(e => e.Title)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.Title).HasMaxLength(500);
 
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.News)

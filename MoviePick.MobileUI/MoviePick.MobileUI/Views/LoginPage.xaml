@@ -39,11 +39,12 @@
             <Label  Text="Password"></Label>
             <Entry Text="{Binding Password}" IsPassword="True"></Entry>
 
-            <Button Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Text="Login"></Button>
+            <Button Command="{Binding LoginCommand}"
+                    HorizontalOptions="FillAndExpand" Text="Login"></Button>
             <Button  
                 BackgroundColor="Transparent"
                 BorderColor="Transparent"
-                Text="You don't have account, Register now" HorizontalOptions="End"></Button>
+                Text="You don't have account, Register now" HorizontalOptions="End" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

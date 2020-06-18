@@ -9,7 +9,10 @@ namespace MoviePick.MobileUI.Models
         Browse,
         About,
         MTVS,
-        News
+        NewsPlace,
+        Logout,
+        Home,
+        HowDoYouFeel
     }
     public class HomeMenuItem
     {

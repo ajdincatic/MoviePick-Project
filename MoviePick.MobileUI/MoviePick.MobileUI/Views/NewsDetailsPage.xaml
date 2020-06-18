@@ -17,21 +17,23 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="10">
-            <Image WidthRequest="220" HeightRequest="220" Margin="10,0,0,0" Source="{Binding news.CoverPhoto, Converter={StaticResource imgConv}}"></Image>
-            <Label Text="{Binding news.Title}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title"></Label>
-            <Label>
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Author: "/>
-                        <Span Text=" "/>
-                        <Span Text="{Binding news.Author.Username}" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Label Text="{Binding news.Content}" HorizontalOptions="Start"></Label>
-            <Label Text="" ></Label>
-            <Label Text="{Binding news.DateTimeOfNews}" HorizontalOptions="End"></Label>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Image WidthRequest="220" HeightRequest="220" Margin="10,0,0,0" Source="{Binding news.CoverPhoto, Converter={StaticResource imgConv}}"></Image>
+                <Label Text="{Binding news.Title}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title"></Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Author: "/>
+                            <Span Text=" "/>
+                            <Span Text="{Binding news.Author.Username}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="{Binding news.Content}" HorizontalOptions="Start"></Label>
+                <Label Text="" ></Label>
+                <Label Text="{Binding news.DateTimeOfNews}" HorizontalOptions="End" Margin="0,0,0,10"></Label>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

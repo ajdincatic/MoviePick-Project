@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             mc:Ignorable="d"
+             BackgroundColor="LightBlue"
+             x:Class="MoviePick.MobileUI.Views.RegisterUserPage">
+    <ContentPage.BindingContext>
+        <vm:RegisterUserViewModel></vm:RegisterUserViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
+            <Label Text="Register to MoviePick." Margin="0,0,0,30" FontSize="Medium"></Label>
+            <Label Text="First name"></Label>
+            <Entry Text="{Binding FirstName}"></Entry>
+            <Label Text="Last name"></Label>
+            <Entry Text="{Binding LastName}"></Entry>
+            <Label Text="Email"></Label>
+            <Entry Text="{Binding Email}"></Entry>
+            <Label Text="Phone"></Label>
+            <Entry Text="{Binding Phone}"></Entry>
+            
+            <Label Text="Username"></Label>
+            <Entry Text="{Binding Username}"></Entry>
+
+            <Label  Text="Password"></Label>
+            <Entry Text="{Binding Password}" IsPassword="True"></Entry>
+
+            <Label  Text="Confirm password"></Label>
+            <Entry Text="{Binding PasswordConfirm}" IsPassword="True"></Entry>
+
+            <Button Command="{Binding RegisterCommand}" HorizontalOptions="FillAndExpand" Text="Register"></Button>
+            <Button Clicked="Button_Clicked" HorizontalOptions="FillAndExpand" Text="Cancel"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -31,10 +31,16 @@ namespace MoviePick.MobileUI.Views
                 switch (id)
                 {
                     case (int)MenuItemType.MTVS:
-                        MenuPages.Add(id, new NavigationPage(new MTVSListPage()));
+                        MenuPages.Add(id, new NavigationPage(new Home()));
                         break;
-                    case (int)MenuItemType.News:
+                    case (int)MenuItemType.NewsPlace:
                         MenuPages.Add(id, new NavigationPage(new NewsPage()));
+                        break;
+                    case (int)MenuItemType.Logout:
+                        MenuPages.Add(id, new NavigationPage(new LoginPage()));
+                        break;
+                    case (int)MenuItemType.About:
+                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                 }
             }

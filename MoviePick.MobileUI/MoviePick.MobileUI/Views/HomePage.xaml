@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
+             mc:Ignorable="d"
+             Title="MoviePick"
+             x:Class="MoviePick.MobileUI.Views.Home">
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel></vm:HomeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label FontSize="30" HorizontalOptions="Center" Margin="0,0,0,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Welcome"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding LoggedUser}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label FontSize="18" Text="Quote of the day"></Label>
+            <Label BackgroundColor="AntiqueWhite" Padding="10">
+                “I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.”
+            </Label>
+            <Label x:Name="NewsPlace" FontSize="18" Text="News place >"></Label>
+            <ListView ItemsSource="{Binding NewsList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image WidthRequest="90" HeightRequest="90" Source="{Binding CoverPhoto, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Margin="0,15,0,0">
+                                    <Label Text="{Binding Title}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="14" />
+                                    <Label Text="{Binding DateTimeOfNews}" 
+                                    d:Text="{Binding .}"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="11" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label x:Name="MoviesList" FontSize="18" Text="Just for you >"></Label>
+            <ListView ItemsSource="{Binding MTVSList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped_1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image WidthRequest="90" HeightRequest="90" Source="{Binding Poster, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" >
+                                    <Label Text="{Binding Title}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding CalculatedRating}"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="White"
+                                    HorizontalOptions="StartAndExpand"
+                                    BackgroundColor="Green"
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="12" />
+                                    <Label Text="{Binding ReleaseDate.Year}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="11" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label VerticalOptions="EndAndExpand" HorizontalOptions="Center">© Ajdin Ćatić</Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using eProdaja.Mobile;
+using MoviePick.Data.Request;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +12,16 @@ using Xamarin.Forms.Xaml;
 namespace MoviePick.MobileUI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class RegisterUserPage : ContentPage
     {
-        public LoginPage()
+        public RegisterUserPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new RegisterUserPage());
+            await Navigation.PushModalAsync(new LoginPage());
         }
     }
 }

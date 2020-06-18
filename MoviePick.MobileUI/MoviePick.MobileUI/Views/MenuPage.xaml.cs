@@ -20,8 +20,11 @@ namespace MoviePick.MobileUI.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.MTVS, Title="MTVS" },
-                new HomeMenuItem {Id = MenuItemType.News, Title="News" },
+                new HomeMenuItem {Id = MenuItemType.MTVS, Title="Home" },
+                new HomeMenuItem {Id = MenuItemType.NewsPlace, Title="News place" },
+                new HomeMenuItem {Id = MenuItemType.HowDoYouFeel, Title="How do you feel?" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+                new HomeMenuItem {Id = MenuItemType.Logout, Title="Logout" },
             };
 
             ListViewMenu.ItemsSource = menuItems;

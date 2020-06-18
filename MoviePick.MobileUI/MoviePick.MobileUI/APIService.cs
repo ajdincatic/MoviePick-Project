@@ -47,7 +47,7 @@ namespace eProdaja.Mobile
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
                     //MessageBox.Show("Niste authentificirani");
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error", "Wrong username or password", "Try again");
                 }
                 throw;
             }

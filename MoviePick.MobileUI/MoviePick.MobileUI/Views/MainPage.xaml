@@ -20,7 +20,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:MTVSListPage />
+                <views:Home />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

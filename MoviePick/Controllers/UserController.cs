@@ -36,7 +36,6 @@ namespace MoviePick.Controllers
             return _service.GetById(Id);
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public Data.Model.User Post(UserUpsertRequest request)
         {

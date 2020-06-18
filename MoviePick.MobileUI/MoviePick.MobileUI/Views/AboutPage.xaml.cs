@@ -10,17 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace MoviePick.MobileUI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class AboutPage : ContentPage
     {
-        public LoginPage()
+        public AboutPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new RegisterUserPage());
         }
     }
 }
