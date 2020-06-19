@@ -29,7 +29,7 @@ namespace MoviePick.Mapper
             CreateMap<TvshowSeasonEpisodeUpsertRequest, TvshowSeasonEpisode>();
             CreateMap<MovieAndTvshowGenre, Data.Model.MovieTvShowGenre>();
             CreateMap<MovieAndTvshowPerson, Data.Model.MovieAndTvshowPerson>();
-            CreateMap<UserUpsertRequest, User>();
+            CreateMap<UserUpsertRequest, User>().ReverseMap();
             CreateMap<User, Data.Model.User>();
             CreateMap<MovieAndTvshowPersonUpsertRequest, MovieAndTvshowPerson>();
             CreateMap<UserType, Data.Model.UserType>();

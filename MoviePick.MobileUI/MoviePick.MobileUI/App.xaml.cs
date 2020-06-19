@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MoviePick.MobileUI.Services;
 using MoviePick.MobileUI.Views;
 
 namespace MoviePick.MobileUI

@@ -16,6 +16,9 @@
             <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Name="MoreItem" Icon="more.png" Priority="1" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="10">
             <Label FontSize="30" HorizontalOptions="Center" Margin="0,0,0,10">
@@ -42,7 +45,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
+                            <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
                                 <StackLayout>
                                     <Image WidthRequest="80" HeightRequest="80" Source="{Binding CoverPhoto, Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>
@@ -67,7 +70,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
+                            <StackLayout Padding="10,5,10,5" Orientation="Horizontal">
                                 <StackLayout>
                                     <Image WidthRequest="80" HeightRequest="80" Source="{Binding Poster, Converter={StaticResource imgConv}}"></Image>
                                 </StackLayout>

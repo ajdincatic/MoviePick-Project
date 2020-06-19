@@ -42,7 +42,7 @@ namespace MoviePick.Controllers
             return _service.Insert(request);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPut("{Id}")]
         public Data.Model.User Update(int Id, [FromBody]UserUpsertRequest request)
         {

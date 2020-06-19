@@ -68,19 +68,23 @@ namespace MoviePick.Services
         public Data.Model.User Update(int Id, UserUpsertRequest request)
         {
             var entity = _context.User.Find(Id);
+            _context.User.Attach(entity);
+            _context.User.Update(entity);
 
             if (request.Password != request.PasswordConfirm)
             {
                 throw new Exception("Password and password confirm not matched");
             }
 
-            entity.PasswordSalt = HashGenerator.GenerateSalt();
-            entity.PasswordHash = HashGenerator.GenerateHash(entity.PasswordSalt, request.Password);
-
-            _context.User.Attach(entity);
-            _context.User.Update(entity);
-
-            _mapper.Map(request, entity);
+            if(request.Password != null)
+            {
+                entity.PasswordSalt = HashGenerator.GenerateSalt();
+                entity.PasswordHash = HashGenerator.GenerateHash(entity.PasswordSalt, request.Password);
+            }
+            else
+            {
+                _mapper.Map(request, entity);
+            }
 
             _context.SaveChanges();
 

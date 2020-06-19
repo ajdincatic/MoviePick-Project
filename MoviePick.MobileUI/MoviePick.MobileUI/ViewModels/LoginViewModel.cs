@@ -50,6 +50,7 @@ namespace MoviePick.MobileUI.ViewModels
                 {
                     Username = Username
                 });
+                APIService.User = temp.FirstOrDefault();
                 APIService.UserId = temp.Select(x => x.Id).FirstOrDefault();
                 Application.Current.MainPage = new MainPage();
             }

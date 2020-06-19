@@ -14,7 +14,6 @@ using Microsoft.OpenApi.Models;
 using MoviePick.Data.Request;
 using MoviePick.Database;
 using MoviePick.Interfaces;
-using MoviePick.Properties;
 using MoviePick.Services;
 using MoviePick.WebAPI.Filters;
 using MoviePick.WebAPI.Security;
@@ -81,6 +80,7 @@ namespace MoviePick
             services.AddAuthentication("BasicAuthentication")
                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
+            // hangfire for back. service
             services.AddHangfire(x =>
                 x.SetDataCompatibilityLevel(CompatibilityLevel.Version_110)
                 .UseDefaultTypeSerializer()
@@ -132,6 +132,7 @@ namespace MoviePick
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = "";
             });
 
             app.UseAuthentication();

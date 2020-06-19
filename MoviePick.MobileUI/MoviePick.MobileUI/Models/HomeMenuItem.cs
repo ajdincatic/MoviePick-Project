@@ -12,7 +12,8 @@ namespace MoviePick.MobileUI.Models
         NewsPlace,
         Logout,
         Home,
-        HowDoYouFeel
+        HowDoYouFeel,
+        YourProfile
     }
     public class HomeMenuItem
     {

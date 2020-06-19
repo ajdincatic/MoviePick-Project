@@ -24,6 +24,7 @@ namespace MoviePick.MobileUI.Views
                 new HomeMenuItem {Id = MenuItemType.NewsPlace, Title="News place" },
                 new HomeMenuItem {Id = MenuItemType.HowDoYouFeel, Title="How do you feel?" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+                new HomeMenuItem {Id = MenuItemType.YourProfile, Title="Your profile" },
                 new HomeMenuItem {Id = MenuItemType.Logout, Title="Logout" },
             };
 

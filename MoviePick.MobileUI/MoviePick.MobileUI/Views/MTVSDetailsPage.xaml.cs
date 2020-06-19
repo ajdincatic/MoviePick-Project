@@ -80,6 +80,7 @@ namespace MoviePick.MobileUI.Views
                         MovieAndTvshowId = model.mtvs.Id,
                         RatingValue = int.Parse(UserRating.Text)
                     });
+                    await Application.Current.MainPage.DisplayAlert("Succesfull", "Succesfully rated title.", "OK");
                 }
                 else
                 {

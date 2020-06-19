@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Your profile"
+             x:Class="MoviePick.MobileUI.Views.YoutProfilePage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" >
+            <Label x:Name="Username" FontSize="20" Margin="8" FontAttributes="Bold" TextDecorations="Underline"></Label>
+            <Label Text="First name" FontAttributes="Bold" FontSize="15"></Label>
+            <Label x:Name="FirstName" ></Label>
+            <Label Text="Last name" FontAttributes="Bold" FontSize="15"></Label>
+            <Label x:Name="LastName"></Label>
+            <Label Text="Email" FontAttributes="Bold" FontSize="15"></Label>
+            <Label x:Name="Email"></Label>
+            <Label Text="Phone number" FontAttributes="Bold" FontSize="15"></Label>
+            <Label x:Name="Phone"></Label>
+            <Button Clicked="Button_Clicked" Text="Edit information" BackgroundColor="LightGray" Margin="0,20,0,0"></Button>
+            <Button Clicked="Button_Clicked_1" Text="Set new password" BackgroundColor="LightGray"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
