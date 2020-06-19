@@ -20,7 +20,7 @@ namespace MoviePick.WebAPI.Filters
             }
             else if (context.Exception is DbUpdateException)
             {
-                context.ModelState.AddModelError("ERROR", "Can't delete records before deleting records in linked tables. " + context.Exception.Message);
+                context.ModelState.AddModelError("ERROR", context.Exception.Message + ", or you can't delete records before deleting records in linked tables. ");
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
             }
             else

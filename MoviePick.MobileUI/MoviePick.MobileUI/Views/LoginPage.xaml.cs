@@ -16,6 +16,7 @@ namespace MoviePick.MobileUI.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            imgDisp.Source = "logo_transparent.png";
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

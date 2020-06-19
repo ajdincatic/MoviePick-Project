@@ -12,7 +12,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
-            <Label Text="Register to MoviePick." Margin="0,0,0,30" FontSize="Medium"></Label>
+            <Label Text="Register to MoviePick." FontAttributes="Bold" Margin="0,0,0,30" FontSize="Medium"></Label>
             <Label Text="First name"></Label>
             <Entry Text="{Binding FirstName}"></Entry>
             <Label Text="Last name"></Label>
@@ -31,8 +31,8 @@
             <Label  Text="Confirm password"></Label>
             <Entry Text="{Binding PasswordConfirm}" IsPassword="True"></Entry>
 
-            <Button Command="{Binding RegisterCommand}" HorizontalOptions="FillAndExpand" Text="Register"></Button>
-            <Button Clicked="Button_Clicked" HorizontalOptions="FillAndExpand" Text="Cancel"></Button>
+            <Button Command="{Binding RegisterCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" Text="Register"></Button>
+            <Button Clicked="Button_Clicked" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" Text="Cancel"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

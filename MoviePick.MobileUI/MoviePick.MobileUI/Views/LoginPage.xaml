@@ -20,13 +20,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="Start">
-            <Label Text="MoviePick" 
-                   FontSize="40"
-                   VerticalOptions="Center"
-                   HorizontalOptions="CenterAndExpand"
-                   Margin="0,100,0,0"
-                   FontAttributes="Bold"
-                   ></Label>
+            <Image HeightRequest="250" WidthRequest="250" HorizontalOptions="Center" x:Name="imgDisp" ></Image>
 
             <Label Text="You must log in for full experience." 
                    FontSize="Micro"
@@ -34,13 +28,14 @@
                    HorizontalOptions="CenterAndExpand"
                    ></Label>
 
-            <Label Text="Username" Margin="0,100,0,0"></Label>
+            <Label Text="Username" Margin="0,50,0,0"></Label>
             <Entry Text="{Binding Username}"></Entry>
 
             <Label  Text="Password"></Label>
             <Entry Text="{Binding Password}" IsPassword="True"></Entry>
 
             <Button Command="{Binding LoginCommand}"
+                    BackgroundColor="LightGray"
                     HorizontalOptions="FillAndExpand" Text="Login"></Button>
             <Button  
                 BackgroundColor="Transparent"

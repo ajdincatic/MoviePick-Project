@@ -50,6 +50,11 @@ namespace eProdaja.Mobile
                     //MessageBox.Show("Niste authentificirani");
                     await Application.Current.MainPage.DisplayAlert("Error", "Wrong username or password", "Try again");
                 }
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
+                {
+                    //MessageBox.Show("Niste authentificirani");
+                    await Application.Current.MainPage.DisplayAlert("Error", "Forbidden", "Try again");
+                }
                 throw;
             }
         }
