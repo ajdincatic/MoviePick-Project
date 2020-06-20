@@ -58,6 +58,8 @@ namespace MoviePick.WindowsFormsUI.Forms
                 pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
                 btnEditCast.Visible = true;
                 btnQuotes.Visible = true;
+                lblRating.Text = "Rating -> " + _MTVS.CalculatedRating;
+                lblNumberOfRatings.Text = "Nubmer of ratings -> " + _MTVS.NumberOfRatings;
             }
         }
 

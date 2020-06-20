@@ -84,13 +84,13 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMTVS.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMTVS.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvMTVS.Location = new System.Drawing.Point(12, 271);
+            this.dgvMTVS.Location = new System.Drawing.Point(12, 335);
             this.dgvMTVS.Name = "dgvMTVS";
             this.dgvMTVS.ReadOnly = true;
             this.dgvMTVS.RowHeadersWidth = 51;
             this.dgvMTVS.RowTemplate.Height = 30;
             this.dgvMTVS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMTVS.Size = new System.Drawing.Size(1453, 459);
+            this.dgvMTVS.Size = new System.Drawing.Size(1453, 395);
             this.dgvMTVS.TabIndex = 0;
             this.dgvMTVS.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMTVS_CellDoubleClick);
             // 
@@ -162,7 +162,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(1207, 251);
+            this.label3.Location = new System.Drawing.Point(1207, 315);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(258, 17);
             this.label3.TabIndex = 12;
@@ -179,9 +179,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtTitle);
             this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Location = new System.Drawing.Point(319, 37);
+            this.groupBox1.Location = new System.Drawing.Point(388, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(854, 200);
+            this.groupBox1.Size = new System.Drawing.Size(710, 297);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
@@ -191,7 +191,7 @@
             this.rbTvShow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbTvShow.AutoSize = true;
             this.rbTvShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTvShow.Location = new System.Drawing.Point(521, 61);
+            this.rbTvShow.Location = new System.Drawing.Point(362, 196);
             this.rbTvShow.Name = "rbTvShow";
             this.rbTvShow.Size = new System.Drawing.Size(105, 28);
             this.rbTvShow.TabIndex = 19;
@@ -204,7 +204,7 @@
             this.rbMovie.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbMovie.AutoSize = true;
             this.rbMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMovie.Location = new System.Drawing.Point(416, 61);
+            this.rbMovie.Location = new System.Drawing.Point(257, 196);
             this.rbMovie.Name = "rbMovie";
             this.rbMovie.Size = new System.Drawing.Size(82, 28);
             this.rbMovie.TabIndex = 18;
@@ -217,7 +217,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(409, 34);
+            this.label2.Location = new System.Drawing.Point(193, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 24);
             this.label2.TabIndex = 17;
@@ -228,7 +228,7 @@
             this.Genre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Genre.AutoSize = true;
             this.Genre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Genre.Location = new System.Drawing.Point(263, 105);
+            this.Genre.Location = new System.Drawing.Point(193, 91);
             this.Genre.Name = "Genre";
             this.Genre.Size = new System.Drawing.Size(63, 24);
             this.Genre.TabIndex = 16;
@@ -240,18 +240,17 @@
             this.cmbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGenre.FormattingEnabled = true;
-            this.cmbGenre.Location = new System.Drawing.Point(269, 137);
+            this.cmbGenre.Location = new System.Drawing.Point(199, 123);
             this.cmbGenre.Name = "cmbGenre";
             this.cmbGenre.Size = new System.Drawing.Size(305, 30);
             this.cmbGenre.TabIndex = 15;
-            this.cmbGenre.SelectionChangeCommitted += new System.EventHandler(this.cmbGenre_SelectionChangeCommitted_1);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(55, 34);
+            this.label1.Location = new System.Drawing.Point(195, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 24);
             this.label1.TabIndex = 14;
@@ -261,7 +260,7 @@
             // 
             this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(60, 61);
+            this.txtTitle.Location = new System.Drawing.Point(200, 56);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(305, 28);
             this.txtTitle.TabIndex = 13;
@@ -270,7 +269,7 @@
             // 
             this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(689, 53);
+            this.btnSearch.Location = new System.Drawing.Point(394, 239);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(111, 36);
             this.btnSearch.TabIndex = 12;

@@ -69,7 +69,8 @@ namespace MoviePick.WindowsFormsUI.Forms
                 };
                 vm.Add(ni);
             }
-            vm = vm.OrderByDescending(x => x.ReleaseDate).ToList();
+
+            vm = vm.GroupBy(x => x.Id).Select(x => x.First()).OrderByDescending(x => x.ReleaseDate).ToList();
             dgvMTVS.DataSource = vm;
         }
 

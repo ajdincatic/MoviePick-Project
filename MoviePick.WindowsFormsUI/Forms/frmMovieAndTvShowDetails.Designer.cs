@@ -55,6 +55,8 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblRating = new System.Windows.Forms.Label();
+            this.lblNumberOfRatings = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -326,11 +328,33 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // lblRating
+            // 
+            this.lblRating.AutoSize = true;
+            this.lblRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRating.Location = new System.Drawing.Point(923, 517);
+            this.lblRating.Name = "lblRating";
+            this.lblRating.Size = new System.Drawing.Size(79, 29);
+            this.lblRating.TabIndex = 67;
+            this.lblRating.Text = "label7";
+            // 
+            // lblNumberOfRatings
+            // 
+            this.lblNumberOfRatings.AutoSize = true;
+            this.lblNumberOfRatings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberOfRatings.Location = new System.Drawing.Point(923, 559);
+            this.lblNumberOfRatings.Name = "lblNumberOfRatings";
+            this.lblNumberOfRatings.Size = new System.Drawing.Size(79, 29);
+            this.lblNumberOfRatings.TabIndex = 68;
+            this.lblNumberOfRatings.Text = "label7";
+            // 
             // frmMovieAndTvShowDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1361, 756);
+            this.Controls.Add(this.lblNumberOfRatings);
+            this.Controls.Add(this.lblRating);
             this.Controls.Add(this.btnQuotes);
             this.Controls.Add(this.btnEditCast);
             this.Controls.Add(this.pictureBox2);
@@ -390,5 +414,7 @@
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Label lblRating;
+        private System.Windows.Forms.Label lblNumberOfRatings;
     }
 }

@@ -35,7 +35,6 @@
             <Entry Text="{Binding Password}" IsPassword="True"></Entry>
 
             <Button Command="{Binding LoginCommand}"
-                    BackgroundColor="LightGray"
                     HorizontalOptions="FillAndExpand" Text="Login"></Button>
             <Button  
                 BackgroundColor="Transparent"

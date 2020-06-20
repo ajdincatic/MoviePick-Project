@@ -46,7 +46,7 @@ namespace eProdaja.WinUI
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    MessageBox.Show("You are not administrator.", "Warining", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Forbidden.", "Warining", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 throw;
             }
@@ -78,10 +78,10 @@ namespace eProdaja.WinUI
                 var stringBuilder = new StringBuilder();
                 foreach (var error in errors)
                 {
-                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                    stringBuilder.AppendLine($"{error.Key}, {string.Join(",", error.Value)}");
                 }
 
-                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default(T);
             }
 
@@ -107,7 +107,7 @@ namespace eProdaja.WinUI
                     stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
                 }
 
-                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default(T);
             }
 
@@ -131,7 +131,7 @@ namespace eProdaja.WinUI
                     stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
                 }
 
-                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default(T);
             }
 

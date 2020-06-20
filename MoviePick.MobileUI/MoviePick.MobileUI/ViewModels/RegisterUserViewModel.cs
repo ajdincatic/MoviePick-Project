@@ -1,4 +1,5 @@
 ﻿using eProdaja.Mobile;
+using MoviePick.Data.Model;
 using MoviePick.Data.Request;
 using MoviePick.MobileUI.Views;
 using System;
@@ -59,7 +60,7 @@ namespace MoviePick.MobileUI.ViewModels
                         return;
                     }
                 }
-                await _serviceUser.Insert<Data.Model.User>(new UserUpsertRequest
+                var newUser = await _serviceUser.Insert<Data.Model.User>(new UserUpsertRequest
                 {
                     FirstName = FirstName,
                     LastName = LastName,
@@ -70,6 +71,9 @@ namespace MoviePick.MobileUI.ViewModels
                     Username = Username,
                     UserTypeId = 2
                 });
+
+                if (newUser == default(User))
+                    return;
 
                 await Application.Current.MainPage.DisplayAlert("Registred succesfully.", "Now just log in.", "OK");
                 await Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());

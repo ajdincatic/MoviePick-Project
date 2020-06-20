@@ -19,7 +19,6 @@ namespace MoviePick.WindowsFormsUI.Forms
     {
         APIService _serviceMTVS = new APIService("MovieAndTvShow");
         APIService _serviceGenre = new APIService("Genre");
-        APIService _serviceMTVSGenre = new APIService("GenreMovieTvShow");
 
         public frmMovieTvShowSearch()
         {
@@ -35,11 +34,23 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async Task LoadMTVS()
         {
-            MovieAndTvshowSearchRequest request = new MovieAndTvshowSearchRequest()
+            MovieAndTvshowSearchRequest request = new MovieAndTvshowSearchRequest();
+
+            var idGenre = cmbGenre.SelectedValue;
+
+            if (idGenre == null)
+                request.GenreId = 0;
+            else
             {
-                Title = txtTitle.Text,
-                isTvShow = rbTvShow.Checked
-            };
+                if (int.TryParse(idGenre.ToString(), out int genreID))
+                {
+                    request.GenreId = genreID;
+                }
+            }
+
+            request.Title = txtTitle.Text;
+            request.isTvShow = rbTvShow.Checked;
+
             var list = await _serviceMTVS.GetAll<List<MovieAndTvshow>>(request);
 
             List<frmMovieTvShowSearchVM> vm = new List<frmMovieTvShowSearchVM>();
@@ -84,41 +95,6 @@ namespace MoviePick.WindowsFormsUI.Forms
         private async void btnSearch_Click_1(object sender, EventArgs e)
         {
             await LoadMTVS();
-            cmbGenre.SelectedIndex = 0;
-        }
-
-        private async void cmbGenre_SelectionChangeCommitted_1(object sender, EventArgs e)
-        {
-            GenreMovieTvShowSearchRequest searchRequest = new GenreMovieTvShowSearchRequest();
-
-            var idGenre = cmbGenre.SelectedValue;
-
-            if (int.TryParse(idGenre.ToString(), out int genreID))
-            {
-                searchRequest.GenreId = genreID;
-            }
-
-            var list = await _serviceMTVSGenre.GetAll<List<MovieTvShowGenre>>(searchRequest);
-
-            list = list.GroupBy(p => p.MovieAndTvshowId)
-                    .Select(g => g.First()).ToList();
-
-            List<frmMovieTvShowSearchVM> vm = new List<frmMovieTvShowSearchVM>();
-            foreach (var item in list)
-            {
-                frmMovieTvShowSearchVM ni = new frmMovieTvShowSearchVM
-                {
-                    Finished = item.MovieAndTvshow.Finished,
-                    Id = item.MovieAndTvshow.Id,
-                    ProductionCompany = item.MovieAndTvshow.ProductionCompany.ProductionCompanyName,
-                    ReleaseDate = item.MovieAndTvshow.ReleaseDate,
-                    RunningTime = item.MovieAndTvshow.RunningTime,
-                    Title = item.MovieAndTvshow.Title,
-                };
-                vm.Add(ni);
-            }
-
-            dgvMTVS.DataSource = vm;
         }
     }
 }

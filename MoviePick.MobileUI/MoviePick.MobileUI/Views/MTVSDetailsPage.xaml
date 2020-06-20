@@ -103,6 +103,7 @@
             HorizontalOptions="FillAndExpand"
             Text="{Binding mtvs.CalculatedRating}"
             BackgroundColor="Green"
+            x:Name="CalcRating"
             TextColor="White"
             >
         </Entry>

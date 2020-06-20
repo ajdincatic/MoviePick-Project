@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:MoviePick.MobileUI.Converters"
+             xmlns:vm="clr-namespace:MoviePick.MobileUI.ViewModels"
+             mc:Ignorable="d"
+             Title="How do you feel?"
+             x:Class="MoviePick.MobileUI.Views.HowDoYouFeelPage">
+    <ContentPage.BindingContext>
+        <vm:HowDoYouFeelViewModel></vm:HowDoYouFeelViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label FontSize="Medium" Margin="0,5,0,5">How do you feel?</Label>
+            <Entry Placeholder="Key word" Text="{Binding KeyWord}"></Entry>
+            <Entry Placeholder="Actor" Text="{Binding Actor}"></Entry>
+            <Entry Placeholder="Genre" Text="{Binding Genre}"></Entry>
+            <Entry Placeholder="Release year" Text="{Binding ReleaseYear}"></Entry>
+            <Button Text="Get movie" Margin="0,7,0,7" HorizontalOptions="Center" Command="{Binding LoadCommand}"></Button>
+
+            <Label Text="Result of search" FontAttributes="Bold" FontSize="Medium"></Label>
+            <ListView x:Name="Lista" ItemsSource="{Binding MTVSList}" BackgroundColor="AntiqueWhite" ItemTapped="Lista_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image WidthRequest="120" HeightRequest="120" Source="{Binding Poster, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" >
+                                    <Label Text="{Binding Title}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding ReleaseDate.Year}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="11" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

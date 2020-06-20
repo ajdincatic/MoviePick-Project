@@ -90,6 +90,9 @@ namespace MoviePick.WindowsFormsUI.Forms
                 if (_user == null)
                 {
                     var mtvs = await _serviceUser.Insert<User>(request);
+
+                    if (mtvs == default(User))
+                        return;
                 }
 
                 MessageBox.Show("Operation successfully completed!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -181,6 +184,11 @@ namespace MoviePick.WindowsFormsUI.Forms
             else if (flag)
             {
                 errorProvider.SetError(txtUsername, "Username already exists");
+                e.Cancel = true;
+            }
+            else if (txtUsername.Text.Length < 4)
+            {
+                errorProvider.SetError(txtUsername, "You must have minimum 4 characters.");
                 e.Cancel = true;
             }
             else

@@ -45,6 +45,9 @@ namespace MoviePick.MobileUI.Views
                     case (int)MenuItemType.YourProfile:
                         MenuPages.Add(id, new NavigationPage(new YoutProfilePage()));
                         break;
+                    case (int)MenuItemType.HowDoYouFeel:
+                        MenuPages.Add(id, new NavigationPage(new HowDoYouFeelPage()));
+                        break;
                 }
             }
 

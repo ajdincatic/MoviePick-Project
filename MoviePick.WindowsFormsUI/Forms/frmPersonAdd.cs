@@ -42,7 +42,10 @@ namespace MoviePick.WindowsFormsUI.Forms
                 if (!chkDead.Checked)
                     request.DateOfDeath = dtpDateOfDeath.Value;
 
-                await _servicePerson.Insert<Data.Model.Person>(request);
+                var x = await _servicePerson.Insert<Data.Model.Person>(request);
+
+                if (x == default(Person))
+                    return;
 
                 MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

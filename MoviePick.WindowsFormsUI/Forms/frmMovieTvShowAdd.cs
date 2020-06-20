@@ -78,6 +78,9 @@ namespace MoviePick.WindowsFormsUI.Forms
 
                 var mtvs = await _serviceMovieAndTvShow.Insert<MovieAndTvshow>(request);
 
+                if (mtvs == default(MovieAndTvshow))
+                    return;
+
                 MessageBox.Show("Operation successfully completed, now assign cast !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtBudget.Text = "";
                 txtTitle.Text = "";

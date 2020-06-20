@@ -15,6 +15,7 @@ namespace MoviePick.MobileUI.Views
         public AboutPage()
         {
             InitializeComponent();
+            imgDisp.Source = "logo_transparent.png";
         }
     }
 }

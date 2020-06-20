@@ -31,8 +31,8 @@
             <Label  Text="Confirm password"></Label>
             <Entry Text="{Binding PasswordConfirm}" IsPassword="True"></Entry>
 
-            <Button Command="{Binding RegisterCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" Text="Register"></Button>
-            <Button Clicked="Button_Clicked" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" Text="Cancel"></Button>
+            <Button Command="{Binding RegisterCommand}" HorizontalOptions="FillAndExpand" Text="Register"></Button>
+            <Button Clicked="Button_Clicked" HorizontalOptions="FillAndExpand" Text="Cancel"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

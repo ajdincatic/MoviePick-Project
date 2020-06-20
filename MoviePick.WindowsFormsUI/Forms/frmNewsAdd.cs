@@ -41,10 +41,15 @@ namespace MoviePick.WindowsFormsUI.Forms
                 var x = await _serviceUser.GetAll<List<User>>(new UserSearchRequest { Username = APIService.username, UserTypeId = 1 });
                 request.AuthorId = x.FirstOrDefault().Id;
 
+                News temp = null;
                 if (_news == null)
-                    await _serviceNews.Insert<News>(request);
+                    temp = await _serviceNews.Insert<News>(request);
                 else
-                    await _serviceNews.Update<News>(_news.Id, request);
+                    temp = await _serviceNews.Update<News>(_news.Id, request);
+
+                if (temp == default(News))
+                    return;
+
                 MessageBox.Show("Operation successfully completed!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

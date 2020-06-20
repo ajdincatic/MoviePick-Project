@@ -17,8 +17,8 @@
             <Label x:Name="Email"></Label>
             <Label Text="Phone number" FontAttributes="Bold" FontSize="15"></Label>
             <Label x:Name="Phone"></Label>
-            <Button Clicked="Button_Clicked" Text="Edit information" BackgroundColor="LightGray" Margin="0,20,0,0"></Button>
-            <Button Clicked="Button_Clicked_1" Text="Set new password" BackgroundColor="LightGray"></Button>
+            <Button Clicked="Button_Clicked" Text="Edit informations" BackgroundColor="LightGray" Margin="0,20,0,0"></Button>
+            <Button Clicked="Button_Clicked_1" Text="Change password" BackgroundColor="LightGray"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -64,6 +64,10 @@ namespace MoviePick.MobileUI.Views
                     UserTypeId = 2
                 });
 
+
+                if(newUser == default(User))
+                    return;
+
                 APIService.Password = Username.Text;
                 await Application.Current.MainPage.DisplayAlert("Succesfull", "Succesfully changed, please log in to confirm changes.", "OK");
                 await Navigation.PushAsync(new LoginPage());

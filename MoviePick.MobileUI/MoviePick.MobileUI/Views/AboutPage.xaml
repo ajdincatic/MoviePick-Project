@@ -10,6 +10,7 @@
         <StackLayout Padding="10" VerticalOptions="StartAndExpand">
             <Label FontSize="20" FontAttributes="Bold" Margin="0,0,0,10">
                 Software development II - MoviePick project.</Label>
+            <Image HeightRequest="250" WidthRequest="250" x:Name="imgDisp" Margin="0,15,0,15"></Image>
             <Label>
                 This project contains 3 interconnected applications:
                     REST API C# ASP.NET Core application
@@ -20,7 +21,9 @@
             <Label>Source code: https://github.com/ajdincatic/MoviePick-Project</Label>
             <Label></Label>
             <Label VerticalOptions="End">
-                © Ajdin Ćatić, Faculty of Information Technology, University Džemal Bijedić of Mostar</Label>
+                © Ajdin Ćatić
+                Faculty of Information Technology
+                University Džemal Bijedić of Mostar</Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -137,7 +137,10 @@ namespace MoviePick.WindowsFormsUI.Forms
                     cmbRoleSearch.SelectedValue = cmbRole.SelectedValue;
                 }
 
-                await _serviceCast.Insert<Data.Model.MovieAndTvshowPerson>(request);
+                var temp = await _serviceCast.Insert<Data.Model.MovieAndTvshowPerson>(request);
+
+                if (temp == default(MovieAndTvshowPerson))
+                    return;
 
                 MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtName.Text = "";
