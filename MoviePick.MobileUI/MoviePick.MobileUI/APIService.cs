@@ -21,7 +21,7 @@ namespace eProdaja.Mobile
         private string _apiUrl = "http://localhost:57869/api";
 #endif
 #if RELEASE
-        private string _apiUrl = "https://mywebsite.azure.com/api/";
+        private string _apiUrl = "http://localhost:57869/api";
 #endif
 
         public APIService(string route)

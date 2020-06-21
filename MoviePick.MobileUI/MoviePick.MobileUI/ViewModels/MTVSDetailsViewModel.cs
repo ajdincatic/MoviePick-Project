@@ -58,6 +58,21 @@ namespace MoviePick.MobileUI.ViewModels
             }
         }
 
+        public string Genres 
+        {
+            get
+            {
+                var str = string.Empty;
+                if (mtvs != null)
+                {
+                    foreach (var item in mtvs.MovieAndTvshowGenre)
+                        str += item.Genre.GenreName + ", ";
+                    str = str.Substring(0, str.Length - 2);
+                }
+;               return str;
+            }
+        }
+
         public async Task SetNewRating()
         {
             bool answer = await Application.Current.MainPage.DisplayAlert("Alert", "Would you like to add rating?", "Yes", "No");

@@ -74,7 +74,7 @@ namespace MoviePick
 
             // connection to database
             // Scaffold-DbContext -Connection "Server=(local);Database=MoviePick;Integrated Security=True;Trusted_Connection=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database -context MoviePickContext -force
-            services.AddDbContext<MoviePickContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("localDb")));
+            services.AddDbContext<MoviePickContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MoviePick")));
 
             // basic auth
             services.AddAuthentication("BasicAuthentication")

@@ -102,7 +102,8 @@ namespace MoviePick.Services
                 .Where(x => x.Id == Id).SingleOrDefault();
 
             var mapper = _mapper.Map<Data.Model.MovieAndTvshow>(x);
-            mapper.CalculatedRating = Math.Ceiling(mapper.Rating.Average(x => x.RatingValue)).ToString();
+            if (mapper.Rating.Count() > 0)
+                mapper.CalculatedRating = Math.Ceiling(mapper.Rating.Average(x => x.RatingValue)).ToString();
 
             return mapper;
         }

@@ -1,0 +1,33 @@
+version: '3'
+services:
+#mssql docker
+  moviepick-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    networks:
+      - moviepicknet
+
+  moviepick-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:MoviePick=Server=moviepick-sql,1433;Database=170027;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 57869:80
+    networks:
+      - moviepicknet      
+    links:
+      - moviepick-sql
+    depends_on:
+      - moviepick-sql
+
+networks:
+  moviepicknet:
+    driver: bridge       

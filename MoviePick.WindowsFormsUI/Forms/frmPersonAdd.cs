@@ -31,25 +31,33 @@ namespace MoviePick.WindowsFormsUI.Forms
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            try
             {
-                request.Biography = rtxtBio.Text;
-                request.DateOfBirth = dtDateOfBirth.Value;
-                request.PlaceOfBirth = txtPlaceBirth.Text;
-                request.FirstName = txtFirstName.Text;
-                request.LastName = txtLastName.Text;
-                request.Gender = txtGender.Text;
-                if (!chkDead.Checked)
-                    request.DateOfDeath = dtpDateOfDeath.Value;
+                if (this.ValidateChildren())
+                {
+                    request.Biography = rtxtBio.Text;
+                    request.DateOfBirth = dtDateOfBirth.Value;
+                    request.PlaceOfBirth = txtPlaceBirth.Text;
+                    request.FirstName = txtFirstName.Text;
+                    request.LastName = txtLastName.Text;
+                    request.Gender = txtGender.Text;
+                    if (!chkDead.Checked)
+                        request.DateOfDeath = dtpDateOfDeath.Value;
 
-                var x = await _servicePerson.Insert<Data.Model.Person>(request);
+                    var x = await _servicePerson.Insert<Data.Model.Person>(request);
 
-                if (x == default(Person))
-                    return;
+                    if (x == default(Person))
+                        return;
 
-                MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                    MessageBox.Show("Operation successfully completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void btnImage_Click(object sender, EventArgs e)
