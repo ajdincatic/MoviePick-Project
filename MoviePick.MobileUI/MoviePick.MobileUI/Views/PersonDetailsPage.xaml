@@ -104,7 +104,7 @@
             Grid.Row="2"
             Grid.ColumnSpan="3">
             
-            <ListView ItemsSource="{Binding MovieList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
+            <ListView ItemsSource="{Binding MovieList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

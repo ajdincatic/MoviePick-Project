@@ -137,7 +137,7 @@
             FontSize="Micro"
             HorizontalOptions="Start"
             Text="Submit"
-            Clicked="Button_Clicked"
+            Command="{Binding RatingCommand}"
         ></Button>
 
         <StackLayout
@@ -148,7 +148,7 @@
                 FontSize="13"
                 Text="Director"></Label>
 
-            <ListView HeightRequest="40" ItemsSource="{Binding DirectorsList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
+            <ListView HeightRequest="40" ItemsSource="{Binding DirectorsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -175,7 +175,7 @@
             <Label
                 FontSize="13"
                 Text="Actors"></Label>
-            <ListView ItemsSource="{Binding ActorsList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
+            <ListView ItemsSource="{Binding ActorsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

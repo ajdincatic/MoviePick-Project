@@ -28,7 +28,7 @@
                 </Label.FormattedText>
             </Label>
             <Label FontSize="18" Text="Quote of the day"></Label>
-            <Label BackgroundColor="AntiqueWhite" Padding="10" >
+            <Label BackgroundColor="LightBlue" Padding="10" >
                 <Label.FormattedText>
                     <FormattedString>
                         <Span x:Name="QOTD" />
@@ -38,7 +38,7 @@
                 </Label.FormattedText>
             </Label>
             <Label x:Name="NewsPlace" FontSize="18" Text="News place >"></Label>
-            <ListView ItemsSource="{Binding NewsList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped">
+            <ListView ItemsSource="{Binding NewsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -63,7 +63,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Label x:Name="MoviesList" FontSize="18" Text="Just for you >"></Label>
-            <ListView ItemsSource="{Binding MTVSList}" BackgroundColor="AntiqueWhite" ItemTapped="ListView_ItemTapped_1">
+            <ListView ItemsSource="{Binding MTVSList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped_1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

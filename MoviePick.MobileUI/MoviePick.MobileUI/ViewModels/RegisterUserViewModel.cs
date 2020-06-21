@@ -34,21 +34,9 @@ namespace MoviePick.MobileUI.ViewModels
         {
             try
             {
-                if(string.IsNullOrWhiteSpace(FirstName) || string.IsNullOrWhiteSpace(LastName) ||
-                    string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Phone)
-                    || string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(PasswordConfirm))
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "All fields are required.", "Try again");
-                    return;
-                }
                 if (Password != PasswordConfirm)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Passwords are not matched.", "Try again");
-                    return;
-                }
-                if (Password.Length < 4 || Username.Length < 4)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "Username & Password must have minimum 4 characthers.", "Try again");
                     return;
                 }
                 var listUsers = await _serviceUser.Get<List<Data.Model.User>>(null);

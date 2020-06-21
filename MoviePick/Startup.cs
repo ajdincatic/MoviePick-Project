@@ -97,7 +97,6 @@ namespace MoviePick
             services.AddScoped<IService<Data.Model.Role, object>, BaseService<Data.Model.Role, object, Database.Role>>();
             services.AddScoped<IService<Data.Model.UserType, object>, BaseService<Data.Model.UserType, object, Database.UserType>>();
             services.AddScoped<IService<Data.Model.ProductionCompany, object>, BaseService<Data.Model.ProductionCompany, object, ProductionCompany>>();
-            services.AddScoped<IService<Data.Model.MovieTvShowGenre, GenreMovieTvShowSearchRequest>, GenreMovieTvShowService>();
 
             services.AddScoped<ICRUDService<Data.Model.Quote, QuoteSearchRequest, QuoteUpsertRequest, QuoteUpsertRequest>, QuoteService>();
             services.AddScoped<ICRUDService<Data.Model.Person, PersonSearchRequest, PersonUpsertRequest, PersonUpsertRequest>, PersonService>();

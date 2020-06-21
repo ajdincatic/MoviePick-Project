@@ -14,18 +14,20 @@ namespace MoviePick.MobileUI.ViewModels
 {
     public class MTVSDetailsViewModel : BaseViewModel
     {
+        private readonly APIService _RatingService = new APIService("Rating");
         private readonly APIService _CastService = new APIService("Cast");
 
         public Data.Model.MovieAndTvshow mtvs { get; set; }
-
-        public string UserRating { get; set; }
 
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> ActorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> DirectorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> PersonsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
 
+        public ICommand RatingCommand { get; set; }
+
         public MTVSDetailsViewModel()
         {
+            RatingCommand = new Command(async () => await SetNewRating());
         }
 
         public string MTVSYear { 
@@ -36,19 +38,11 @@ namespace MoviePick.MobileUI.ViewModels
             }
         }
 
-        public string Genres
+        private string _userRating = string.Empty;
+        public string UserRating
         {
-            get
-            {
-                var str = string.Empty;
-                if (mtvs != null)
-                {
-                    str += "|";
-                    foreach (var item in mtvs.MovieAndTvshowGenre)
-                        str += item.Genre.GenreName + "|";
-                }
-                return str;
-            }
+            get { return _userRating; }
+            set { SetProperty(ref _userRating, value); }
         }
 
         public string RunningTimeInMins
@@ -61,6 +55,34 @@ namespace MoviePick.MobileUI.ViewModels
                     return mtvs.RunningTime + " min";
                 }
                 return str;
+            }
+        }
+
+        public async Task SetNewRating()
+        {
+            bool answer = await Application.Current.MainPage.DisplayAlert("Alert", "Would you like to add rating?", "Yes", "No");
+            if (answer)
+            {
+                if (int.TryParse(UserRating, out int val))
+                {
+                    if (val < 0 || val > 100)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Alert", "Range is from 0 to 100", "Try again");
+                        return;
+                    }
+                    await _RatingService.Insert<Data.Model.Rating>(new RatingUpsertRequest
+                    {
+                        AppUserId = APIService.UserId,
+                        MovieAndTvshowId = mtvs.Id,
+                        RatingValue = int.Parse(UserRating)
+                    });
+
+                    await Application.Current.MainPage.DisplayAlert("Succesfull", "Succesfully rated title.", "OK");
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Wrong input!", "Try again");
+                }
             }
         }
 

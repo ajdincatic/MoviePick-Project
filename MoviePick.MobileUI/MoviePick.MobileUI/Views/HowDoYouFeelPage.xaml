@@ -18,7 +18,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Label FontSize="Medium" Margin="0,5,0,5">How do you feel?</Label>
+            <Label FontSize="Medium" Margin="0,5,0,5">Insert requested parameters!</Label>
             <Entry Placeholder="Key word" Text="{Binding KeyWord}"></Entry>
             <Entry Placeholder="Actor" Text="{Binding Actor}"></Entry>
             <Entry Placeholder="Genre" Text="{Binding Genre}"></Entry>
@@ -26,7 +26,7 @@
             <Button Text="Get movie" Margin="0,7,0,7" HorizontalOptions="Center" Command="{Binding LoadCommand}"></Button>
 
             <Label Text="Result of search" FontAttributes="Bold" FontSize="Medium"></Label>
-            <ListView x:Name="Lista" ItemsSource="{Binding MTVSList}" BackgroundColor="AntiqueWhite" ItemTapped="Lista_ItemTapped">
+            <ListView x:Name="Lista" ItemsSource="{Binding MTVSList}" BackgroundColor="LightBlue" ItemTapped="Lista_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
