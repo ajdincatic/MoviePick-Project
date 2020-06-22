@@ -80,6 +80,11 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             if (this.ValidateChildren())
             {
+                if (request.Photo == null)
+                {
+                    MessageBox.Show("No image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 request.Biography = rtxtBio.Text;
                 request.DateOfBirth = dtDateOfBirth.Value;
                 request.DateOfDeath = dtDateOfBirth.Value;

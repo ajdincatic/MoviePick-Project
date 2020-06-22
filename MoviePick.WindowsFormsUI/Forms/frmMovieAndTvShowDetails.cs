@@ -87,6 +87,11 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             if (this.ValidateChildren())
             {
+                if (request.Poster == null)
+                {
+                    MessageBox.Show("No image", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 request.Title = txtTitle.Text;
                 request.Budget = double.Parse(txtBudget.Text);
                 request.Description = rtxtDescription.Text;

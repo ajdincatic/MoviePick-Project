@@ -179,6 +179,30 @@
     <Compile Include="Forms\frmQuoteDetails.Designer.cs">
       <DependentUpon>frmQuoteDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRptMTVS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRptMTVS.Designer.cs">
+      <DependentUpon>frmRptMTVS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRptNews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRptNews.Designer.cs">
+      <DependentUpon>frmRptNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRptPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRptPerson.Designer.cs">
+      <DependentUpon>frmRptPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRptUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRptUser.Designer.cs">
+      <DependentUpon>frmRptUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmTvShowSeasonEpisodesAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +269,18 @@
     <EmbeddedResource Include="Forms\frmQuoteDetails.resx">
       <DependentUpon>frmQuoteDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRptMTVS.resx">
+      <DependentUpon>frmRptMTVS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRptNews.resx">
+      <DependentUpon>frmRptNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRptPerson.resx">
+      <DependentUpon>frmRptPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRptUser.resx">
+      <DependentUpon>frmRptUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTvShowSeasonEpisodesAdd.resx">
       <DependentUpon>frmTvShowSeasonEpisodesAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,7 +303,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\rptMTVS.rdlc" />
+    <EmbeddedResource Include="Reports\rptNews.rdlc" />
+    <EmbeddedResource Include="Reports\rptPerson.rdlc" />
+    <EmbeddedResource Include="Reports\rptUsers.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MoviePick.Data.Model.Person.datasource" />
+    <None Include="Properties\DataSources\MoviePick.Data.ViewModel.frmMovieTvShowSearchVM.datasource" />
+    <None Include="Properties\DataSources\MoviePick.Data.ViewModel.frmNewsSearchVM.datasource" />
+    <None Include="Properties\DataSources\MoviePick.Data.ViewModel.frmUserSearchVM.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

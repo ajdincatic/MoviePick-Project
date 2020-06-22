@@ -66,6 +66,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                     Title = item.Title,
                 };
 
+                ni.Genres += "| ";
                 foreach (var genre in item.MovieAndTvshowGenre)
                     ni.Genres += genre.Genre.GenreName.ToString() + " | ";
 
@@ -95,6 +96,12 @@ namespace MoviePick.WindowsFormsUI.Forms
         private async void btnSearch_Click_1(object sender, EventArgs e)
         {
             await LoadMTVS();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmRptMTVS frm = new frmRptMTVS(dgvMTVS.DataSource as List<frmMovieTvShowSearchVM>);
+            frm.Show();
         }
     }
 }

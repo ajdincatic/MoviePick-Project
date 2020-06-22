@@ -91,5 +91,11 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             await LoadUsers();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmRptUser frm = new frmRptUser(dgvUser.DataSource as List<frmUserSearchVM>);
+            frm.Show();
+        }
     }
 }

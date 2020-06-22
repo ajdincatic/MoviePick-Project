@@ -51,6 +51,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.chkFemale = new System.Windows.Forms.RadioButton();
             this.chkMale = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -309,12 +310,25 @@
             this.chkMale.Text = "Male";
             this.chkMale.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1080, 717);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(225, 32);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Generate report";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmPersonSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1360, 761);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvPersons);
             this.Controls.Add(this.label1);
@@ -351,5 +365,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfDeath;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlaceOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn Biography;
+        private System.Windows.Forms.Button button1;
     }
 }

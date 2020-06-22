@@ -60,5 +60,11 @@ namespace MoviePick.WindowsFormsUI.Forms
         {
             await LoadPerson();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmRptPerson frm = new frmRptPerson(dgvPersons.DataSource as List<Person>);
+            frm.Show();
+        }
     }
 }

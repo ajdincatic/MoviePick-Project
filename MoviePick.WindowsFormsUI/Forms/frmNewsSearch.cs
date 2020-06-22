@@ -98,5 +98,11 @@ namespace MoviePick.WindowsFormsUI.Forms
             frm.WindowState = FormWindowState.Normal;
             frm.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmRptNews frm = new frmRptNews(dgvUserNews.DataSource as List<frmNewsSearchVM>);
+            frm.Show();
+        }
     }
 }
