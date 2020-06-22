@@ -23,7 +23,7 @@ namespace MoviePick.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Title))
             {
-                query = query.Where(x => x.Title.StartsWith(search.Title));
+                query = query.Where(x => x.Title.ToLower().StartsWith(search.Title.ToLower()));
             }
 
             if (search?.AuthorId != null && search?.AuthorId != 0)

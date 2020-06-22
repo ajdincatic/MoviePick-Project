@@ -26,12 +26,12 @@ namespace MoviePick.Services
 
             if (!string.IsNullOrWhiteSpace(search?.FirstName))
             {
-                query = query.Where(x => x.FirstName.StartsWith(search.FirstName));
+                query = query.Where(x => x.FirstName.ToLower().StartsWith(search.FirstName.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(search?.LastName))
             {
-                query = query.Where(x => x.FirstName.StartsWith(search.LastName));
+                query = query.Where(x => x.LastName.ToLower().StartsWith(search.LastName.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(search?.Gender))

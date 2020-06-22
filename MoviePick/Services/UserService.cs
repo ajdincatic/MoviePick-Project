@@ -29,7 +29,7 @@ namespace MoviePick.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Username))
             {
-                query = query.Where(x => x.Username.StartsWith(search.Username));
+                query = query.Where(x => x.Username.ToLower().StartsWith(search.Username.ToLower()));
             }
 
             if (search?.UserTypeId != null && search?.UserTypeId != 0)

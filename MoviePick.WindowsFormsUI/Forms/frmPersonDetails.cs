@@ -44,7 +44,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                     dtpDateOfDeath.Value = (DateTime)_person.DateOfDeath;
                     chkDisable.Checked = false;
                 }
-                if (_person.Photo != null && _person.Photo.Length > 0)
+                if (_person.Photo != null && _person.Photo.Length > 15)
                 {
                     pictureBox1.Image = GetImage(_person.Photo);
                     request.Photo = _person.Photo;

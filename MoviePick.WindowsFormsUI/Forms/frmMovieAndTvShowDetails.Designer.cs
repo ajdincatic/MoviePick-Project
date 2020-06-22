@@ -334,9 +334,8 @@
             this.lblRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRating.Location = new System.Drawing.Point(923, 517);
             this.lblRating.Name = "lblRating";
-            this.lblRating.Size = new System.Drawing.Size(79, 29);
+            this.lblRating.Size = new System.Drawing.Size(0, 29);
             this.lblRating.TabIndex = 67;
-            this.lblRating.Text = "label7";
             // 
             // lblNumberOfRatings
             // 
@@ -344,9 +343,8 @@
             this.lblNumberOfRatings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumberOfRatings.Location = new System.Drawing.Point(923, 559);
             this.lblNumberOfRatings.Name = "lblNumberOfRatings";
-            this.lblNumberOfRatings.Size = new System.Drawing.Size(79, 29);
+            this.lblNumberOfRatings.Size = new System.Drawing.Size(0, 29);
             this.lblNumberOfRatings.TabIndex = 68;
-            this.lblNumberOfRatings.Text = "label7";
             // 
             // frmMovieAndTvShowDetails
             // 

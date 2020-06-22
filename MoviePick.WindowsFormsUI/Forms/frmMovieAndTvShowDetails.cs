@@ -39,7 +39,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 txtLang.Text = _MTVS.Language;
                 dtRelaseDate.Value = _MTVS.ReleaseDate;
                 txtRtime.Text = _MTVS.RunningTime;
-                if (_MTVS.Poster != null && _MTVS.Poster.Length > 0)
+                if (_MTVS.Poster != null && _MTVS.Poster.Length > 15)
                 {
                     pictureBox2.Image = GetImage(_MTVS.Poster);
                     request.Poster = _MTVS.Poster;

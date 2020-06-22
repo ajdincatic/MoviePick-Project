@@ -37,7 +37,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label x:Name="NewsPlace" FontSize="18" Text="News place >"></Label>
+            <Label x:Name="NewsPlace" FontAttributes="Bold" FontSize="18" Text="News place >"></Label>
             <ListView ItemsSource="{Binding NewsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -62,7 +62,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label x:Name="MoviesList" FontSize="18" Text="Just for you >"></Label>
+            <Label x:Name="MoviesList" FontAttributes="Bold" FontSize="18" Text="Just for you >"></Label>
             <ListView ItemsSource="{Binding MTVSList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped_1">
                 <ListView.ItemTemplate>
                     <DataTemplate>

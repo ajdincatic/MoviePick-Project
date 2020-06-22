@@ -278,7 +278,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(1026, 210);
+            this.label4.Location = new System.Drawing.Point(1026, 488);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(258, 17);
             this.label4.TabIndex = 14;

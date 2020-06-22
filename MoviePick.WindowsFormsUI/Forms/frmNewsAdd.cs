@@ -86,7 +86,7 @@ namespace MoviePick.WindowsFormsUI.Forms
             {
                 txtContent.Text = _news.Content;
                 txtTitle.Text = _news.Title;
-                if (_news.CoverPhoto != null && _news.CoverPhoto.Length > 0)
+                if (_news.CoverPhoto != null && _news.CoverPhoto.Length > 15)
                 {
                     pictureBox1.Image = GetImage(_news.CoverPhoto);
                     request.CoverPhoto = _news.CoverPhoto;
