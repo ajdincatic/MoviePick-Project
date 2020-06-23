@@ -27,7 +27,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label FontSize="18" Text="Quote of the day"></Label>
+            <Label FontSize="18" FontAttributes="Bold" Text="Quote of the day"></Label>
             <Label BackgroundColor="LightBlue" Padding="10" >
                 <Label.FormattedText>
                     <FormattedString>

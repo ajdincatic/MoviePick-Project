@@ -34,7 +34,7 @@ namespace MoviePick.Services
         public List<Database.MovieAndTvshow> LoadSimilar(int titleId)
         {
             LoadTitles(titleId);
-            List<Database.Rating> ratingsOfThis = db.Rating.Where(x => x.Id == titleId).OrderBy(x => x.AppUser.Id).ToList();
+            List<Database.Rating> ratingsOfThis = db.Rating.Where(x => x.MovieAndTvshowId == titleId).OrderBy(x => x.AppUserId).ToList();
 
             List<Database.Rating> ratings1 = new List<Database.Rating>();
             List<Database.Rating> ratings2 = new List<Database.Rating>();
@@ -44,10 +44,10 @@ namespace MoviePick.Services
             {
                 foreach (Database.Rating rating in ratingsOfThis)
                 {
-                    if (item.Value.Where(x => x.AppUser.Id == rating.AppUser.Id).Count() > 0)
+                    if (item.Value.Where(x => x.AppUserId == rating.AppUserId).Count() > 0)
                     {
                         ratings1.Add(rating);
-                        ratings2.Add(item.Value.Where(x => x.AppUser.Id == rating.AppUser.Id).First());
+                        ratings2.Add(item.Value.Where(x => x.AppUserId == rating.AppUserId).First());
                     }
                 }
                 double similarity = GetSimilarity(ratings1, ratings2);
@@ -91,7 +91,7 @@ namespace MoviePick.Services
             List<Database.Rating> ratings = new List<Database.Rating>();
             foreach (Database.MovieAndTvshow item in mtvs)
             {
-                ratings = db.Rating.Include(x => x.AppUser).Where(x => x.MovieAndTvshowId == item.Id).OrderBy(x => x.AppUser.Id).ToList();
+                ratings = db.Rating.Include(x => x.AppUser).Where(x => x.MovieAndTvshowId == item.Id).OrderBy(x => x.AppUserId).ToList();
                 if (ratings.Count > 0)
                     movies.Add(item.Id, ratings);
             }
