@@ -16,234 +16,260 @@
             <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid Padding="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-        </Grid.RowDefinitions>
+        <ScrollView>
+            <Grid Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-        <Image
-            Grid.Column="0"
-            Grid.Row="0"
-            HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" 
-            Source="{Binding mtvs.Poster, Converter={StaticResource imgConv}}"></Image>
+                <Image
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" 
+                    Source="{Binding mtvs.Poster, Converter={StaticResource imgConv}}"></Image>
 
-        <Grid
-            Grid.Row="0"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Padding="20">
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Padding="20">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                FontSize="20"
-                FontAttributes="Bold"
-                VerticalOptions="StartAndExpand"
-                Text="{Binding MTVSYear}"></Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        VerticalOptions="StartAndExpand"
+                        Text="{Binding MTVSYear}"></Label>
 
-            <Label
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                FontSize="14"
-                VerticalOptions="StartAndExpand"
-                Text="{Binding Genres}"></Label>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontSize="14"
+                        VerticalOptions="StartAndExpand"
+                        Text="{Binding Genres}"></Label>
             
-            <Label
-                Grid.Row="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                FontSize="11"
-                VerticalOptions="StartAndExpand"
-                Text="{Binding RunningTimeInMins}"></Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontSize="11"
+                        VerticalOptions="StartAndExpand"
+                        Text="{Binding RunningTimeInMins}"></Label>
             
-            <Label
-                Grid.Row="3"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                FontSize="10"
-                VerticalOptions="StartAndExpand"
-                Text="{Binding mtvs.Description}"></Label>
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontSize="10"
+                        VerticalOptions="StartAndExpand"
+                        Text="{Binding mtvs.Description}"></Label>
             
             
-        </Grid>
+                </Grid>
 
-        <Label
-            Grid.Row="1"
-            x:Name="RatingValue"
-            Grid.Column="0"
-            HorizontalOptions="End"
-            FontSize="Micro"
-            Text="Rating"></Label>
-        <Entry Grid.Row="1"
-            Grid.Column="1"
-            IsReadOnly="True"
-            HorizontalTextAlignment="Center"
-            HorizontalOptions="FillAndExpand"
-            Text="{Binding mtvs.CalculatedRating}"
-            BackgroundColor="Green"
-            x:Name="CalcRating"
-            TextColor="White"
-            >
-        </Entry>
-        <Label
-            Grid.Row="1"
-            Grid.Column="2"
-            FontSize="Micro"
-            Text="{Binding mtvs.NumberOfRatings}"
-            HorizontalOptions="Start"
-        ></Label>
+                <Label
+                    Grid.Row="1"
+                    x:Name="RatingValue"
+                    Grid.Column="0"
+                    HorizontalOptions="End"
+                    FontSize="Micro"
+                    Text="Rating"></Label>
+                <Entry Grid.Row="1"
+                    Grid.Column="1"
+                    IsReadOnly="True"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding mtvs.CalculatedRating}"
+                    BackgroundColor="Green"
+                    x:Name="CalcRating"
+                    TextColor="White"
+                    >
+                </Entry>
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    FontSize="Micro"
+                    Text="{Binding mtvs.NumberOfRatings}"
+                    HorizontalOptions="Start"
+                ></Label>
 
-        <Label
-            HorizontalOptions="End"
-            Grid.Row="2"
-            Grid.Column="0"
-            FontSize="Micro"
-            Text="Your rating"></Label>
-        <Entry Grid.Row="2"
-            Grid.Column="1"
-            HorizontalTextAlignment="Center"
-            HorizontalOptions="FillAndExpand"
-            BackgroundColor="LightGray"
-            Text="{Binding UserRating}"
-            x:Name="UserRating"
-            Keyboard="Numeric"   
-            >
-        </Entry>
-        <Button
-            Grid.Row="2"
-            Grid.Column="2"
-            FontSize="Micro"
-            HorizontalOptions="Start"
-            Text="Submit"
-            Command="{Binding RatingCommand}"
-        ></Button>
+                <Label
+                    HorizontalOptions="End"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontSize="Micro"
+                    Text="Your rating"></Label>
+                <Entry Grid.Row="2"
+                    Grid.Column="1"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="LightGray"
+                    Text="{Binding UserRating}"
+                    x:Name="UserRating"
+                    Keyboard="Numeric"   
+                    >
+                </Entry>
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    FontSize="Micro"
+                    HorizontalOptions="Start"
+                    Text="Submit"
+                    Command="{Binding RatingCommand}"
+                ></Button>
 
-        <StackLayout
-            Grid.Row="3"
-            Grid.ColumnSpan="3">
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3">
 
-            <Label
-                FontSize="13"
-                Text="Director"></Label>
+                    <Label
+                        FontSize="13"
+                        Text="Director"></Label>
 
-            <ListView HeightRequest="40" ItemsSource="{Binding DirectorsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical" >
-                                    <Label
-                                        FontSize="13"
-                                        FontAttributes="Bold">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Person.FirstName}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding Person.LastName}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    <ListView HeightRequest="40" ItemsSource="{Binding DirectorsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <StackLayout Orientation="Vertical" >
+                                            <Label
+                                                FontSize="13"
+                                                FontAttributes="Bold">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Person.FirstName}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{Binding Person.LastName}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
-            <Label
-                FontSize="13"
-                Text="Actors"></Label>
-            <ListView ItemsSource="{Binding ActorsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout>
-                                    <Image WidthRequest="70" HeightRequest="70" Source="{Binding Person.Photo, Converter={StaticResource imgConv}}"></Image>
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical"  Margin="0,10,0,0">
-                                    <Label
-                                        FontSize="13"
-                                        FontAttributes="Bold">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Person.FirstName}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding Person.LastName}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label Text="{Binding NameInMovie}" 
-                                    d:Text="{Binding .}"
-                                    LineBreakMode="NoWrap" 
-                                    Style="{DynamicResource ListItemTextStyle}" 
-                                    FontSize="10" />
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    <Label
+                        FontSize="13"
+                        Text="Actors"></Label>
+                    <ListView HeightRequest="250" ItemsSource="{Binding ActorsList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <StackLayout>
+                                            <Image WidthRequest="70" HeightRequest="70" Source="{Binding Person.Photo, Converter={StaticResource imgConv}}"></Image>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  Margin="0,10,0,0">
+                                            <Label
+                                                FontSize="13"
+                                                FontAttributes="Bold">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Person.FirstName}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{Binding Person.LastName}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding NameInMovie}" 
+                                            d:Text="{Binding .}"
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="10" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                    <Label
+                        FontSize="13"
+                        Text="Titles like this"></Label>
+                    <ListView HeightRequest="120" ItemsSource="{Binding RecommendedMoviesList}" BackgroundColor="LightBlue" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <StackLayout>
+                                            <Image WidthRequest="40" HeightRequest="40" Source="{Binding Poster, Converter={StaticResource imgConv}}"></Image>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"  Margin="0,10,0,0">
+                                            <Label Text="{Binding Title}" 
+                                            d:Text="{Binding .}"
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="10" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
             
 
-        </StackLayout>
+                </StackLayout>
 
 
-        <Button
-            x:Name="btnMovieChat"
-            Clicked="btnMovieChat_Clicked"
-            Grid.Row="4"
-            Grid.Column="0"
-            FontSize="Micro"
-            HorizontalOptions="Start"
-            Text="Movie Chat"
-            >
-        </Button>
+                <Button
+                    x:Name="btnMovieChat"
+                    Clicked="btnMovieChat_Clicked"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    FontSize="Micro"
+                    HorizontalOptions="Start"
+                    Text="Movie Chat"
+                    >
+                </Button>
         
-        <Button
-            Clicked="btnEpisodes_Clicked"
-            x:Name="btnEpisodes"
-            Grid.Row="4"
-            Grid.Column="1"
-            FontSize="Micro"
-            HorizontalOptions="FillAndExpand"
-            Text="Episodes"
-            >
-        </Button>
+                <Button
+                    Clicked="btnEpisodes_Clicked"
+                    x:Name="btnEpisodes"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    FontSize="Micro"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Episodes"
+                    >
+                </Button>
          
-        <Button
-            Clicked="btnFullCast_Clicked"
-            x:Name="btnFullCast"
-            Grid.Row="4"
-            Grid.Column="2"
-            FontSize="Micro"
-            HorizontalOptions="End"
-            Text="See full cast >"
-            >
-        </Button>
+                <Button
+                    Clicked="btnFullCast_Clicked"
+                    x:Name="btnFullCast"
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    FontSize="Micro"
+                    HorizontalOptions="End"
+                    Text="See full cast >"
+                    >
+                </Button>
         
 
-    </Grid>
+            </Grid>
+    </ScrollView>
 </ContentPage>

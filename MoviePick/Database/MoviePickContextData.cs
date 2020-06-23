@@ -371,6 +371,20 @@ namespace MoviePick.Database
             };
             modelBuilder.Entity<Person>().HasData(p3);
 
+            Person p4 = new Person
+            {
+                Id = 4,
+                FirstName = "David",
+                LastName = "Fincher",
+                Biography = "An actor and producer known as much for his versatility as he is for his handsome face, Golden Globe-winner Brad Pitt's most widely recognized role may be Tyler Durden in Fight Club (1999). However, his portrayals of Billy Beane in Moneyball (2011), and Rusty Ryan in the remake of Ocean's Eleven (2001) and its sequels, also loom large in his ...",
+                DateOfBirth = new DateTime(1965, 7, 4),
+                DateOfDeath = null,
+                Gender = "M",
+                Photo = new byte[0],
+                PlaceOfBirth = "New York"
+            };
+            modelBuilder.Entity<Person>().HasData(p4);
+
             // mtvs person
             modelBuilder.Entity<MovieAndTvshowPerson>().HasData(new MovieAndTvshowPerson()
             {
@@ -402,6 +416,20 @@ namespace MoviePick.Database
                 PersonId = 3,
                 RoleId = 1,
                 NameInMovie = "Tyler Durden"
+            });
+            modelBuilder.Entity<MovieAndTvshowPerson>().HasData(new MovieAndTvshowPerson()
+            {
+                Id = 5,
+                MovieAndTvshowId = 3,
+                PersonId = 4,
+                RoleId = 2,
+            });
+            modelBuilder.Entity<MovieAndTvshowPerson>().HasData(new MovieAndTvshowPerson()
+            {
+                Id = 6,
+                MovieAndTvshowId = 4,
+                PersonId = 4,
+                RoleId = 2,
             });
 
             // news

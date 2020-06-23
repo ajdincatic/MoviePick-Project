@@ -16,10 +16,12 @@ namespace MoviePick.MobileUI.ViewModels
     {
         private readonly APIService _RatingService = new APIService("Rating");
         private readonly APIService _CastService = new APIService("Cast");
+        private readonly APIService _RecommendService = new APIService("Recommend");
 
         public Data.Model.MovieAndTvshow mtvs { get; set; }
 
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> ActorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
+        public ObservableCollection<Data.Model.MovieAndTvshow> RecommendedMoviesList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshow>();
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> DirectorsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
         public ObservableCollection<Data.Model.MovieAndTvshowPerson> PersonsList { get; set; } = new ObservableCollection<Data.Model.MovieAndTvshowPerson>();
 
@@ -112,6 +114,17 @@ namespace MoviePick.MobileUI.ViewModels
             foreach (var person in listCast)
             {
                 PersonsList.Add(person);
+            }
+
+            List<Data.Model.MovieAndTvshow> rec = await _RecommendService.Get<List<Data.Model.MovieAndTvshow>>(new RecommendedSearchRequest()
+            {
+                MTVSID = mtvs.Id,
+            });
+
+            RecommendedMoviesList.Clear();
+            foreach (var mtvs in rec)
+            {
+                RecommendedMoviesList.Add(mtvs);
             }
             LoadActors();
             LoadDirectors();

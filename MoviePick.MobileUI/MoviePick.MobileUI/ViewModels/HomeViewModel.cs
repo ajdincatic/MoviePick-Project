@@ -43,24 +43,20 @@ namespace MoviePick.MobileUI.ViewModels
                 isTvShow = null
             });
 
+            listMTVS = listMTVS.OrderByDescending(x => x.Id).Take(3).ToList();
             MTVSList.Clear();
             foreach (var mtvs in listMTVS)
             {
                 MTVSList.Add(mtvs);
-                // shows just top 3 on home page
-                if (MTVSList.Count() == 3)
-                    break;
             }
 
             var ListNews = await _NewsService.Get<List<Data.Model.News>>(null);
-            ListNews = ListNews.OrderByDescending(x => x.DateTimeOfNews).ToList();
 
+            ListNews = ListNews.OrderByDescending(x => x.DateTimeOfNews).Take(3).ToList();
             NewsList.Clear();
             foreach (var mtvs in ListNews)
             {
                 NewsList.Add(mtvs);
-                if (NewsList.Count() == 3)
-                    break;
             }
 
             QuoteOfTheDay = await _QOTDService.Get<Data.Model.Quote>(null);

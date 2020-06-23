@@ -7,6 +7,7 @@ using eProdaja.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviePick.Data.Request;
+using MoviePick.Database;
 
 namespace MoviePick.Controllers
 {
@@ -18,5 +19,6 @@ namespace MoviePick.Controllers
         {
 
         }
+
     }
 }

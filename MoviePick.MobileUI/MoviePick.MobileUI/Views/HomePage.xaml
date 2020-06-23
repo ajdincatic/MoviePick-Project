@@ -62,7 +62,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label x:Name="MoviesList" FontAttributes="Bold" FontSize="18" Text="Just for you >"></Label>
+            <Label x:Name="MoviesList" FontAttributes="Bold" FontSize="18" Text="Latest added >"></Label>
             <ListView ItemsSource="{Binding MTVSList}" BackgroundColor="LightBlue" ItemTapped="ListView_ItemTapped_1">
                 <ListView.ItemTemplate>
                     <DataTemplate>

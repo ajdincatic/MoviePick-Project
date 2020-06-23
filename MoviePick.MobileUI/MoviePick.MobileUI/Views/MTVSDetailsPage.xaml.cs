@@ -16,7 +16,6 @@ namespace MoviePick.MobileUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MTVSDetailsPage : ContentPage
     {
-
         MTVSDetailsViewModel model = null;
         public MTVSDetailsPage(Data.Model.MovieAndTvshow movieAndTvshow, string UserRating)
         {
@@ -60,5 +59,6 @@ namespace MoviePick.MobileUI.Views
         {
             await Navigation.PushAsync(new SeasonPage(model.mtvs.Id));
         }
+
     }
 }
