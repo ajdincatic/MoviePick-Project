@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviePick.Data.Request;
+using MoviePick.Interfaces;
 
 namespace MoviePick.Controllers
 {
@@ -13,17 +14,17 @@ namespace MoviePick.Controllers
     [ApiController]
     public class RecommendController : ControllerBase
     {
-        public IMapper _mapper { get; set; }
-        public RecommendController(IMapper mapper)
+        public IRecommendService _service { get; set; }
+
+        public RecommendController(IRecommendService service)
         {
-            _mapper = mapper;
+            _service = service;
         }
 
         [HttpGet]
         public List<Data.Model.MovieAndTvshow> RecommendProduct([FromQuery]RecommendedSearchRequest mtvs)
         {
-            Recomender r = new Recomender();
-            return _mapper.Map<List<Data.Model.MovieAndTvshow>>(r.LoadSimilar(mtvs.MTVSID));
+            return _service.RecommendProduct(mtvs.MTVSID);
         }
     }
 }

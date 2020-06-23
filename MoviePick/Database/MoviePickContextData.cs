@@ -149,7 +149,7 @@ namespace MoviePick.Database
                 Budget = 100000000,
                 Language = "English",
                 Finished = true,
-                NumberOfRatings = 0,
+                NumberOfRatings = 1,
                 RunningTime = "45",
                 ProductionCompanyId = 3,
                 Poster = new byte[0],
@@ -165,7 +165,7 @@ namespace MoviePick.Database
                 Budget = 100000000,
                 Language = "English",
                 Finished = true,
-                NumberOfRatings = 0,
+                NumberOfRatings = 1,
                 RunningTime = "175",
                 ProductionCompanyId = 3,
                 Poster = new byte[0],
@@ -181,7 +181,7 @@ namespace MoviePick.Database
                 Budget = 100000000,
                 Language = "English",
                 Finished = true,
-                NumberOfRatings = 0,
+                NumberOfRatings = 1,
                 RunningTime = "175",
                 ProductionCompanyId = 3,
                 Poster = new byte[0],
@@ -246,6 +246,27 @@ namespace MoviePick.Database
                 MovieAndTvshowId = 1,
                 AppUserId = 2,
                 RatingValue = 100
+            });
+            modelBuilder.Entity<Rating>().HasData(new Rating()
+            {
+                Id = 2,
+                MovieAndTvshowId = 2,
+                AppUserId = 2,
+                RatingValue = 88
+            });
+            modelBuilder.Entity<Rating>().HasData(new Rating()
+            {
+                Id = 3,
+                MovieAndTvshowId = 3,
+                AppUserId = 2,
+                RatingValue = 99
+            });
+            modelBuilder.Entity<Rating>().HasData(new Rating()
+            {
+                Id = 4,
+                MovieAndTvshowId = 4,
+                AppUserId = 2,
+                RatingValue = 76
             });
 
             // quote

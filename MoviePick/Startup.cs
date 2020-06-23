@@ -110,6 +110,7 @@ namespace MoviePick
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRatingService, RatingService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IRecommendService, RecommendService>();
 
 
             services.AddScoped<IQuoteOfTheDay, QuoteOfTheDay>();
