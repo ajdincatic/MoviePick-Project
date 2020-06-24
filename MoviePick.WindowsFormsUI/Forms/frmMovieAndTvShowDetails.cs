@@ -100,6 +100,7 @@ namespace MoviePick.WindowsFormsUI.Forms
                 request.NumberOfRatings = 0;
                 request.ReleaseDate = dtRelaseDate.Value;
                 request.RunningTime = txtRtime.Text;
+                request.NumberOfRatings = _MTVS.NumberOfRatings;
 
                 var idProductionComp = cmbProductionComp.SelectedValue;
 

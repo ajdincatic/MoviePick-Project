@@ -69,6 +69,8 @@ namespace MoviePick.MobileUI.Views
                 AppUserId = APIService.UserId
             });
             var UserRating = temp.Select(x => x.RatingValue).FirstOrDefault().ToString();
+            if (temp.Count == 0)
+                UserRating = string.Empty;
 
             await Navigation.PushAsync(new MTVSDetailsPage(item, UserRating));
         }

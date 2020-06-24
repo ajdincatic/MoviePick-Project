@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using MoviePick.Data.Model;
 using MoviePick.MobileUI.Models;
 using MoviePick.Data.Request;
+using System.Linq;
 
 namespace MoviePick.MobileUI.ViewModels
 {
@@ -33,6 +34,7 @@ namespace MoviePick.MobileUI.ViewModels
                 isTvShow = null
             });
 
+            listMTVS = listMTVS.OrderByDescending(x => x.Id).Take(10).ToList();
             MTVSList.Clear();
             foreach (var mtvs in listMTVS)
             {

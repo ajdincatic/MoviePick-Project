@@ -24,6 +24,7 @@ namespace MoviePick.Data.Request
         public bool? Finished { get; set; }
         [Required]
         public int ProductionCompanyId { get; set; }
+        public int NrOfRatings { get; set; }
         public List<int> GenreIds { get; set; } = new List<int>();
     }
 }
